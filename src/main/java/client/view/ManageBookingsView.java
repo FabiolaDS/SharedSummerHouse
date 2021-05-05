@@ -26,4 +26,6 @@ public class ManageBookingsView {
     void viewBooking(ActionEvent event) {
 
     }
+
+
 }
