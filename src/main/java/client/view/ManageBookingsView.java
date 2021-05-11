@@ -2,15 +2,15 @@ package client.view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 
 public class ManageBookingsView {
 
     @FXML
-    private ListView<?> pastBookings;
+    private TableView<?> currentBookings;
 
     @FXML
-    private ListView<?> currentBookings;
+    private TableView<?> pastBookings;
 
     @FXML
     void cancelBooking(ActionEvent event) {
@@ -21,11 +21,4 @@ public class ManageBookingsView {
     void reviewBooking(ActionEvent event) {
 
     }
-
-    @FXML
-    void viewBooking(ActionEvent event) {
-
-    }
-
-
 }

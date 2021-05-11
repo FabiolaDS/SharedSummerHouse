@@ -35,11 +35,11 @@
          </padding>
       </HBox>
       <TextArea fx:id="comment" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-      <HBox>
+      <HBox fx:id="buttonsPane">
          <children>
             <Button mnemonicParsing="false" onAction="#onSubmit" text="submit" />
             <Pane HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#delete" text="delete" />
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#delete" text="delete" />
             <Pane HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" onAction="#cancel" text="cancel" />
          </children>
