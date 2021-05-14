@@ -7,4 +7,5 @@ public interface ClientCallback extends Remote
 {
   void updateMunicipalities() throws RemoteException;
   void updateMunicipality() throws RemoteException;
+  void updates(String eventType, Object update) throws RemoteException;
 }

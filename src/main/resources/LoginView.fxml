@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<FlowPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.login.LoginViewController">
+    <children>
+        <GridPane prefHeight="391.0" prefWidth="602.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="196.0" minWidth="10.0" prefWidth="117.60000381469726" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="417.79999999999995" minWidth="10.0" prefWidth="362.3999961853027" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="109.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="124.39999237060547" minHeight="10.0" prefHeight="45.399992370605474" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="215.40000762939454" minHeight="10.0" prefHeight="215.40000762939454" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Username" />
+                        <Label text="Password" GridPane.rowIndex="1" />
+                        <TextField fx:id="usernameTextField" GridPane.columnIndex="1" />
+                        <TextField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" prefHeight="17.0" prefWidth="300.0" />
+                        <Label text="Login Result" fx:id="loginResultLabel" GridPane.rowIndex="3" />
+                    </children>
+                </GridPane>
+                <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button onAction="#onChangePassword" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Change Password" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Button onAction="#onLoginButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Log in" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" fx:id="loginButton"/>
+                        <Button onAction="#onExitButton" contentDisplay="CENTER" mnemonicParsing="false" text="Exit" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                    </children>
+                </GridPane>
+                <Label styleClass="title" text="Log in" GridPane.columnIndex="1" />
+            </children>
+        </GridPane>
+    </children>
+</FlowPane>
+
