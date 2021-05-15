@@ -1,4 +1,4 @@
-package client.view.regionaladmin.tenants.tenantView.addtenant;
+package client.view.regionaladmin.managetenant.addtenant;
 
 import client.model.tenants.ManageTenants;
 

@@ -1,4 +1,4 @@
-package client.view;
+package client.view.regionaladmin.managebookings;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
