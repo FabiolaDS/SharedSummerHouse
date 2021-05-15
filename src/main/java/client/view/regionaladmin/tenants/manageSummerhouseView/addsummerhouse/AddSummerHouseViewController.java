@@ -1,8 +1,7 @@
-package client.view.manageSummerhouseView.addsummerhouse;
+package client.view.regionaladmin.tenants.manageSummerhouseView.addsummerhouse;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import client.view.systemadmin.addmunicipality.AddMunicipalityViewModel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -1,9 +1,8 @@
-package client.view.manageSummerhouseView.viewsummerhouse;
+package client.view.regionaladmin.tenants.manageSummerhouseView.viewsummerhouse;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 

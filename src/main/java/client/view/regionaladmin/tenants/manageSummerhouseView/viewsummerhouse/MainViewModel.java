@@ -1,4 +1,4 @@
-package client.view.manageSummerhouseView.viewsummerhouse;
+package client.view.regionaladmin.tenants.manageSummerhouseView.viewsummerhouse;
 
 import client.model.summerhouses.ManageSummerHouses;
 

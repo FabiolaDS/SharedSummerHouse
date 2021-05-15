@@ -1,6 +1,5 @@
-package client.view.tenantView.addtenant;
+package client.view.regionaladmin.tenants.tenantView.addtenant;
 
-import client.model.municipalities.ManageMunicipalities;
 import client.model.tenants.ManageTenants;
 
 public class AddTenantViewModel
