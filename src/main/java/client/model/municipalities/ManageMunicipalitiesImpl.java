@@ -11,6 +11,9 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities
   private PropertyChangeSupport support;
   private Municipality municipality;
 
+  @Override public void addRegionalAdmin(RegionalAdmin regionalAdmin,
+      Municipality municipality)
+  {
 
 
 
