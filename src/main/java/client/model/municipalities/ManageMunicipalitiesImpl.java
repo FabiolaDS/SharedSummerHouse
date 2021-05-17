@@ -1,8 +1,9 @@
 package client.model.municipalities;
 
+import shared.domain.Municipality;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
 
 public class ManageMunicipalitiesImpl
 {

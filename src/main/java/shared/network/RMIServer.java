@@ -17,5 +17,5 @@ public interface RMIServer extends Remote
   void registerClient(ClientCallback clientCallback) throws RemoteException;
   void unregisterClient(ClientCallback clientCallback) throws RemoteException;
   ArrayList<MunicipalityList> getMunicipalities() throws RemoteException;
-  Municipality getMunicipality() throws RemoteException;
+  Municipality getMunicipality() throws RemoteException;// what does that do(return one munip)So which one(need argthen)
 }
