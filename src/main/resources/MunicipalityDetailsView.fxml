@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<FlowPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.systemadmin.viewmunicipalities.MainViewController">
+<FlowPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.systemadmin.seedetails.MunicipalityDetailsViewController">
    <children>
       <GridPane prefHeight="395.0" prefWidth="599.0">
         <columnConstraints>
@@ -31,11 +31,11 @@
                   <RowConstraints maxHeight="35.400000000000006" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="muniNameLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label fx:id="municipalityNameLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="Region: " GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Id: " GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label fx:id="muniRegionLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Label fx:id="muniIdLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label fx:id="municipalityRegionLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label fx:id="municipalityIdLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <Label text="Name: " GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Municipality Details" GridPane.columnIndex="1" />
                   <Label text="Regional Admin:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -88,7 +88,7 @@
                   <Button mnemonicParsing="false" text="Remove Regional Admin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Button fx:id="onBack" mnemonicParsing="false" text="Back" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#onBack" text="Back" GridPane.columnIndex="2" />
          </children>
       </GridPane>
    </children>

@@ -1,27 +1,28 @@
 package server.model.login;
 
-import server.dataaccess.UserHome;
+import server.dataaccess.UserDAO;
 import shared.transferobjects.User;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.SQLException;
 
 public class LoginModelManager implements LoginModel
 {
   // I only use the interface, this way if I want to exchange the InMemoryAccess
   // with a database access class I can do it without changing this code
-  private UserHome userHome;
+  private UserDAO userDAO;
   private PropertyChangeSupport support;
 
-  public LoginModelManager(UserHome userHome)
+  public LoginModelManager(UserDAO userDAO)
   {
-    this.userHome = userHome;
+    this.userDAO = userDAO;
     support = new PropertyChangeSupport(this);
   }
 
-  @Override public String validateUser(User user)
+  @Override public String validateUser(User user) throws SQLException
   {
-    return userHome.validateUser(user);
+    return userDAO.validateUser(user);
   }
 
   @Override public void addPropertyChangeListener(String name,

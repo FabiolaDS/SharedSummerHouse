@@ -1,40 +1,43 @@
 package client.view.systemadmin.viewmunicipalities;
 
 
-import client.core.ViewHandler;
+import client.core.viewhandler.SAViewHandler;
 import client.core.ViewModelFactory;
+import client.view.ViewController;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 
 import java.io.IOException;
 
-public class MainViewController
+public class MainViewController implements ViewController
 {
     public TableColumn muniColumn;
     public TableColumn regionColumn;
     public TableColumn idColumn;
     public TableColumn rAlminColumn;
 
-    private ViewHandler viewHandler;
+
+    private SAViewHandler viewHandler;
     private ViewModelFactory viewModelFactory;
     private MainViewModel mainViewModel;
 
 
-    public void init(ViewHandler viewHandler, ViewModelFactory vmf) {
-        this.viewHandler = viewHandler;
-        this.viewModelFactory = vmf;
-      //  this.mainViewModel = viewModelFactory.getMainViewModel();
+    public void init() {
+
+        this.viewModelFactory = ViewModelFactory.getInstance();
+        this.mainViewModel = viewModelFactory.getMainViewModel();
+        viewHandler = SAViewHandler.getInstance();
     }
 
     public void onCreatMunicipality(ActionEvent actionEvent) throws IOException {
-       // viewHandler.openAddMunicipalitiesView();
+        viewHandler.openAddMunicipalityView();
     }
 
 
     public void onSeeDetails(ActionEvent actionEvent) {
+        viewHandler.openSeeMunicipalityDetailsView();
     }
 
 
-    public void onAddRegionalAdmin(ActionEvent actionEvent) {
-    }
+
 }
