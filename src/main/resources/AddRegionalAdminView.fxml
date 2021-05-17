@@ -73,7 +73,7 @@
                   <TextField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" text="Back" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#onBack" text="Back" GridPane.columnIndex="2" />
          </children>
       </GridPane>
    </children>

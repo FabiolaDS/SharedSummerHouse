@@ -4,22 +4,24 @@ import shared.domain.Municipality;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
-public class ManageMunicipalitiesImpl
+public class ManageMunicipalitiesImpl implements ManageMunicipalities
 {
   private PropertyChangeSupport support;
   private Municipality municipality;
 
 
-  public ManageMunicipalitiesImpl()
+
+
+  }
+
+  public  ManageMunicipalitiesImpl()
   {
 
     support = new PropertyChangeSupport(this);
 
   }
-
-
-
   public void addPropertyChangeListener(String name,
       PropertyChangeListener listener)
   {
@@ -44,9 +46,19 @@ public class ManageMunicipalitiesImpl
     support.removePropertyChangeListener(listener);
   }
 
+  @Override public void addMunicipality(Municipality municipality)
+  {
+
+  }
 
 
+  @Override public ArrayList<Municipality> getMunicipalities()
+  {
+    return null;
+  }
 
-
-
+  @Override public Municipality getMunicipality(int id)
+  {
+    return null;
+  }
 }

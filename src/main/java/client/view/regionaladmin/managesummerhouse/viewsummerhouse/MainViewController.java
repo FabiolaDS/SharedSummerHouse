@@ -1,6 +1,6 @@
 package client.view.regionaladmin.managesummerhouse.viewsummerhouse;
 
-import client.core.ViewHandler;
+import client.core.viewhandler.SAViewHandler;
 import client.core.ViewModelFactory;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
@@ -22,13 +22,13 @@ public class MainViewController
   public DatePicker isAvailableDate;
   public ListView sharedWithList;
 
-  private ViewHandler viewHandler;
+  private SAViewHandler viewHandler;
   private ViewModelFactory vmf;
   private  MainViewModel mvm;
 
   public MainViewController(){}
 
-  public void init(ViewHandler viewHandler, ViewModelFactory vmf)
+  public void init(SAViewHandler viewHandler, ViewModelFactory vmf)
   {
     this.viewHandler = viewHandler;
     this.vmf = vmf;

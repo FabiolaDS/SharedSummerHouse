@@ -6,4 +6,9 @@ public class AddTenantViewModel
 {
   public AddTenantViewModel(ManageTenants manageTenants) {
   }
+
+  public AddTenantViewModel()
+  {
+
+  }
 }

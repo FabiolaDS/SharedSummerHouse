@@ -18,7 +18,7 @@ public class LoginModelManager implements LoginModel
   {
     this.client = client;
     support = new PropertyChangeSupport(this);
-    client.addPropertyChangeListener(EventType.LOGIN.toString(), this::onLoginResult);
+   // client.addPropertyChangeListener(EventType.LOGIN.toString(), this::onLoginResult);
   }
 
   private void onLoginResult(PropertyChangeEvent propertyChangeEvent)
