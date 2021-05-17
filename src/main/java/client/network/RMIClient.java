@@ -15,6 +15,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RMIClient implements Client, ClientCallback
@@ -35,7 +36,7 @@ public class RMIClient implements Client, ClientCallback
     {
       support.firePropertyChange(EventType.LOGIN.toString(), null, server.validateUser(user));
     }
-    catch (RemoteException e)
+    catch (RemoteException | SQLException e)
     {
       support.firePropertyChange(EventType.LOGIN.toString(), null, "Connection lost: Restart application"); // give feedback to client
     }
@@ -56,6 +57,7 @@ public class RMIClient implements Client, ClientCallback
     try {
       server.unregisterClient(this);
     } catch (RemoteException e) {
+      e.printStackTrace();
     }
   }
 

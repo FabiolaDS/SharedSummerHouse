@@ -16,6 +16,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class RMIServerImpl implements RMIServer
     Registry registry = LocateRegistry.createRegistry(1099);
     registry.bind("Server", this);
   }
-  @Override public String validateUser(User user)
+  @Override public String validateUser(User user) throws SQLException
   {
     return loginModel.validateUser(user);
   }
