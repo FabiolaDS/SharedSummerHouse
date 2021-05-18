@@ -33,4 +33,7 @@ public class AddSummerHouseViewController
   {
     // viewHandler.openMainView();
   }
+  public void addSummerHouse(ActionEvent event) {
+
+  }
   }
