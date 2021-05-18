@@ -1,6 +1,5 @@
 package client.core.viewhandler;
 
-import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import javafx.scene.Parent;
 import javafx.stage.Stage;

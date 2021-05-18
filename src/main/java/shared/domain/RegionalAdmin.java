@@ -1,4 +1,4 @@
-package client.model.municipalities;
+package shared.domain;
 
 public class RegionalAdmin
 {
@@ -17,5 +17,6 @@ public class RegionalAdmin
     this.lastname = lastname;
     this.email = email;
     this.password = password;
+    System.out.println("Regional Admin has been created");
   }
 }
