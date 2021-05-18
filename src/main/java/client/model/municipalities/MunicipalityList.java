@@ -8,19 +8,20 @@ public class MunicipalityList
 {
   private ArrayList<Municipality> municipalities;
 
-  public MunicipalityList(ArrayList<Municipality> municipalities)
+  public MunicipalityList()
   {
-    this.municipalities = municipalities;
+    this.municipalities = new ArrayList<>();
   }
 
-  public void add(ArrayList<Municipality> municipalities)
+  public void add(Municipality municipality)
   {
-    add(this.municipalities);
+    municipalities.add(municipality);
+    System.out.println("Municipality added to the list");
   }
 
-  public void remove(ArrayList<Municipality> municipalities)
+  public void remove(Municipality municipality)
   {
-    remove(municipalities);
+    municipalities.remove(municipality);
   }
 
 

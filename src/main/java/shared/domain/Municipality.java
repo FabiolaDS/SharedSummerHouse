@@ -21,6 +21,7 @@ public class Municipality
     this.region = region;
     id = ID_GENERATOR.getAndIncrement();
     summerhouses = new ArrayList<>();
+    System.out.println("New Municipality has been created");
   }
 
   public void addSummerHouse(SummerHouse house) {
