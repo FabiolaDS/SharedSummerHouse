@@ -15,6 +15,7 @@
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
         </Label>
+      <Button mnemonicParsing="false" text="View Summerhouses" />
         <Label text="Summerhouses">
             <VBox.margin>
                 <Insets top="20.0" />
