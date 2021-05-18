@@ -47,11 +47,11 @@ public class ManageSummerHousesImpl implements ManageSummerHouses{
 
   @Override public ArrayList<SummerHouse> getAllSummerHouses()
   {
-
+return null;
   }
 
   @Override public SummerHouse getSummerHouse(int id)
   {
-
+return null;
   }
 }

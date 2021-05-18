@@ -3,10 +3,11 @@ package shared.domain;
 import shared.domain.Municipality;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MunicipalityList
 {
-  private ArrayList<Municipality> municipalities;
+  private List<Municipality> municipalities;
 
   public MunicipalityList()
   {

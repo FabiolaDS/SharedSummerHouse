@@ -1,13 +1,12 @@
 package shared.domain;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class Municipality
 {
   //made by database
-  private Long id;
+  private String id;
   private String name;
   private String region;
   private ArrayList<SummerHouse> summerhouses;
@@ -15,11 +14,11 @@ public class Municipality
   private static AtomicLong ID_GENERATOR = new AtomicLong(200);
 
 
-  public Municipality(String name, String region)
+  public Municipality(String name, String region, String id)
   {
     this.name = name;
     this.region = region;
-    id = ID_GENERATOR.getAndIncrement();
+    this.id = id;
     summerhouses = new ArrayList<>();
     System.out.println("New Municipality has been created");
   }
@@ -36,12 +35,12 @@ public class Municipality
     return summerhouses;
   }
 
-  public Long getId()
+  public String getId()
   {
     return id;
   }
 
-  public void setId(Long id)
+  public void setId(String id)
   {
     this.id = id;
   }

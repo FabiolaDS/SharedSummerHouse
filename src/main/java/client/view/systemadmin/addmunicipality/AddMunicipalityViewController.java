@@ -16,6 +16,8 @@ public class AddMunicipalityViewController implements ViewController {
     public TextField muniNameLabel;
     @FXML
     public TextField muniRegionLabel;
+    @FXML
+    public TextField municipalityIDField;
 
     private SAViewHandler viewHandler;
     private AddMunicipalityViewModel addMunicipalityViewModel;
@@ -28,7 +30,7 @@ public class AddMunicipalityViewController implements ViewController {
 
     public void onCreateMuni(ActionEvent actionEvent) {
 
-        addMunicipalityViewModel.addMunicipality(muniNameLabel.getText(), muniRegionLabel.getText());
+        addMunicipalityViewModel.addMunicipality(muniNameLabel.getText(), muniRegionLabel.getText(), municipalityIDField.getText());
         reset();
 
     }
@@ -41,5 +43,6 @@ public class AddMunicipalityViewController implements ViewController {
     private void reset() {
         muniNameLabel.clear();
         muniRegionLabel.clear();
+        municipalityIDField.clear();
     }
 }

@@ -36,6 +36,8 @@
                   <Label text="Region:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="muniNameLabel" GridPane.columnIndex="2" />
                   <TextField fx:id="muniRegionLabel" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label text="Id:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="municipalityIDField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                </children>
                <padding>
                   <Insets left="15.0" />

@@ -13,14 +13,11 @@ public class AddMunicipalityViewModel {
     public AddMunicipalityViewModel(ManageMunicipalities manageMunicipalities) {
 
         this.municipalitiesModel = manageMunicipalities;
-        name = new SimpleStringProperty();
-        region = new SimpleStringProperty();
-        id = new SimpleStringProperty();
 
     }
 
-    public void addMunicipality(String name, String region)
+    public void addMunicipality(String name, String region, String id)
     {
-        municipalitiesModel.addMunicipality(new Municipality(name, region ));
+        municipalitiesModel.addMunicipality(new Municipality(name, region, id));
     }
 }
