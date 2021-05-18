@@ -24,7 +24,6 @@ public class UserDAOImpl implements UserDAO
 
   private Connection getConnection() throws SQLException
   {
-    System.out.println("Trying to connect");
     return DriverManager.getConnection(
         "jdbc:postgresql://hattie.db.elephantsql.com:5432/widfgedd?currentSchema=shared_summerhouse",
         "widfgedd", "eNK-T2F9iLzSsnM_49VIlSkM_qHsQ2nC");
@@ -34,7 +33,6 @@ public class UserDAOImpl implements UserDAO
   {
     try (Connection connection = getConnection())
     {
-      System.out.println("Connected");
       PreparedStatement statement = connection.prepareStatement(
           "SELECT * FROM \"shared_summerhouse\".\"system_admin\" WHERE system_admin_cpr = ?");
       statement.setString(1, user.getUsername());
