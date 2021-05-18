@@ -1,6 +1,7 @@
 package server.network;
 
 import server.model.login.LoginModel;
+import server.model.login.LoginModelManager;
 import server.model.municipalities.ServerManageMunicipalities;
 import server.model.municipalities.ServerManageMunicipalitiesImp;
 import shared.domain.Municipality;
@@ -30,7 +31,7 @@ public class RMIServerImpl implements RMIServer
   private ServerManageMunicipalities municipalitiesModel;
   private Map<ClientCallback, PropertyChangeListener> listeners = new HashMap<>();
 
-  public RMIServerImpl(LoginModel loginModel) throws RemoteException
+  public RMIServerImpl(LoginModelManager loginModel) throws RemoteException
   {
     UnicastRemoteObject.exportObject(this, 0);
     this.loginModel = loginModel;
@@ -47,7 +48,7 @@ public class RMIServerImpl implements RMIServer
     return loginModel.validateUser(user);
   }
 
-  @Override public MunicipalityList addMunicipality(Municipality municipality)
+  @Override public Municipality addMunicipality(Municipality municipality)
       throws RemoteException
   {
      return municipalitiesModel.addMunicipality(municipality);

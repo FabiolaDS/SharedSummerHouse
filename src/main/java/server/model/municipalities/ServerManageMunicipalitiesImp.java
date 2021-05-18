@@ -17,6 +17,7 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     private ServerManageMunicipalitiesImp() {
 
         support = new PropertyChangeSupport(this);
+        municipalityList = new MunicipalityList();
     }
 
     public static ServerManageMunicipalitiesImp getInstance() {
@@ -28,10 +29,10 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     }
 
     @Override
-    public MunicipalityList addMunicipality(Municipality municipality) {
-
-      municipalityList.add(municipality);
-      return municipalityList;
+    public Municipality addMunicipality(Municipality municipality) {
+//TODO: CONNECT TO DATABASE
+      Municipality municipality1 = municipality;
+      return municipality1;
     }
 
     @Override public void addPropertyChangeListener(String name,

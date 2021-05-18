@@ -2,10 +2,11 @@ package shared.domain;
 
 import shared.domain.Municipality;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MunicipalityList
+public class MunicipalityList implements Serializable
 {
   private List<Municipality> municipalities;
 
@@ -27,6 +28,11 @@ public class MunicipalityList
   public void remove(Municipality municipality)
   {
     municipalities.remove(municipality);
+  }
+
+  public Municipality getMunicipalityIndex(int index)
+  {
+    return municipalities.get(index);
   }
 
 

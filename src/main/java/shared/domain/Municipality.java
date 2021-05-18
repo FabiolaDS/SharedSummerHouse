@@ -1,9 +1,10 @@
 package shared.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Municipality
+public class Municipality implements Serializable
 {
   //made by database
   private String id;
@@ -11,7 +12,7 @@ public class Municipality
   private String region;
   private ArrayList<SummerHouse> summerhouses;
   private User regionalAdmin;
-  private static AtomicLong ID_GENERATOR = new AtomicLong(200);
+
 
 
   public Municipality(String name, String region, String id)

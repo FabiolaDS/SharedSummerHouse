@@ -1,5 +1,6 @@
 package client.network;
 
+import server.model.municipalities.ServerManageMunicipalitiesImp;
 import shared.domain.Municipality;
 import shared.domain.MunicipalityList;
 import shared.domain.RegionalAdmin;
@@ -23,6 +24,7 @@ public class RMIClient implements Client, ClientCallback
 
   private RMIServer server;
   private PropertyChangeSupport support;
+
 
   public RMIClient()
   {

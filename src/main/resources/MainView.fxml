@@ -18,12 +18,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView prefHeight="200.0" prefWidth="200.0" styleClass="table" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TableView fx:id="municipalityTable" prefHeight="200.0" prefWidth="200.0" styleClass="table" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="muniColumn" prefWidth="114.0" text="Municipality" />
                   <TableColumn fx:id="regionColumn" prefWidth="78.79998779296875" text="Region" />
                 <TableColumn fx:id="idColumn" minWidth="0.0" prefWidth="39.60005187988281" text="Id" />
-                  <TableColumn fx:id="rAlminColumn" prefWidth="172.800048828125" text="Regional Admin" />
+                  <TableColumn fx:id="rAdminColumn" prefWidth="172.800048828125" text="Regional Admin" />
               </columns>
             </TableView>
             <GridPane GridPane.columnIndex="1">

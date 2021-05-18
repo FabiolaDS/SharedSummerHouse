@@ -6,5 +6,5 @@ import shared.util.PropertyChangeSubject;
 
 public interface ServerManageMunicipalities extends PropertyChangeSubject
 {
-    MunicipalityList addMunicipality(Municipality municipality);
+    Municipality addMunicipality(Municipality municipality);
 }

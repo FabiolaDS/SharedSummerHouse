@@ -33,6 +33,10 @@ public class ClientFactory
   }
 
   public RMIClient getClient() {
+    if (rmiClient == null)
+    {
+      rmiClient = new RMIClient();
+    }
     return rmiClient;
   }
 }

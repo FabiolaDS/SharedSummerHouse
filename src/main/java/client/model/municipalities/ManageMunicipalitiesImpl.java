@@ -13,7 +13,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class ManageMunicipalitiesImpl implements ManageMunicipalities, PropertyChangeSubject {
+public class ManageMunicipalitiesImpl implements ManageMunicipalities {
     private PropertyChangeSupport support;
     private MunicipalityList municipalityList;
     private Client client;
