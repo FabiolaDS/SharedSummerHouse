@@ -1,6 +1,7 @@
 package client.model.municipalities;
 
 import shared.domain.Municipality;
+import shared.domain.RegionalAdmin;
 
 import java.util.ArrayList;
 

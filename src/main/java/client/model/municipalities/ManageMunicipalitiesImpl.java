@@ -1,6 +1,8 @@
 package client.model.municipalities;
 
 import shared.domain.Municipality;
+import shared.domain.MunicipalityList;
+import shared.domain.RegionalAdmin;
 import shared.util.PropertyChangeSubject;
 
 import java.beans.PropertyChangeListener;

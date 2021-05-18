@@ -49,11 +49,11 @@ public class RMIServerImpl implements RMIServer
 
   }
 
-  @Override public void addRegionalAdmin(RegionalAdmin regionalAdmin)
-      throws RemoteException
-  {
+  @Override
+  public void addRegionalAdmin(RegionalAdmin regionalAdmin) throws RemoteException {
 
   }
+
 
   @Override public void registerClient(ClientCallback clientCallback)
       throws RemoteException
