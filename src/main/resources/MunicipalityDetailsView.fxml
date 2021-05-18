@@ -62,7 +62,7 @@
                   <HBox GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
                         <Label text="Last name: " />
-                        <Label fx:id="lnameLabel" text="Label" />
+                        <Label fx:id="nameLabel" text="Label" />
                      </children>
                   </HBox>
                   <HBox GridPane.columnIndex="1" GridPane.rowIndex="1">

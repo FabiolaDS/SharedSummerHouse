@@ -4,6 +4,7 @@ package client.view.systemadmin.viewmunicipalities;
 import client.core.viewhandler.SAViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
+import client.view.systemadmin.seedetails.MunicipalityDetailsViewModel;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -25,11 +26,11 @@ public class MainViewController implements ViewController
     private ViewModelFactory viewModelFactory;
     private MainViewModel mainViewModel;
 
-
     public void init() {
 
         this.viewModelFactory = ViewModelFactory.getInstance();
         this.mainViewModel = viewModelFactory.getMainViewModel();
+
         viewHandler = SAViewHandler.getInstance();
 
         muniColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("name"));
@@ -46,11 +47,24 @@ public class MainViewController implements ViewController
         viewHandler.openAddMunicipalityView();
     }
 
-
     public void onSeeDetails(ActionEvent actionEvent) {
+    municipalityTable.getSelectionModel().getSelectedItem();
+        updateSelectedMunicipality();
         viewHandler.openSeeMunicipalityDetailsView();
+
     }
 
-
-
+    private void updateSelectedMunicipality()
+    {
+        if (municipalityTable.getSelectionModel().getSelectedItem() != null)
+        {
+            String id = municipalityTable.getSelectionModel().getSelectedItem()
+                .getId();
+            String name = municipalityTable.getSelectionModel().getSelectedItem().getName();
+            String region = municipalityTable.getSelectionModel().getSelectedItem().getRegion();
+            ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().setId(id);
+            ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().setName(name);
+            ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().setRegion(region);
+        }
+    }
 }

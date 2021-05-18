@@ -1,5 +1,3 @@
-package server;
-
 import client.core.ClientFactory;
 
 import server.dataaccess.UserDAO;
