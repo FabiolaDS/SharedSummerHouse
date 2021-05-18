@@ -1,9 +1,9 @@
 package server.network;
 
 import server.model.login.LoginModel;
-import server.model.municipalities.Municipality;
-import server.model.municipalities.MunicipalityList;
-import server.model.municipalities.RegionalAdmin;
+import shared.domain.Municipality;
+import shared.domain.MunicipalityList;
+import shared.domain.RegionalAdmin;
 import shared.network.ClientCallback;
 import shared.network.RMIServer;
 import shared.transferobjects.EventType;
@@ -92,7 +92,7 @@ public class RMIServerImpl implements RMIServer
     return null;
   }
 
-  @Override public Municipality getMunicipality() throws RemoteException
+  @Override public Municipality getMunicipality(Long id) throws RemoteException
   {
     return null;
   }

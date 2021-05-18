@@ -1,6 +1,8 @@
 package shared.domain;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Municipality
 {
@@ -10,12 +12,14 @@ public class Municipality
   private String region;
   private ArrayList<SummerHouse> summerhouses;
   private User regionalAdmin;
+  private static AtomicLong ID_GENERATOR = new AtomicLong(200);
 
-  public Municipality(String name, String region, User regionalAdmin)
+
+  public Municipality(String name, String region)
   {
     this.name = name;
     this.region = region;
-    this.regionalAdmin = regionalAdmin;
+    id = ID_GENERATOR.getAndIncrement();
     summerhouses = new ArrayList<>();
   }
 

@@ -15,8 +15,6 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities
       Municipality municipality)
   {
 
-
-
   }
 
   public  ManageMunicipalitiesImpl()
@@ -60,7 +58,7 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities
     return null;
   }
 
-  @Override public Municipality getMunicipality(int id)
+  @Override public Municipality getMunicipality(Long id)
   {
     return null;
   }

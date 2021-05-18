@@ -13,7 +13,7 @@ public class AddMunicipalityViewController implements ViewController
 {
     public TextField muniNameLabel;
     public TextField muniRegionLabel;
-    public TextField muniIdLabel;
+
 
     private SAViewHandler viewHandler;
     private ViewModelFactory viewModelFactory;

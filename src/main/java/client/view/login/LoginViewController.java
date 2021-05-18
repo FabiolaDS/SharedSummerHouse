@@ -2,7 +2,7 @@ package client.view.login;
 
 import client.core.viewhandler.LoginViewHandler;
 import client.core.viewhandler.SAViewHandler;
-import client.core.ViewHandler;
+import client.core.viewhandler.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
 import javafx.event.ActionEvent;

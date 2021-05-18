@@ -8,10 +8,6 @@ import client.model.summerhouses.ManageSummerHouses;
 import client.model.summerhouses.ManageSummerHousesImpl;
 import client.model.tenants.ManageTenants;
 import client.model.tenants.ManageTenantsImpl;
-import client.network.RMIClient;
-
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class ModelFactory
 {
