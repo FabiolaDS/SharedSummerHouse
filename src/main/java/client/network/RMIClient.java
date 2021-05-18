@@ -32,6 +32,21 @@ public class RMIClient implements Client, ClientCallback
     startClient();
   }
 
+  @Override public void startClient()
+  {
+    try
+    {
+      UnicastRemoteObject.exportObject(this, 0);
+      Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+      server = (RMIServer) registry.lookup("Server");
+      server.registerClient(this);
+    }
+    catch (RemoteException | NotBoundException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
   @Override public void login(User user)
   {
     try
@@ -77,20 +92,6 @@ public class RMIClient implements Client, ClientCallback
     return null;
   }
 
-  @Override public void startClient()
-  {
-    try
-    {
-      UnicastRemoteObject.exportObject(this, 0);
-      Registry registry = LocateRegistry.getRegistry("localhost", 1099);
-      server = (RMIServer) registry.lookup("Server");
-      server.registerClient(this);
-    }
-    catch (RemoteException | NotBoundException e)
-    {
-      e.printStackTrace();
-    }
-  }
 
   @Override public void updateMunicipalities() throws RemoteException
   {
