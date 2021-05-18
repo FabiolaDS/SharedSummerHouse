@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public interface RMIServer extends Remote
 {
   String validateUser(User request) throws RemoteException, SQLException;
-  void addMunicipality(Municipality municipality) throws RemoteException;
+  MunicipalityList addMunicipality(Municipality municipality) throws RemoteException;
   void addRegionalAdmin(RegionalAdmin regionalAdmin) throws RemoteException;
   void registerClient(ClientCallback clientCallback) throws RemoteException;
   void unregisterClient(ClientCallback clientCallback) throws RemoteException;

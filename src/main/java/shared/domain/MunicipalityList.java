@@ -20,6 +20,10 @@ public class MunicipalityList
     System.out.println("Municipality added to the list");
   }
 
+  public List<Municipality> getMunicipalities() {
+    return municipalities;
+  }
+
   public void remove(Municipality municipality)
   {
     municipalities.remove(municipality);

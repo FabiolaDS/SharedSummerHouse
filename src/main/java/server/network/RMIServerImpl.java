@@ -1,6 +1,8 @@
 package server.network;
 
 import server.model.login.LoginModel;
+import server.model.municipalities.ServerManageMunicipalities;
+import server.model.municipalities.ServerManageMunicipalitiesImp;
 import shared.domain.Municipality;
 import shared.domain.MunicipalityList;
 import shared.domain.RegionalAdmin;
@@ -25,12 +27,14 @@ public class RMIServerImpl implements RMIServer
 {
 
   private LoginModel loginModel;
+  private ServerManageMunicipalities municipalitiesModel;
   private Map<ClientCallback, PropertyChangeListener> listeners = new HashMap<>();
 
   public RMIServerImpl(LoginModel loginModel) throws RemoteException
   {
     UnicastRemoteObject.exportObject(this, 0);
     this.loginModel = loginModel;
+    this.municipalitiesModel = ServerManageMunicipalitiesImp.getInstance();
   }
 
   public void startServer() throws RemoteException, AlreadyBoundException
@@ -43,10 +47,10 @@ public class RMIServerImpl implements RMIServer
     return loginModel.validateUser(user);
   }
 
-  @Override public void addMunicipality(Municipality municipality)
+  @Override public MunicipalityList addMunicipality(Municipality municipality)
       throws RemoteException
   {
-
+     return municipalitiesModel.addMunicipality(municipality);
   }
 
   @Override

@@ -44,7 +44,11 @@ public class RMIClient implements Client, ClientCallback
 
   @Override public void addMunicipality(Municipality municipality)
   {
-
+    try {
+      support.firePropertyChange(EventType.MUNICIPALITY.toString(), null, server.addMunicipality(municipality));
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override public void addRegionalAdmin(RegionalAdmin regionalAdmin)
