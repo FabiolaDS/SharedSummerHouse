@@ -21,4 +21,8 @@ public class RegionalAdmin  implements Serializable
     this.password = password;
     System.out.println("Regional Admin has been created");
   }
+  public String getCpr()
+  {
+    return cpr;
+  }
 }

@@ -36,6 +36,7 @@ public class MainViewController implements ViewController
         muniColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("name"));
         idColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("id"));
         regionColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("region"));
+        rAdminColumn.setCellValueFactory(new PropertyValueFactory<Municipality,String>("regionalAdminCPR"));
         tableViewLoad();
 
     }
