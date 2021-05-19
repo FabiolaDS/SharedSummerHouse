@@ -43,6 +43,7 @@ public class RMIServerImpl implements RMIServer
     Registry registry = LocateRegistry.createRegistry(1099);
     registry.bind("Server", this);
   }
+
   @Override public String validateUser(User user) throws SQLException
   {
     return loginModel.validateUser(user);
@@ -51,14 +52,14 @@ public class RMIServerImpl implements RMIServer
   @Override public Municipality addMunicipality(Municipality municipality)
       throws RemoteException
   {
-     return municipalitiesModel.addMunicipality(municipality);
+    return municipalitiesModel.addMunicipality(municipality);
   }
 
-  @Override
-  public void addRegionalAdmin(RegionalAdmin regionalAdmin) throws RemoteException {
-
+  @Override public Municipality addRegionalAdmin(RegionalAdmin regionalAdmin,
+      String municipalityID) throws RemoteException
+  {
+    return municipalitiesModel.setRegionalAdmin(regionalAdmin, municipalityID);
   }
-
 
   @Override public void registerClient(ClientCallback clientCallback)
       throws RemoteException
@@ -69,11 +70,13 @@ public class RMIServerImpl implements RMIServer
       {
         try
         {
-          clientCallback.updates(EventType.UPDATE.toString(), evt.getNewValue());
+          clientCallback
+              .updates(EventType.UPDATE.toString(), evt.getNewValue());
         }
         catch (RemoteException e)
         {
-          loginModel.removePropertyChangeListener(EventType.UPDATE.toString(), this);
+          loginModel
+              .removePropertyChangeListener(EventType.UPDATE.toString(), this);
         }
       }
     };
@@ -85,20 +88,11 @@ public class RMIServerImpl implements RMIServer
       throws RemoteException
   {
     PropertyChangeListener listener = listeners.get(clientCallback);
-    if (listener != null) {
+    if (listener != null)
+    {
       listeners.remove(clientCallback, listener);
       loginModel.removePropertyChangeListener(listener);
     }
   }
 
-  @Override public ArrayList<MunicipalityList> getMunicipalities()
-      throws RemoteException
-  {
-    return null;
-  }
-
-  @Override public Municipality getMunicipality(Long id) throws RemoteException
-  {
-    return null;
-  }
 }

@@ -15,6 +15,8 @@ public class MunicipalityDetailsViewController implements ViewController
   public Label municipalityIdLabel;
   public Label fnameLabel;
   public Label nameLabel;
+  public Label emailLabel;
+  public Label cprLabel;
   private SAViewHandler viewHandler;
    private MunicipalityDetailsViewModel detailsViewModel;
 
@@ -31,6 +33,8 @@ public class MunicipalityDetailsViewController implements ViewController
 
   public void onAddRegionalAdmin(ActionEvent actionEvent)
   {
+    String id = municipalityIdLabel.textProperty().get();
+    ViewModelFactory.getInstance().getAddRegionalAdministratorViewModel().setMunicipalityId(id);
     viewHandler.openAddRegionalAdminView();
   }
 

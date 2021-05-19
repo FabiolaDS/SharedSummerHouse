@@ -2,22 +2,22 @@ package server.model.municipalities;
 
 import shared.domain.Municipality;
 import shared.domain.MunicipalityList;
+import shared.domain.RegionalAdmin;
 import shared.util.PropertyChangeSubject;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities {
 
     private static ServerManageMunicipalitiesImp serverManageMunicipalities;
-    private MunicipalityList municipalityList;
     PropertyChangeSupport support;
 
     private ServerManageMunicipalitiesImp() {
 
         support = new PropertyChangeSupport(this);
-        municipalityList = new MunicipalityList();
     }
 
     public static ServerManageMunicipalitiesImp getInstance() {
@@ -27,12 +27,22 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
         }
         return serverManageMunicipalities;
     }
+/*
+DUMMY DATA TO SIMULATE DATABASE
+ */
+    MunicipalityList municipalityList = new MunicipalityList();
 
     @Override
     public Municipality addMunicipality(Municipality municipality) {
-//TODO: CONNECT TO DATABASE
-      Municipality municipality1 = municipality;
-      return municipality1;
+     //TODO: CONNECT TO DATABASE
+        municipalityList.add(municipality);
+      return municipality;
+    }
+
+    @Override public Municipality setRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId)
+    {
+           municipalityList.setRegionalAdministrator(regionalAdmin,municipalityId);
+           return municipalityList.getMunicipalityById(municipalityId);
     }
 
     @Override public void addPropertyChangeListener(String name,

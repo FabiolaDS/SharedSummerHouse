@@ -1,6 +1,8 @@
 package shared.domain;
 
-public class RegionalAdmin
+import java.io.Serializable;
+
+public class RegionalAdmin  implements Serializable
 {
 
   private String cpr;

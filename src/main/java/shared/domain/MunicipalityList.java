@@ -21,6 +21,27 @@ public class MunicipalityList implements Serializable
     System.out.println("Municipality added to the list");
   }
 
+  public void setRegionalAdministrator(RegionalAdmin regionalAdmin, String id)
+  {
+    Municipality municipality = getMunicipalityById(id);
+    municipality.setRegionalAdmin(regionalAdmin);
+  }
+
+  public Municipality getMunicipalityById(String id)
+  {
+    Municipality municipality = null;
+
+    for (int i = 0; i < municipalities.size(); i++)
+    {
+      if (municipalities.get(i).getId().equals(id))
+      {
+        municipality = municipalities.get(i);
+      }
+
+    }
+    return municipality;
+  }
+
   public List<Municipality> getMunicipalities() {
     return municipalities;
   }
@@ -30,10 +51,11 @@ public class MunicipalityList implements Serializable
     municipalities.remove(municipality);
   }
 
-  public Municipality getMunicipalityIndex(int index)
+  public Municipality getMunicipalityByIndex(int index)
   {
-    return municipalities.get(index);
+    return  municipalities.get(index);
   }
+
 
 
 }

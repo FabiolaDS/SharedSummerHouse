@@ -26,6 +26,7 @@ public class AddMunicipalityViewController implements ViewController {
     public void init() throws IOException {
         this.viewHandler = SAViewHandler.getInstance();
         this.addMunicipalityViewModel = ViewModelFactory.getInstance().addMunicipalityViewModel();
+
     }
 
     public void onCreateMuni(ActionEvent actionEvent) {

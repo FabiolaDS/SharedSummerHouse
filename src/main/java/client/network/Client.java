@@ -6,15 +6,15 @@ import shared.domain.RegionalAdmin;
 import shared.transferobjects.User;
 import shared.util.PropertyChangeSubject;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public interface Client extends PropertyChangeSubject
 {
   void login(User user);
   void addMunicipality(Municipality municipality);
-  void addRegionalAdmin(RegionalAdmin regionalAdmin);
+  void addRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId);
   void unregisterClient();
-  ArrayList<MunicipalityList> getMunicipalities();
   Municipality getMunicipality();
   void startClient();
 }

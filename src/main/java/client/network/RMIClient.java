@@ -21,10 +21,8 @@ import java.util.ArrayList;
 
 public class RMIClient implements Client, ClientCallback
 {
-
   private RMIServer server;
   private PropertyChangeSupport support;
-
 
   public RMIClient()
   {
@@ -51,47 +49,59 @@ public class RMIClient implements Client, ClientCallback
   {
     try
     {
-      support.firePropertyChange(EventType.LOGIN.toString(), null, server.validateUser(user));
+      support.firePropertyChange(EventType.LOGIN.toString(), null,
+          server.validateUser(user));
     }
     catch (RemoteException | SQLException e)
     {
-      support.firePropertyChange(EventType.LOGIN.toString(), null, "Connection lost: Restart application"); // give feedback to client
+      support.firePropertyChange(EventType.LOGIN.toString(), null,
+          "Connection lost: Restart application"); // give feedback to client
     }
   }
 
   @Override public void addMunicipality(Municipality municipality)
   {
-    try {
-      support.firePropertyChange(EventType.MUNICIPALITY.toString(), null, server.addMunicipality(municipality));
-    } catch (RemoteException e) {
+    try
+    {
+      support.firePropertyChange(EventType.MUNICIPALITY.toString(), null,
+          server.addMunicipality(municipality));
+    }
+    catch (RemoteException e)
+    {
       e.printStackTrace();
     }
   }
 
-  @Override public void addRegionalAdmin(RegionalAdmin regionalAdmin)
+  @Override public void addRegionalAdmin(RegionalAdmin regionalAdmin,
+      String municipalityId)
   {
-
+    try
+    {
+      support.firePropertyChange(EventType.REGIONALADMIN.toString(), null,
+          server.addRegionalAdmin(regionalAdmin, municipalityId));
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
   }
 
   @Override public void unregisterClient()
   {
-    try {
+    try
+    {
       server.unregisterClient(this);
-    } catch (RemoteException e) {
+    }
+    catch (RemoteException e)
+    {
       e.printStackTrace();
     }
-  }
-
-  @Override public ArrayList<MunicipalityList> getMunicipalities()
-  {
-    return null;
   }
 
   @Override public Municipality getMunicipality()
   {
     return null;
   }
-
 
   @Override public void updateMunicipalities() throws RemoteException
   {
@@ -112,9 +122,12 @@ public class RMIClient implements Client, ClientCallback
   @Override public void addPropertyChangeListener(String name,
       PropertyChangeListener listener)
   {
-    if (name == null) {
+    if (name == null)
+    {
       addPropertyChangeListener(listener);
-    } else {
+    }
+    else
+    {
       support.addPropertyChangeListener(name, listener);
     }
   }
@@ -131,7 +144,9 @@ public class RMIClient implements Client, ClientCallback
     if (name == null)
     {
       removePropertyChangeListener(listener);
-    } else {
+    }
+    else
+    {
       support.removePropertyChangeListener(listener);
     }
   }

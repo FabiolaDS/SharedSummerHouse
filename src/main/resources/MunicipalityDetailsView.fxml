@@ -68,9 +68,22 @@
                   <HBox GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <Label text="Email: " />
-                        <Label text="Label" />
+                        <Label fx:id="emailLabel" text="Label" />
                      </children>
                   </HBox>
+                  <GridPane GridPane.rowIndex="1">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.40000381469727" minWidth="10.0" prefWidth="76.40000381469727" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="103.99999618530273" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox />
+                        <Label fx:id="cprLabel" prefHeight="18.0" prefWidth="28.0" text="Label" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">

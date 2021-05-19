@@ -11,7 +11,7 @@ public class Municipality implements Serializable
   private String name;
   private String region;
   private ArrayList<SummerHouse> summerhouses;
-  private User regionalAdmin;
+  private RegionalAdmin regionalAdmin;
 
 
 
@@ -66,12 +66,12 @@ public class Municipality implements Serializable
     this.region = region;
   }
 
-  public User getRegionalAdmin()
+  public RegionalAdmin getRegionalAdmin()
   {
     return regionalAdmin;
   }
 
-  public void setRegionalAdmin(User regionalAdmin)
+  public void setRegionalAdmin(RegionalAdmin regionalAdmin)
   {
     this.regionalAdmin = regionalAdmin;
   }
