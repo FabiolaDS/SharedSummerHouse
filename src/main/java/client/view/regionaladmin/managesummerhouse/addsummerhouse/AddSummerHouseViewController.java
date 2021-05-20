@@ -40,8 +40,6 @@ public class AddSummerHouseViewController implements ViewController
   }
 
 
-
-
   public void onBackToMain(javafx.event.ActionEvent actionEvent) throws
       IOException
   {

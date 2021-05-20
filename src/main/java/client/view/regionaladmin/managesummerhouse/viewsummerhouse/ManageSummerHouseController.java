@@ -39,7 +39,7 @@ public class ManageSummerHouseController implements ViewController
     this.mvm = vmf.getManageSummerHouseModel();
     viewHandler = RAViewHandler.getInstance();
 
-    titleColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("title"));
+  /*  titleColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("title"));
     regionColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("region"));
     streetColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("street"));
     postCodeColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("postCode"));
@@ -55,6 +55,8 @@ public class ManageSummerHouseController implements ViewController
     sharedWithList.getItems().addAll();
     sharedWithList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     tableViewLoad();
+    */
+
 
   }
   private void tableViewLoad()
@@ -77,6 +79,7 @@ public class ManageSummerHouseController implements ViewController
 
   public void onAddSummerHouse(ActionEvent actionEvent) {
   }
+
   public void onBackToMain(ActionEvent actionEvent) throws IOException {
     viewHandler.openMainView();
   }

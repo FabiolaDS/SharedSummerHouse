@@ -1,6 +1,7 @@
 package client.view.regionaladmin.managetenant.addtenant;
 
 import client.core.ViewModelFactory;
+import client.core.viewhandler.RAViewHandler;
 import client.core.viewhandler.SAViewHandler;
 import client.view.ViewController;
 import javafx.scene.control.TextField;
@@ -18,12 +19,12 @@ public class AddTenantViewController implements ViewController
   public TextField municipalityLabel;
   public TextField emailLabel;
 
-  private SAViewHandler viewHandler;
+  private RAViewHandler viewHandler;
   private AddTenantViewModel addTenantViewModel;
 
   @Override public void init() throws IOException
   {
-    this.viewHandler = SAViewHandler.getInstance();
+    this.viewHandler = RAViewHandler.getInstance();
     this.addTenantViewModel = ViewModelFactory.getInstance().addTenantViewModel();
 
   }

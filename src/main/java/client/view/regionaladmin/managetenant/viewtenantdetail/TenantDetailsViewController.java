@@ -1,6 +1,7 @@
 package client.view.regionaladmin.managetenant.viewtenantdetail;
 
 import client.core.ViewModelFactory;
+import client.core.viewhandler.RAViewHandler;
 import client.core.viewhandler.SAViewHandler;
 import client.view.ViewController;
 import javafx.scene.control.TableColumn;
@@ -20,7 +21,7 @@ public class TenantDetailsViewController implements ViewController
   public TableColumn<Tenant, String> emailColumn;
   public TableView<Tenant> tenantTable;
 
-  private SAViewHandler viewHandler;
+  private RAViewHandler viewHandler;
   private ViewModelFactory viewModelFactory;
   private TenantDetailsViewModel tenantDetailsViewModel;
 
@@ -29,14 +30,14 @@ public class TenantDetailsViewController implements ViewController
     this.viewModelFactory = ViewModelFactory.getInstance();
     this.tenantDetailsViewModel = viewModelFactory.getTenantDetailsViewModel();
 
-    viewHandler = SAViewHandler.getInstance();
+    viewHandler = RAViewHandler.getInstance();
 
-    cprColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("cprNumber"));
-    firstNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("First Name"));
-    lastNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("Last Name"));
-    municipalityColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("Municipality Name"));
-    emailColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("email"));
-    tableViewLoad();
+    //cprColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("cpr"));
+  //  firstNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("firstname"));
+ //   lastNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("lastname"));
+ //   municipalityColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("Municipality Name"));
+   // emailColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("email"));
+   // tableViewLoad();
 
   }
   private void tableViewLoad(){
@@ -44,7 +45,7 @@ public class TenantDetailsViewController implements ViewController
   }
 
   public void onCreateTenant(ActionEvent actionEvent){
-    viewHandler.openAddTenantsView();
+    viewHandler.openAddTenantView();
   }
 
   public void onEditTenants(ActionEvent actionEvent){}
