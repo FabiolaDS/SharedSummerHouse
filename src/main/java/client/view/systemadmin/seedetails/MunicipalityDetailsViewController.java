@@ -29,6 +29,11 @@ public class MunicipalityDetailsViewController implements ViewController
     municipalityIdLabel.textProperty().bind(detailsViewModel.idProperty());
     municipalityRegionLabel.textProperty().bind(detailsViewModel.regionProperty());
     municipalityNameLabel.textProperty().bind(detailsViewModel.nameProperty());
+
+    cprLabel.textProperty().bind(detailsViewModel.cprProperty());
+    fnameLabel.textProperty().bind(detailsViewModel.firstNameProperty());
+    nameLabel.textProperty().bind(detailsViewModel.lastNameProperty());
+    emailLabel.textProperty().bind(detailsViewModel.emailProperty());
   }
 
   public void onAddRegionalAdmin(ActionEvent actionEvent)

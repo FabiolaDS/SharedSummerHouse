@@ -39,7 +39,7 @@ public class ManageSummerHouseController implements ViewController
     this.mvm = vmf.getManageSummerHouseModel();
     viewHandler = RAViewHandler.getInstance();
 
-  /*  titleColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("title"));
+    titleColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("title"));
     regionColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("region"));
     streetColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("street"));
     postCodeColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("postCode"));
@@ -47,18 +47,14 @@ public class ManageSummerHouseController implements ViewController
     houseNrColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("houseNumber"));
     priceNightColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("pricePerNight"));
     avgRatingColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("avgRating"));
-    isAvailableDate.getChronology();
+    //isAvailableDate.getChronology();
 
-
-
-    sharedWithList = new ListView<>();
+   /* sharedWithList = new ListView<>();
     sharedWithList.getItems().addAll();
-    sharedWithList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    sharedWithList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);*/
     tableViewLoad();
-    */
-
-
   }
+
   private void tableViewLoad()
   {
     summerHouseTableView.setItems(mvm.getSummerHouses());

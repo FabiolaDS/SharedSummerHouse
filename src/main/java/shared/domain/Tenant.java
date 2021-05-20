@@ -10,7 +10,7 @@ public class Tenant
     private String email;
     private String password;
 
-    public Tenant(String cpr, String firstname, String lastname, String email, String password)
+    public Tenant(String cpr, String firstname, String lastname, String email, String password, StringProperty type)
     {
         this.cpr = cpr;
         this.firstname = firstname;

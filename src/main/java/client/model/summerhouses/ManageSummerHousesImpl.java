@@ -29,6 +29,7 @@ public class ManageSummerHousesImpl implements ManageSummerHouses{
 
   private void getSummerHouse(PropertyChangeEvent propertyChangeEvent)
   {
+    support.firePropertyChange(propertyChangeEvent);
   }
 
   public void addPropertyChangeListener(String name,
