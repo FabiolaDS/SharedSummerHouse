@@ -5,17 +5,19 @@ import javafx.beans.property.StringProperty;
 public class Tenant
 {
     private String cpr;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
+    private String municipality;
     private String email;
     private String password;
     private StringProperty type;    // Tenant OR ReginalAdmin OR SystemAdmin
 
-    public Tenant(String cpr, String firstname, String lastname, String email, String password, StringProperty userType)
+    public Tenant(String cpr, String firstName, String lastName, String municipality, String email, String password, StringProperty userType)
     {
         this.cpr = cpr;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.municipality = municipality;
         this.email = email;
         this.password = password;
         this.type = userType;
@@ -32,24 +34,24 @@ public class Tenant
         this.cpr = cpr;
     }
 
-    public String getFirstname()
+    public String getFirstName()
     {
-        return firstname;
+        return firstName;
     }
 
-    public void setFirstname(String firstname)
+    public void setFirstName(String firstName)
     {
-        this.firstname = firstname;
+        this.firstName = firstName;
     }
 
-    public String getLastname()
+    public String getLastName()
     {
-        return lastname;
+        return lastName;
     }
 
-    public void setLastname(String lastname)
+    public void setLastName(String lastName)
     {
-        this.lastname = lastname;
+        this.lastName = lastName;
     }
 
     public String getEmail()

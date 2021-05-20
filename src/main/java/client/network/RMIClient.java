@@ -116,8 +116,6 @@ public class RMIClient implements Client, ClientCallback
     }
   }
 
-
-
   @Override public void updateMunicipalities() throws RemoteException
   {
 
@@ -127,10 +125,23 @@ public class RMIClient implements Client, ClientCallback
   {
 
   }
-  @Override public ArrayList<SummerHouseList> getSummerHouses()
+
+  @Override public ArrayList<SummerHouse> getSummerHouses()
+
   {
-    return null;
+    ArrayList<SummerHouse> summerHouseList = new ArrayList<>();
+    try
+    {
+      summerHouseList = server.getSummerHouses();
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+    return summerHouseList;
   }
+
+
 
   @Override public void addTenant(Tenant tenants) throws RemoteException
   {

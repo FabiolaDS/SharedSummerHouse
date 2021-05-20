@@ -84,7 +84,7 @@ public class SAViewHandler implements ViewHandler
 
   // views for regional adm
 
-  public void openManageSummerHouseView()
+  /*public void openManageSummerHouseView()
   {
     Scene scene;
     Parent root = loadFXML("/ManageSummerHouse.fxml");
@@ -101,7 +101,7 @@ public class SAViewHandler implements ViewHandler
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
-  }
+  }*/
 
 
 

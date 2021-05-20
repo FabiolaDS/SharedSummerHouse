@@ -130,4 +130,9 @@ public class RMIServerImpl implements RMIServer
   {
     return tenantsModel.addTenant(tenants);
   }
+
+  @Override public ArrayList<SummerHouse> getSummerHouses()
+  {
+    return summerHousesModel.getSummerHouses();
+  }
 }

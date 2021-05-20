@@ -20,9 +20,9 @@ public class AddTenantViewModel
 
   }
 
-  public void addTenant(String cpr, String firstName, String lastName, String municipality, String email)
+  public void addTenant(String cpr, String firstName, String lastName, String municipality, String email, String password, StringProperty type)
       throws RemoteException
   {
-    tenantModel.addTenant(new Tenant(cpr, firstName, lastName, municipality, email, type));
+    tenantModel.addTenant(new Tenant(cpr, firstName, lastName, municipality, email, password, type));
   }
 }

@@ -13,11 +13,13 @@ import java.rmi.RemoteException;
 
 public class AddTenantViewController implements ViewController
 {
-  public TextField cprNrLabel;
+  public TextField cprLabel;
   public TextField firstNameLabel;
   public TextField lastnameLabel;
   public TextField municipalityLabel;
   public TextField emailLabel;
+  public TextField passwordLabel;
+  public TextField typeLabel;
 
   private RAViewHandler viewHandler;
   private AddTenantViewModel addTenantViewModel;
@@ -31,8 +33,9 @@ public class AddTenantViewController implements ViewController
 
   public void onCreateTenants(ActionEvent actionEvent) throws RemoteException
   {
-    addTenantViewModel.addTenant(cprNrLabel.getText(), firstNameLabel.getText(),
-        lastnameLabel.getText(), municipalityLabel.getText(), emailLabel.getText());
+    addTenantViewModel.addTenant(cprLabel.getText(), firstNameLabel.getText(),
+        lastnameLabel.getText(), municipalityLabel.getText(),
+        emailLabel.getText(), passwordLabel.getText(), typeLabel.textProperty());
     reset();
   }
 
@@ -43,10 +46,12 @@ public class AddTenantViewController implements ViewController
   }
 
   private void reset(){
-    cprNrLabel.clear();
+    cprLabel.clear();
     firstNameLabel.clear();
     lastnameLabel.clear();
     municipalityLabel.clear();
     emailLabel.clear();
+    passwordLabel.clear();
+    typeLabel.clear();
   }
 }

@@ -16,6 +16,6 @@ public interface Client extends PropertyChangeSubject
   Municipality getMunicipality(String id);
   void startClient();
   void addSummerHouse(SummerHouse summerHouse);
-  ArrayList<SummerHouseList> getSummerHouses();
+  ArrayList<SummerHouse> getSummerHouses();
   void addTenant(Tenant tenants) throws RemoteException;
 }

@@ -5,6 +5,7 @@ import shared.domain.SummerHouseList;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 public class ServerManageSummerHousesImpl implements ServerManageSummerhouses
 {
@@ -29,6 +30,11 @@ public class ServerManageSummerHousesImpl implements ServerManageSummerhouses
   {
     SummerHouse summerHouse1 = summerHouse;
     return summerHouse1;
+  }
+
+  @Override public ArrayList<SummerHouse> getSummerHouses()
+  {
+    return summerHouseList.getSummerHouses();
   }
 
   @Override public void addPropertyChangeListener(String name,
