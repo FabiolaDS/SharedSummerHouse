@@ -6,15 +6,15 @@ import client.model.municipalities.ManageMunicipalities;
 import client.model.municipalities.ManageMunicipalitiesImpl;
 import client.model.summerhouses.ManageSummerHouses;
 import client.model.summerhouses.ManageSummerHousesImpl;
-import client.model.tenants.ManageTenants;
-import client.model.tenants.ManageTenantsImpl;
+import client.model.tenants.TenantsModel;
+import client.model.tenants.ManageTenantsModelImpl;
 
 public class ModelFactory
 {
   private static ModelFactory modelFactory;
   private ManageMunicipalities manageMunicipalities;
   private ManageSummerHouses manageSummerHouses;
-  private ManageTenants manageTenants;
+  private TenantsModel tenantsModel;
   private LoginModel loginModel;
 
   private ModelFactory()
@@ -48,13 +48,13 @@ public class ModelFactory
     return manageSummerHouses;
   }
 
-  public ManageTenants getTenantsModel()
+  public TenantsModel getTenantsModel()
   {
-    if (manageTenants == null)
+    if (tenantsModel == null)
     {
-      manageTenants = new ManageTenantsImpl();
+      tenantsModel = new ManageTenantsModelImpl();
     }
-    return manageTenants;
+    return tenantsModel;
   }
 
   public LoginModel getLoginModel()

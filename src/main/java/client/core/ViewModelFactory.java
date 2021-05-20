@@ -2,8 +2,11 @@ package client.core;
 
 import client.model.municipalities.ManageMunicipalities;
 import client.view.login.LoginViewModel;
+import client.view.regionaladmin.managesummerhouse.addsummerhouse.AddSummerHouseViewModel;
+import client.view.regionaladmin.managesummerhouse.viewsummerhouse.ManageSummerHouseModel;
 import client.view.regionaladmin.managetenant.addtenant.AddTenantViewModel;
-import client.view.regionaladmin.managetenant.seetenants.SeeAllTenantsViewModel;
+import client.view.regionaladmin.managetenant.viewtenantdetail.TenantDetailsViewModel;
+import client.view.regionaladmin.managetenant.viewtenantdetail.TenantDetailsViewModel;
 import client.view.systemadmin.addRAmin.AddRegionalAdministratorViewModel;
 import client.view.systemadmin.addmunicipality.AddMunicipalityViewModel;
 import client.view.systemadmin.seedetails.MunicipalityDetailsViewModel;
@@ -14,12 +17,15 @@ public class ViewModelFactory
 {
   private static ViewModelFactory vmf;
   private AddTenantViewModel addTenantViewModel;
-  private SeeAllTenantsViewModel seeAllTenantsViewModel;
+  private TenantDetailsViewModel tenantDetailsViewModel;
   private AddMunicipalityViewModel addMunicipalityViewModel;
   private AddRegionalAdministratorViewModel addRegionalAdministratorViewModel;
   private MunicipalityDetailsViewModel municipalityDetailsViewModel;
   private MainViewModel mainViewModel;
   private LoginViewModel loginViewModel;
+  private AddSummerHouseViewModel addSummerHouseViewModel;
+  private ManageSummerHouseModel manageSummerHouseModel;
+
 
   private ViewModelFactory()
   {
@@ -43,13 +49,13 @@ public class ViewModelFactory
     return addTenantViewModel;
   }
 
-  public SeeAllTenantsViewModel getSeeAllTenantsViewModel()
+  public TenantDetailsViewModel getTenantDetailsViewModel()
   {
-    if (seeAllTenantsViewModel == null)
+    if (tenantDetailsViewModel == null)
     {
-      seeAllTenantsViewModel = new SeeAllTenantsViewModel();
+      tenantDetailsViewModel = new TenantDetailsViewModel();
     }
-    return seeAllTenantsViewModel;
+    return tenantDetailsViewModel;
   }
 
   public AddMunicipalityViewModel addMunicipalityViewModel()
@@ -99,4 +105,38 @@ public class ViewModelFactory
     }
     return loginViewModel;
   }
+
+  public AddSummerHouseViewModel addSummerHouseViewModel()
+  {
+    if (addSummerHouseViewModel == null)
+    {
+      addSummerHouseViewModel = new AddSummerHouseViewModel(ModelFactory.getInstance()
+          .getSummerHousesModel());
+    }
+    return addSummerHouseViewModel;
+  }
+
+  public ManageSummerHouseModel getManageSummerHouseModel()
+  {
+
+    if (manageSummerHouseModel == null)
+    {
+      manageSummerHouseModel = new ManageSummerHouseModel(
+          ModelFactory.getInstance().getSummerHousesModel());
+    }
+    return manageSummerHouseModel;
+  }
+
+
+
+  public AddTenantViewModel addTenantViewModel()
+  {
+    if (addTenantViewModel == null)
+    {
+      addTenantViewModel = new AddTenantViewModel(ModelFactory.getInstance()
+          .getTenantsModel());
+    }
+    return addTenantViewModel;
+  }
+
 }

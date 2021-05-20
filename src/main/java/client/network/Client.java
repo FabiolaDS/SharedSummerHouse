@@ -1,9 +1,13 @@
 package client.network;
 
 import shared.domain.Municipality;
+import shared.domain.MunicipalityList;
 import shared.domain.RegionalAdmin;
 import shared.transferobjects.User;
 import shared.util.PropertyChangeSubject;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 public interface Client extends PropertyChangeSubject
 {
@@ -13,4 +17,7 @@ public interface Client extends PropertyChangeSubject
   void unregisterClient();
   Municipality getMunicipality(String id);
   void startClient();
+  void addSummerHouse(SummerHouse summerHouse);
+  ArrayList<SummerHouseList> getSummerHouses();
+  void addTenant(Tenant tenants) throws RemoteException;
 }

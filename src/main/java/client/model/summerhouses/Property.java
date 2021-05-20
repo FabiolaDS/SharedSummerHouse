@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 public interface Property
 {
-  public Calendar isAvailable(Calendar searchDateFrom, int searchDateTo);
+  public Calendar isAvailable(Calendar calendar);
   public void setRating();
   public void addReview(Review review);
   public void shareSummerHouse(Municipality municipality);

@@ -1,6 +1,9 @@
 package client.network;
 
+import client.model.summerhouses.SummerHouseList;
+import server.model.municipalities.ServerManageMunicipalitiesImp;
 import shared.domain.Municipality;
+import shared.domain.MunicipalityList;
 import shared.domain.RegionalAdmin;
 import shared.network.ClientCallback;
 import shared.network.RMIServer;
@@ -15,6 +18,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class RMIClient implements Client, ClientCallback
 {
@@ -120,6 +124,17 @@ public class RMIClient implements Client, ClientCallback
   {
 
   }
+  @Override public ArrayList<SummerHouseList> getSummerHouses()
+  {
+    return null;
+  }
+
+  @Override public void addTenant(Tenant tenants) throws RemoteException
+  {
+    support.firePropertyChange(EventType.TENANTS.toString(), null,
+        server.addTenant(tenants));
+  }
+
 
   @Override public void updates(String eventType, Object update)
       throws RemoteException

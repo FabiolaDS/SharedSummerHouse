@@ -30,20 +30,23 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                         <children>
                             <Label text="Title:" />
                             <Label text="Region:" GridPane.rowIndex="1" />
-                            <Label text="Address:" GridPane.rowIndex="2" />
-                            <Label text="Desctription" GridPane.rowIndex="3" />
+                            <Label text="Street" GridPane.rowIndex="2" />
+                            <Label text="Post Code" GridPane.rowIndex="3" />
                             <TextField GridPane.columnIndex="1" />
                             <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
                             <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
                             <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                            <Label text="Price" GridPane.rowIndex="4" />
-                            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                     <Hyperlink text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                     <Label prefHeight="17.0" prefWidth="44.0" text="Image" GridPane.rowIndex="5" />
+                            <Label text="House Number" GridPane.rowIndex="4" />
+                            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     <Label prefHeight="18.0" prefWidth="92.0" text="Description" GridPane.rowIndex="5" />
+                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                     <Label text="Price per Night" GridPane.rowIndex="6" />
                         </children>
                     </GridPane>
                     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">

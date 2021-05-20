@@ -1,41 +1,58 @@
 package client.view.regionaladmin.managesummerhouse.addsummerhouse;
 
-import client.core.viewhandler.RAViewHandler;
 import client.core.viewhandler.SAViewHandler;
 import client.core.ViewModelFactory;
+import client.view.ViewController;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
-public class AddSummerHouseViewController
+
+public class AddSummerHouseViewController implements ViewController
 {
   public TextField regionField;
-  public TextField addressField;
+  public TextField streetField;
   public TextField titleField;
   public TextField descriptionField;
-  public TextField nrOfGuestsField;
   public TextField pricePrNightField;
+  public TextField postCodeField;
+  public TextField houseNumberField;
 
-  private RAViewHandler viewHandler;
- private ViewModelFactory vmf;
+
+  private SAViewHandler viewHandler;
+  private ViewModelFactory viewModelFactory;
   private AddSummerHouseViewModel addSummerHouseViewModel;
 
-  public void init()
+  @Override public void init() throws IOException
   {
-    this.viewHandler = RAViewHandler.getInstance();
-    this.vmf = ViewModelFactory.getInstance().addMunicipalityViewModel();
-   //this.viewModelFactory = ViewModelFactory.getInstance().getAddRegionalAdministratorViewModel();
+    this.viewHandler = SAViewHandler.getInstance();
+    this.addSummerHouseViewModel = ViewModelFactory.getInstance().addSummerHouseViewModel();
   }
 
   public void onCreateSummerHouse(ActionEvent actionEvent) {
-}
+    addSummerHouseViewModel.addSummerHouse(regionField.getText(),streetField.getText(),
+        titleField.getText(), descriptionField.getText(), pricePrNightField.getColumns(),
+        postCodeField.getColumns(), houseNumberField.getColumns());
+   reset();
+  }
+
+
+
+
   public void onBackToMain(javafx.event.ActionEvent actionEvent) throws
       IOException
   {
-    // viewHandler.openMainView();
+      viewHandler.openMainView();
   }
-  public void addSummerHouse(ActionEvent event) {
+  public void reset(){
+    /*regionField.clear();
+    streetField.clear();
+    titleField.clear();
+    descriptionField.clear();
+    pricePrNightField.clear();*/
+  }
 
-  }
-  }
+
+}
