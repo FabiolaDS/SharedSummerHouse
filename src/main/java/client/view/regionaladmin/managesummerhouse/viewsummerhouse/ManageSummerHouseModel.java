@@ -21,8 +21,10 @@ public class ManageSummerHouseModel
   public ManageSummerHouseModel(ManageSummerHouses manageSummerHouses){
     model = manageSummerHouses;
     model.addPropertyChangeListener(EventType.SUMMERHOUSE.toString(), this::newSummerHouse);
+
     summerHouses = FXCollections.observableArrayList();
     selectedSummerHouse = FXCollections.observableSet();
+    summerHouses.add((new SummerHouse("house","example","need to work on it",22,"fake example", 123,156)));
 
   }
 

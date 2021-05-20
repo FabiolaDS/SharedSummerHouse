@@ -1,5 +1,6 @@
 package client.view.regionaladmin.managesummerhouse.addsummerhouse;
 
+import client.core.viewhandler.RAViewHandler;
 import client.core.viewhandler.SAViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
@@ -21,13 +22,13 @@ public class AddSummerHouseViewController implements ViewController
   public TextField houseNumberField;
 
 
-  private SAViewHandler viewHandler;
+  private RAViewHandler viewHandler;
   private ViewModelFactory viewModelFactory;
   private AddSummerHouseViewModel addSummerHouseViewModel;
 
   @Override public void init() throws IOException
   {
-    this.viewHandler = SAViewHandler.getInstance();
+    this.viewHandler = RAViewHandler.getInstance();
     this.addSummerHouseViewModel = ViewModelFactory.getInstance().addSummerHouseViewModel();
   }
 
@@ -44,7 +45,7 @@ public class AddSummerHouseViewController implements ViewController
   public void onBackToMain(javafx.event.ActionEvent actionEvent) throws
       IOException
   {
-      viewHandler.openMainView();
+      viewHandler.openManageSummerHouseView();
   }
   public void reset(){
     /*regionField.clear();

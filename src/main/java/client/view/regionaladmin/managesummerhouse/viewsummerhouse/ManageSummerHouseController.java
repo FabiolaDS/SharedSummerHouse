@@ -1,7 +1,9 @@
 package client.view.regionaladmin.managesummerhouse.viewsummerhouse;
 
+import client.core.viewhandler.RAViewHandler;
 import client.core.viewhandler.SAViewHandler;
 import client.core.ViewModelFactory;
+import client.view.ViewController;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -10,40 +12,41 @@ import shared.domain.SummerHouse;
 
 import java.io.IOException;
 
-public class ManageSummerHouseController
+public class ManageSummerHouseController implements ViewController
 {
   public TableColumn<SummerHouse, String> titleColumn;
   public TableColumn<SummerHouse, String> regionColumn;
   public TableColumn<SummerHouse, String> streetColumn;
-  public TableColumn<SummerHouse, Integer> postCodeColumn;
+  public TableColumn<SummerHouse, String> postCodeColumn;
   public TableColumn<SummerHouse, String> descriptionColumn;
-  public TableColumn <SummerHouse, Integer> houseNrColumn;
-  public TableColumn<SummerHouse, Integer> priceNightColumn;
-  public TableColumn<SummerHouse, Integer> avgRatingColumn;
+  public TableColumn <SummerHouse, String> houseNrColumn;
+  public TableColumn<SummerHouse, String> priceNightColumn;
+  public TableColumn<SummerHouse, String> avgRatingColumn;
   public DatePicker isAvailableDate;
   public ListView<Municipality> sharedWithList;
   public TableView<SummerHouse> summerHouseTableView;
+  public TableView pastBookings;
 
-  private SAViewHandler viewHandler;
+  private RAViewHandler viewHandler;
   private ViewModelFactory vmf;
   private ManageSummerHouseModel mvm;
 
   public ManageSummerHouseController(){}
 
-  public void init()
+  @Override public void init()
   {
     this.vmf = ViewModelFactory.getInstance();
     this.mvm = vmf.getManageSummerHouseModel();
-    viewHandler = SAViewHandler.getInstance();
+    viewHandler = RAViewHandler.getInstance();
 
-    titleColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("Title"));
-    regionColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("Region"));
-    streetColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("Street"));
-    postCodeColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, Integer>("Post code"));
-    descriptionColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("Description"));
-    houseNrColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, Integer>("House number"));
-    priceNightColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, Integer>("Price per night"));
-    avgRatingColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, Integer>("Avg rating"));
+    titleColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("title"));
+    regionColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("region"));
+    streetColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("street"));
+    postCodeColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("postCode"));
+    descriptionColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("description"));
+    houseNrColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("houseNumber"));
+    priceNightColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("pricePerNight"));
+    avgRatingColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("avgRating"));
     isAvailableDate.getChronology();
 
 
@@ -61,7 +64,7 @@ public class ManageSummerHouseController
 
   public void onCreateSummerHouse(ActionEvent actionEvent) throws IOException
   {
-    viewHandler.openManageSummerHouseView();
+    viewHandler.openAddSummerHousesView();
 
   }
 
@@ -78,5 +81,9 @@ public class ManageSummerHouseController
     viewHandler.openMainView();
   }
 
-  public void onRemoveSummerHouse(ActionEvent actionEvent){}
+
+
+  public void removeSummerhouse(ActionEvent actionEvent)
+  {
+  }
 }

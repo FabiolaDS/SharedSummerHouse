@@ -1,10 +1,8 @@
 package client.network;
 
-import client.model.summerhouses.SummerHouseList;
+
 import server.model.municipalities.ServerManageMunicipalitiesImp;
-import shared.domain.Municipality;
-import shared.domain.MunicipalityList;
-import shared.domain.RegionalAdmin;
+import shared.domain.*;
 import shared.network.ClientCallback;
 import shared.network.RMIServer;
 import shared.transferobjects.EventType;
@@ -44,6 +42,11 @@ public class RMIClient implements Client, ClientCallback
     {
       e.printStackTrace();
     }
+  }
+
+  @Override public void addSummerHouse(SummerHouse summerHouse)
+  {
+
   }
 
   @Override public void login(User user)

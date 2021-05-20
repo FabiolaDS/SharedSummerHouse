@@ -1,8 +1,6 @@
 package client.network;
 
-import shared.domain.Municipality;
-import shared.domain.MunicipalityList;
-import shared.domain.RegionalAdmin;
+import shared.domain.*;
 import shared.transferobjects.User;
 import shared.util.PropertyChangeSubject;
 

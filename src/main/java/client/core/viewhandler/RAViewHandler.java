@@ -40,11 +40,58 @@ public class RAViewHandler implements ViewHandler
   public void openMainView()
   {
     Scene scene;
-    stage.setTitle("Main View for System Admin");
+    stage.setTitle("Regional Admin Main View ");
+    scene = new Scene(loadFXML("/RegionalAdminMainView.fxml"));
+    stage.setScene(scene);
+    stage.show();
+  }
+
+
+  public void openAddSummerHousesView()
+  {
+    Scene scene;
+    stage.setTitle("Add Summer houses ");
     scene = new Scene(loadFXML("/AddSummerhouse.fxml"));
     stage.setScene(scene);
     stage.show();
   }
+
+  public void openManageSummerHouseView()
+  {
+    Scene scene;
+    stage.setTitle("Main View for System Admin");
+    scene = new Scene(loadFXML("/ManageSummerHouse.fxml"));
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void openAddTenantView()
+  {
+    Scene scene;
+    stage.setTitle("Add Tenants view");
+    scene = new Scene(loadFXML("/AddTenantView.fxml"));
+    stage.setScene(scene);
+    stage.show();
+  }
+  public void openSeeAllTenants()
+  {
+    Scene scene;
+    stage.setTitle("See all tenants");
+    scene = new Scene(loadFXML("/SeeAllTenantsView.fxml"));
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void openManageBookings()
+  {
+
+    Scene scene;
+    stage.setTitle("Bookings");
+    scene = new Scene(loadFXML("/ManageBookings.fxml"));
+    stage.setScene(scene);
+    stage.show();
+  }
+
   @Override public Parent loadFXML(String s)
   {
     Parent root = null;

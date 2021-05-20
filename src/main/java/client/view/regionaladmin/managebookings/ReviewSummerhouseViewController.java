@@ -1,5 +1,7 @@
 package client.view.regionaladmin.managebookings;
 
+import client.core.viewhandler.RAViewHandler;
+import client.view.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,7 +9,11 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 
-public class ReviewSummerhouseView {
+import java.io.IOException;
+
+public class ReviewSummerhouseViewController implements ViewController
+{
+    private RAViewHandler viewHandler;
 
     @FXML
     private Slider rating;
@@ -39,6 +45,11 @@ public class ReviewSummerhouseView {
     @FXML
     void onSubmit(ActionEvent event) {
 
+    }
+
+    @Override public void init() throws IOException
+    {
+        viewHandler = RAViewHandler.getInstance();
     }
 }
 

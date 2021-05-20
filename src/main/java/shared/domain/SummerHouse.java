@@ -34,7 +34,7 @@ public class SummerHouse implements Serializable
         this.description = description;
         this.houseNumber = houseNumber;
         this.pricePerNight = pricePerNight;
-        this.avgRating = avgRating;
+
 
 
         System.out.println("New Summerhouse has been created");
@@ -152,5 +152,8 @@ public class SummerHouse implements Serializable
         isAvailable = available;
     }
 
-
+    public boolean isAvailable()
+    {
+        return isAvailable;
+    }
 }
