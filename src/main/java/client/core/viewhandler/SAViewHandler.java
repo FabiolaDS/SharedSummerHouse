@@ -2,6 +2,7 @@ package client.core.viewhandler;
 
 import client.core.ViewModelFactory;
 import client.view.ViewController;
+import client.view.regionaladmin.managesummerhouse.viewsummerhouse.ManageSummerHouseModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -81,6 +82,28 @@ public class SAViewHandler implements ViewHandler
     stage.show();
   }
 
+  // views for regional adm
+
+  public void openManageSummerHouseView()
+  {
+    Scene scene;
+    Parent root = loadFXML("/ManageSummerHouse.fxml");
+    stage.setTitle("Manage Summerhouses");
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+  public void openAddTenantsView()
+  {
+    Scene scene;
+    Parent root = loadFXML("/SeeAllTenantsView.fxml");
+    stage.setTitle("Registered tenants");
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+
 
    public Parent loadFXML(String s) {
     Parent root = null;
@@ -96,4 +119,6 @@ public class SAViewHandler implements ViewHandler
     }
     return root;
   }
+
+
 }

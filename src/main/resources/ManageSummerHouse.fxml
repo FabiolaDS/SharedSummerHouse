@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.regionaladmin.managesummerhouse.viewsummerhouse.MainViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="758.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.regionaladmin.managesummerhouse.viewsummerhouse.ManageSummerHouseController">
     <children>
         <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Manage Summerhouse">
             <font>
@@ -16,6 +16,7 @@
             </padding>
         </Label>
       <Button mnemonicParsing="false" text="View Summerhouses" />
+      <Button mnemonicParsing="false" text="Back" />
         <Label text="Summerhouses">
             <VBox.margin>
                 <Insets top="20.0" />
@@ -43,7 +44,6 @@
             <Button mnemonicParsing="false" text="Add" />
             <Button mnemonicParsing="false" text="Edit" />
                 <Button mnemonicParsing="false" onAction="#removeSummerhouse" text="Remove" />
-            <Button mnemonicParsing="false" text="Back" />
             </children>
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

@@ -9,10 +9,10 @@ public class Booking
 {
     private LocalDate dateFrom;
     private LocalDate dateTo;
-    private ArrayList<User> tenants;
+    private ArrayList<Tenant> tenants;
     private SummerHouse summerHouse;
 
-    public Booking(LocalDate dateFrom, LocalDate dateTo, ArrayList<User> tenants, SummerHouse summerHouse)
+    public Booking(LocalDate dateFrom, LocalDate dateTo, ArrayList<Tenant> tenants, SummerHouse summerHouse)
     {
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
@@ -29,12 +29,12 @@ public class Booking
         return days * summerHouse.getPricePerNight();
     }
 
-    public ArrayList<User> getTenants()
+    public ArrayList<Tenant> getTenants()
     {
         return tenants;
     }
 
-    public void addTenant(User tenant) {
+    public void addTenant(Tenant tenant) {
         tenants.add(tenant);
     }
 

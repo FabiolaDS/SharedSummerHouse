@@ -3,12 +3,12 @@ package shared.domain;
 public class Review
 {
     private SummerHouse summerHouse;
-    private User reviewer;
+    private Tenant reviewer;
 
     private int rating;
     private String comment;
 
-    public Review(SummerHouse summerHouse, User reviewer, int rating, String comment)
+    public Review(SummerHouse summerHouse, Tenant reviewer, int rating, String comment)
     {
         this.summerHouse = summerHouse;
         this.reviewer = reviewer;
@@ -26,12 +26,12 @@ public class Review
         this.summerHouse = summerHouse;
     }
 
-    public User getReviewer()
+    public Tenant getReviewer()
     {
         return reviewer;
     }
 
-    public void setReviewer(User reviewer)
+    public void setReviewer(Tenant reviewer)
     {
         this.reviewer = reviewer;
     }

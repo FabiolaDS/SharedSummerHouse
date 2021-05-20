@@ -4,9 +4,11 @@ import server.model.login.LoginModel;
 import server.model.login.LoginModelManager;
 import server.model.municipalities.ServerManageMunicipalities;
 import server.model.municipalities.ServerManageMunicipalitiesImp;
-import shared.domain.Municipality;
-import shared.domain.MunicipalityList;
-import shared.domain.RegionalAdmin;
+import server.model.summerhouses.ServerManageSummerHousesImpl;
+import server.model.summerhouses.ServerManageSummerhouses;
+import server.model.tenants.ServerManageTenants;
+import server.model.tenants.ServerManageTenantsImpl;
+import shared.domain.*;
 import shared.network.ClientCallback;
 import shared.network.RMIServer;
 import shared.transferobjects.EventType;
@@ -30,12 +32,17 @@ public class RMIServerImpl implements RMIServer
   private LoginModel loginModel;
   private ServerManageMunicipalities municipalitiesModel;
   private Map<ClientCallback, PropertyChangeListener> listeners = new HashMap<>();
+  private ServerManageSummerhouses summerHousesModel;
+  private ServerManageTenants tenantsModel;
 
   public RMIServerImpl(LoginModelManager loginModel) throws RemoteException
   {
     UnicastRemoteObject.exportObject(this, 0);
     this.loginModel = loginModel;
     this.municipalitiesModel = ServerManageMunicipalitiesImp.getInstance();
+    this.summerHousesModel = ServerManageSummerHousesImpl.getInstance();
+    this.tenantsModel = ServerManageTenantsImpl.getInstance();
+
   }
 
   public void startServer() throws RemoteException, AlreadyBoundException
@@ -60,6 +67,7 @@ public class RMIServerImpl implements RMIServer
   {
     return municipalitiesModel.setRegionalAdmin(regionalAdmin, municipalityID);
   }
+
 
   @Override public void registerClient(ClientCallback clientCallback)
       throws RemoteException
@@ -95,4 +103,25 @@ public class RMIServerImpl implements RMIServer
     }
   }
 
+  @Override public ArrayList<MunicipalityList> getMunicipalities()
+      throws RemoteException
+  {
+    return null;
+  }
+
+  @Override public Municipality getMunicipality(Long id) throws RemoteException
+  {
+    return null;
+  }
+
+  @Override public SummerHouse addSummerHouse(SummerHouse summerHouse)
+      throws RemoteException
+  {
+    return summerHousesModel.addSummerHouse(summerHouse);
+  }
+
+  @Override public Tenant addTenant(Tenant tenants)
+  {
+    return tenantsModel.addTenant(tenants);
+  }
 }

@@ -1,11 +1,12 @@
-package client.model.summerhouses;
+package shared.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SummerHouseList
+public class SummerHouseList implements Serializable
 {
   private ArrayList<SummerHouse> summerHouses;
-  private SummerHouse summerHouse;
+
 
   public SummerHouseList(){
     this.summerHouses = new ArrayList<>();
@@ -13,20 +14,20 @@ public class SummerHouseList
 
   public void addSummerHouse(SummerHouse summerHouse){
     summerHouses.add(summerHouse);
+    System.out.println("Summerhouse added to the list");
 
   }
   public ArrayList<SummerHouse> getSummerHouses(){
-    ArrayList<SummerHouse> summerHouses = new ArrayList<>();
-    for (int i = 0; i < summerHouses.size(); i++)
-    {
-      summerHouses.get(i);
-
-    }
     return summerHouses;
 
   }
   public void removeSummerHouse(int id)
   {
     summerHouses.remove(id);
+  }
+
+  public SummerHouse getSummerHousesIndex(int index)
+  {
+    return summerHouses.get(index);
   }
 }

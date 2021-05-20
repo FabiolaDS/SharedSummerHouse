@@ -1,9 +1,6 @@
 package client.network;
 
-import server.model.municipalities.ServerManageMunicipalitiesImp;
-import shared.domain.Municipality;
-import shared.domain.MunicipalityList;
-import shared.domain.RegionalAdmin;
+import shared.domain.*;
 import shared.network.ClientCallback;
 import shared.network.RMIServer;
 import shared.transferobjects.EventType;
@@ -41,6 +38,15 @@ public class RMIClient implements Client, ClientCallback
     }
     catch (RemoteException | NotBoundException e)
     {
+      e.printStackTrace();
+    }
+  }
+
+  @Override public void addSummerHouse(SummerHouse summerHouse)
+  {
+    try {
+      support.firePropertyChange(EventType.SUMMERHOUSE.toString(), null, server.addSummerHouse(summerHouse));
+    } catch (RemoteException e) {
       e.printStackTrace();
     }
   }
@@ -112,6 +118,17 @@ public class RMIClient implements Client, ClientCallback
   {
 
   }
+  @Override public ArrayList<SummerHouseList> getSummerHouses()
+  {
+    return null;
+  }
+
+  @Override public void addTenant(Tenant tenants) throws RemoteException
+  {
+    support.firePropertyChange(EventType.TENANTS.toString(), null,
+        server.addTenant(tenants));
+  }
+
 
   @Override public void updates(String eventType, Object update)
       throws RemoteException

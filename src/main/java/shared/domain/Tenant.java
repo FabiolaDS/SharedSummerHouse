@@ -1,15 +1,17 @@
 package shared.domain;
 
-public class User
+import javafx.beans.property.StringProperty;
+
+public class Tenant
 {
     private String cpr;
     private String firstname;
     private String lastname;
     private String email;
     private String password;
-    private String type;    // Tenant OR ReginalAdmin OR SystemAdmin
+    private StringProperty type;    // Tenant OR ReginalAdmin OR SystemAdmin
 
-    public User(String cpr, String firstname, String lastname, String email, String password, String userType)
+    public Tenant(String cpr, String firstname, String lastname, String email, String password, StringProperty userType)
     {
         this.cpr = cpr;
         this.firstname = firstname;
@@ -70,12 +72,12 @@ public class User
         this.password = password;
     }
 
-    public String getType()
+    public StringProperty getType()
     {
         return type;
     }
 
-    public void setType(String type)
+    public void setType(StringProperty type)
     {
         this.type = type;
     }

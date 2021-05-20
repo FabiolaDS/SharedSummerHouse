@@ -1,8 +1,6 @@
 package client.network;
 
-import shared.domain.Municipality;
-import shared.domain.MunicipalityList;
-import shared.domain.RegionalAdmin;
+import shared.domain.*;
 import shared.transferobjects.User;
 import shared.util.PropertyChangeSubject;
 
@@ -17,4 +15,7 @@ public interface Client extends PropertyChangeSubject
   void unregisterClient();
   Municipality getMunicipality();
   void startClient();
+  void addSummerHouse(SummerHouse summerHouse);
+  ArrayList<SummerHouseList> getSummerHouses();
+  void addTenant(Tenant tenants) throws RemoteException;
 }
