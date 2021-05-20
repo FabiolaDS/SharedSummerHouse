@@ -1,6 +1,7 @@
 package shared.network;
 
 
+import shared.businesslogic.BookingsManager;
 import shared.domain.*;
 import shared.transferobjects.User;
 
@@ -22,4 +23,7 @@ public interface RMIServer extends Remote
   SummerHouse addSummerHouse(SummerHouse summerHouse) throws RemoteException;
   Tenant addTenant(Tenant tenant) throws RemoteException;
   ArrayList<SummerHouse> getSummerHouses() throws RemoteException;
+
+
+  BookingsManager getBookingsManager() throws RemoteException;
 }

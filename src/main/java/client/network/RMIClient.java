@@ -1,7 +1,7 @@
 package client.network;
 
 
-import server.model.municipalities.ServerManageMunicipalitiesImp;
+import shared.businesslogic.BookingsManager;
 import shared.domain.*;
 import shared.network.ClientCallback;
 import shared.network.RMIServer;
@@ -147,6 +147,16 @@ public class RMIClient implements Client, ClientCallback
   {
     support.firePropertyChange(EventType.TENANTS.toString(), null,
         server.addTenant(tenants));
+  }
+
+  @Override
+  public BookingsManager getBookingsManager()
+  {
+    try {
+      return server.getBookingsManager();
+    } catch(RemoteException ex) {
+      throw new RuntimeException(ex);
+    }
   }
 
 

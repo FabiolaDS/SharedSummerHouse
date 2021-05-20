@@ -10,6 +10,9 @@ import java.util.Calendar;
 
 public class SummerHouse implements Serializable
 {
+
+    private Long id;    // Need the id for all the entities!!!
+
     private ArrayList<Image> images;
     private ArrayList<Municipality> sharedWith;
     private String title;
@@ -19,8 +22,8 @@ public class SummerHouse implements Serializable
     private String description;
     private int houseNumber;
     private int pricePerNight;
-    private double avgRating;
-    private boolean isAvailable;
+    private double avgRating;//derived attribute(no need for field)
+    private boolean isAvailable;//derived attribute
 
     public SummerHouse(String title, String region, String street,
         int postCode, String description, int houseNumber, int pricePerNight)

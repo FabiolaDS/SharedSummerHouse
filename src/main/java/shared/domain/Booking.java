@@ -9,8 +9,11 @@ public class Booking
 {
     private LocalDate dateFrom;
     private LocalDate dateTo;
-    private ArrayList<Tenant> tenants;
+
     private SummerHouse summerHouse;
+    private ArrayList<Tenant> tenants;
+    // private int guests instead?
+
 
     public Booking(LocalDate dateFrom, LocalDate dateTo, ArrayList<Tenant> tenants, SummerHouse summerHouse)
     {
