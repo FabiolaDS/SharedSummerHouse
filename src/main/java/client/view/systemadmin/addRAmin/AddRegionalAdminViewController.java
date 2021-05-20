@@ -40,8 +40,15 @@ public class AddRegionalAdminViewController implements ViewController
         addRegionalAdministratorVM.addRegionalAdmin();
     }
 
-    public void onBack(ActionEvent actionEvent)
+  public Label getMunicipalityLabel()
+  {
+    return municipalityLabel;
+  }
+
+  public void onBack(ActionEvent actionEvent)
     {
+        ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().getMunicipalityDetailsId(
+            municipalityLabel.getText());
         SAViewHandler.getInstance().openSeeMunicipalityDetailsView();
     }
 

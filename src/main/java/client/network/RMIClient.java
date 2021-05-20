@@ -1,8 +1,6 @@
 package client.network;
 
-import server.model.municipalities.ServerManageMunicipalitiesImp;
 import shared.domain.Municipality;
-import shared.domain.MunicipalityList;
 import shared.domain.RegionalAdmin;
 import shared.network.ClientCallback;
 import shared.network.RMIServer;
@@ -17,7 +15,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class RMIClient implements Client, ClientCallback
 {
@@ -72,6 +69,20 @@ public class RMIClient implements Client, ClientCallback
     }
   }
 
+  @Override public Municipality getMunicipality(String id)
+  {
+    Municipality municipality = null;
+    try
+    {
+      municipality = server.getMunicipality(id);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+    return municipality;
+  }
+
   @Override public void addRegionalAdmin(RegionalAdmin regionalAdmin,
       String municipalityId)
   {
@@ -98,10 +109,7 @@ public class RMIClient implements Client, ClientCallback
     }
   }
 
-  @Override public Municipality getMunicipality()
-  {
-    return null;
-  }
+
 
   @Override public void updateMunicipalities() throws RemoteException
   {

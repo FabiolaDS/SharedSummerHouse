@@ -1,6 +1,7 @@
 package client.view.login;
 
 import client.core.viewhandler.LoginViewHandler;
+import client.core.viewhandler.RAViewHandler;
 import client.core.viewhandler.SAViewHandler;
 import client.core.viewhandler.ViewHandler;
 import client.core.ViewModelFactory;
@@ -59,8 +60,9 @@ public class LoginViewController implements ViewController
 
   public void onLoginButton(ActionEvent actionEvent) throws IOException {
     //if user = SAdmin do:
-    SAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage()); //this should be included in onLoginResult()
+    //SAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage()); //this should be included in onLoginResult()
    // loginViewModel.login();
+    RAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage());
   }
 
   public void onExitButton(ActionEvent actionEvent)

@@ -37,6 +37,7 @@ public class MainViewController implements ViewController
         idColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("id"));
         regionColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("region"));
         rAdminColumn.setCellValueFactory(new PropertyValueFactory<Municipality,String>("regionalAdminCPR"));
+
         tableViewLoad();
 
     }
@@ -61,11 +62,12 @@ public class MainViewController implements ViewController
         {
             String id = municipalityTable.getSelectionModel().getSelectedItem()
                 .getId();
-            String name = municipalityTable.getSelectionModel().getSelectedItem().getName();
+          /*  String name = municipalityTable.getSelectionModel().getSelectedItem().getName();
             String region = municipalityTable.getSelectionModel().getSelectedItem().getRegion();
             ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().setId(id);
             ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().setName(name);
-            ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().setRegion(region);
+            ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().setRegion(region);*/
+            ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().getMunicipalityDetailsId(id);
         }
     }
 }

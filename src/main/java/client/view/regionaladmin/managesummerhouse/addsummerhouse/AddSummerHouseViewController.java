@@ -1,5 +1,6 @@
 package client.view.regionaladmin.managesummerhouse.addsummerhouse;
 
+import client.core.viewhandler.RAViewHandler;
 import client.core.viewhandler.SAViewHandler;
 import client.core.ViewModelFactory;
 
@@ -16,14 +17,15 @@ public class AddSummerHouseViewController
   public TextField nrOfGuestsField;
   public TextField pricePrNightField;
 
-  private SAViewHandler viewHandler;
-  private ViewModelFactory viewModelFactory;
+  private RAViewHandler viewHandler;
+ private ViewModelFactory vmf;
   private AddSummerHouseViewModel addSummerHouseViewModel;
 
-  public void init(SAViewHandler viewHandler, ViewModelFactory vmf)
+  public void init()
   {
-    this.viewHandler = viewHandler;
-    this.viewModelFactory = vmf;
+    this.viewHandler = RAViewHandler.getInstance();
+    this.vmf = ViewModelFactory.getInstance().addMunicipalityViewModel();
+   //this.viewModelFactory = ViewModelFactory.getInstance().getAddRegionalAdministratorViewModel();
   }
 
   public void onCreateSummerHouse(ActionEvent actionEvent) {

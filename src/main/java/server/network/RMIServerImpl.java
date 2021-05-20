@@ -55,6 +55,12 @@ public class RMIServerImpl implements RMIServer
     return municipalitiesModel.addMunicipality(municipality);
   }
 
+  @Override public Municipality getMunicipality(String id)
+      throws RemoteException
+  {
+    return municipalitiesModel.getMunicipality(id);
+  }
+
   @Override public Municipality addRegionalAdmin(RegionalAdmin regionalAdmin,
       String municipalityID) throws RemoteException
   {

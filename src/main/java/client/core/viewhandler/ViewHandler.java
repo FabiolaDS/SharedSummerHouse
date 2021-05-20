@@ -10,6 +10,6 @@ import java.io.IOException;
 public interface ViewHandler
 {
   void start(Stage stage)throws IOException;
-   Parent loadFXML(String s);//TODO: it would be really nice to find the way this method can be private or protected
+  Parent loadFXML(String s);//TODO: it would be really nice to find the way this method can be private or protected
 
 }

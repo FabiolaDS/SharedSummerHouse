@@ -45,6 +45,11 @@ DUMMY DATA TO SIMULATE DATABASE
            return municipalityList.getMunicipalityById(municipalityId);
     }
 
+    @Override public Municipality getMunicipality(String id)
+    {
+        return municipalityList.getMunicipalityById(id);
+    }
+
     @Override public void addPropertyChangeListener(String name,
                                                     PropertyChangeListener listener)
     {
