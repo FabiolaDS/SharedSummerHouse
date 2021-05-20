@@ -1,6 +1,7 @@
 package shared.network;
 
 
+import shared.businesslogic.BookingsManager;
 import shared.domain.*;
 import shared.transferobjects.User;
 
@@ -21,4 +22,7 @@ public interface RMIServer extends Remote
   Municipality getMunicipality(Long id) throws RemoteException;// what does that do(return one munip)So which one(need argthen) - yes that is why it isnt compling
   SummerHouse addSummerHouse(SummerHouse summerHouse) throws RemoteException;
   Tenant addTenant(Tenant tenant) throws RemoteException;
+
+
+  BookingsManager getBookingsManager() throws RemoteException;
 }

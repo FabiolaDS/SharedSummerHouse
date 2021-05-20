@@ -1,5 +1,7 @@
 package server.network;
 
+import server.dataaccess.DummyBookingsDAO;
+import server.model.BookingsManagerImpl;
 import server.model.login.LoginModel;
 import server.model.login.LoginModelManager;
 import server.model.municipalities.ServerManageMunicipalities;
@@ -8,6 +10,7 @@ import server.model.summerhouses.ServerManageSummerHousesImpl;
 import server.model.summerhouses.ServerManageSummerhouses;
 import server.model.tenants.ServerManageTenants;
 import server.model.tenants.ServerManageTenantsImpl;
+import shared.businesslogic.BookingsManager;
 import shared.domain.*;
 import shared.network.ClientCallback;
 import shared.network.RMIServer;
@@ -35,6 +38,8 @@ public class RMIServerImpl implements RMIServer
   private ServerManageSummerhouses summerHousesModel;
   private ServerManageTenants tenantsModel;
 
+  private BookingsManager bookings;
+
   public RMIServerImpl(LoginModelManager loginModel) throws RemoteException
   {
     UnicastRemoteObject.exportObject(this, 0);
@@ -43,6 +48,7 @@ public class RMIServerImpl implements RMIServer
     this.summerHousesModel = ServerManageSummerHousesImpl.getInstance();
     this.tenantsModel = ServerManageTenantsImpl.getInstance();
 
+    this.bookings = new BookingsManagerImpl(new DummyBookingsDAO());
   }
 
   public void startServer() throws RemoteException, AlreadyBoundException
@@ -129,5 +135,11 @@ public class RMIServerImpl implements RMIServer
   @Override public Tenant addTenant(Tenant tenants)
   {
     return tenantsModel.addTenant(tenants);
+  }
+
+  @Override
+  public BookingsManager getBookingsManager()
+  {
+    return bookings;
   }
 }

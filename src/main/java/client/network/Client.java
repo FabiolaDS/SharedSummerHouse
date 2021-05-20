@@ -1,5 +1,6 @@
 package client.network;
 
+import shared.businesslogic.BookingsManager;
 import shared.domain.*;
 import shared.transferobjects.User;
 import shared.util.PropertyChangeSubject;
@@ -18,4 +19,6 @@ public interface Client extends PropertyChangeSubject
   void addSummerHouse(SummerHouse summerHouse);
   ArrayList<SummerHouseList> getSummerHouses();
   void addTenant(Tenant tenants) throws RemoteException;
+
+  BookingsManager getBookingsManager();
 }

@@ -62,6 +62,12 @@ public class LoginViewController implements ViewController
     //if user = SAdmin do:
     //SAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage()); //this should be included in onLoginResult()
    // loginViewModel.login();
+
+    // With User instead of Tenant, RegionalAdmin and SystemAdmin
+    // if(user.getType().equals("tenant") {
+    // } else if(user.getType().equals("reginal_admin")) {
+    // } else { --> has to be system admin
+    // }
     RAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage());
   }
 
