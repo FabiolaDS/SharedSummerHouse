@@ -28,8 +28,9 @@ public class ServerManageSummerHousesImpl implements ServerManageSummerhouses
 
   @Override public SummerHouse addSummerHouse(SummerHouse summerHouse)
   {
-    SummerHouse summerHouse1 = summerHouse;
-    return summerHouse1;
+    summerHouseList.addSummerHouse(summerHouse);
+
+    return summerHouse;
   }
 
   @Override public ArrayList<SummerHouse> getSummerHouses()

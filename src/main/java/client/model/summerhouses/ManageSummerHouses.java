@@ -10,7 +10,7 @@ public interface ManageSummerHouses extends PropertyChangeSubject, Property
 {
 
   public void addSummerHouse(SummerHouse summerHouse);
-  public ArrayList<SummerHouse> getAllSummerHouses();
+   public ArrayList<SummerHouse> getAllSummerHouses();
   public SummerHouse getSummerHouse(int id);
   void getSummerHouse(PropertyChangeEvent event);
 

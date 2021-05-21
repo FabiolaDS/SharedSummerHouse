@@ -2,6 +2,7 @@ package client.model.tenants;
 
 import client.core.ClientFactory;
 import client.network.Client;
+import shared.domain.SummerHouse;
 import shared.domain.TenantsList;
 import shared.domain.Tenant;
 import shared.transferobjects.EventType;
@@ -42,8 +43,11 @@ public class ManageTenantsModelImpl implements TenantsModel
   }
 
   @Override public ArrayList<Tenant> getTenants()
+
   {
-    return null;
+    ArrayList<Tenant> tenants = new ArrayList<>();
+    tenants = client.getTenants();
+    return tenants;
   }
 
 

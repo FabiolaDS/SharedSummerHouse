@@ -9,7 +9,7 @@ import java.util.Calendar;
 public class SummerHouse implements Serializable
 {
 
-    private Long id;    // Need the id for all the entities!!!
+  private Long id;    // Need the id for all the entities!!!
 
     private ArrayList<Image> images;
     private ArrayList<Municipality> sharedWith;
@@ -63,15 +63,15 @@ public class SummerHouse implements Serializable
         this.images = images;
     }
 
-    public ArrayList<Municipality> getSharedWith()
-    {
-        return sharedWith;
-    }
+  public ArrayList<Municipality> getSharedWith()
+  {
+    return sharedWith;
+  }
 
-    public void setSharedWith(ArrayList<Municipality> sharedWith)
-    {
-        this.sharedWith = sharedWith;
-    }
+  public void setSharedWith(ArrayList<Municipality> sharedWith)
+  {
+    this.sharedWith = sharedWith;
+  }
 
     public String getTitle()
     {
@@ -93,81 +93,81 @@ public class SummerHouse implements Serializable
         this.region = region;
     }
 
-    public String getStreet()
-    {
-        return street;
-    }
+  public String getStreet()
+  {
+    return street;
+  }
 
-    public void setStreet(String street)
-    {
-        this.street = street;
-    }
+  public void setStreet(String street)
+  {
+    this.street = street;
+  }
 
-    public int getPostCode()
-    {
-        return postCode;
-    }
+  public int getPostCode()
+  {
+    return postCode;
+  }
 
-    public void setPostCode(int postCode)
-    {
-        this.postCode = postCode;
-    }
+  public void setPostCode(int postCode)
+  {
+    this.postCode = postCode;
+  }
 
-    public String getDescription()
-    {
-        return description;
-    }
+  public String getDescription()
+  {
+    return description;
+  }
 
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
+  public void setDescription(String description)
+  {
+    this.description = description;
+  }
 
-    public int getHouseNumber()
-    {
-        return houseNumber;
-    }
+  public int getHouseNumber()
+  {
+    return houseNumber;
+  }
 
-    public void setHouseNumber(int houseNumber)
-    {
-        this.houseNumber = houseNumber;
-    }
+  public void setHouseNumber(int houseNumber)
+  {
+    this.houseNumber = houseNumber;
+  }
 
-    public int getPricePerNight()
-    {
-        return pricePerNight;
-    }
+  public int getPricePerNight()
+  {
+    return pricePerNight;
+  }
 
-    public void setPricePerNight(int pricePerNight)
-    {
-        this.pricePerNight = pricePerNight;
-    }
+  public void setPricePerNight(int pricePerNight)
+  {
+    this.pricePerNight = pricePerNight;
+  }
 
-    public double getAvgRating()
-    {
-        return avgRating;
-    }
+  public double getAvgRating()
+  {
+    return avgRating;
+  }
 
-    public void setAvgRating(double avgRating)
-    {
-        this.avgRating = avgRating;
-    }
+  public void setAvgRating(double avgRating)
+  {
+    this.avgRating = avgRating;
+  }
 
-    public boolean isAvailable(Calendar searchDateFrom,
-        int searchDateTo, Calendar dateDate)
-    {
-        return (!dateDate.after(searchDateFrom) || dateDate.before(searchDateTo));
-    }
+  public boolean isAvailable(Calendar searchDateFrom, int searchDateTo,
+      Calendar dateDate)
+  {
+    return (!dateDate.after(searchDateFrom) || dateDate.before(searchDateTo));
+  }
 
-    public void setAvailable(boolean available)
-    {
-        isAvailable = available;
-    }
+  public void setAvailable(boolean available)
+  {
+    isAvailable = available;
+  }
 
-    public boolean isAvailable()
-    {
-        return isAvailable;
-    }
+  public boolean isAvailable()
+  {
+    return isAvailable;
+  }
 
     public int getCapacity()
     {

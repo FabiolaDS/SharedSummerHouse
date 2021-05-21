@@ -6,6 +6,7 @@ import client.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import shared.domain.Tenant;
 
 import java.awt.event.ActionEvent;
@@ -33,11 +34,11 @@ public class TenantDetailsViewController implements ViewController
 
     viewHandler = RAViewHandler.getInstance();
 
-    //cprColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("cpr"));
-  //  firstNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("firstname"));
- //   lastNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("lastname"));
- //   municipalityColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("Municipality Name"));
-    //emailColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("email"));
+    /*cprColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("cpr"));
+    firstNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("firstname"));
+    lastNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("lastname"));
+    municipalityColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("Municipality Name"));
+    emailColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("email"));*/
     //tableViewLoad();
 
   }

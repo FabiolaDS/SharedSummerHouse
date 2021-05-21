@@ -167,8 +167,21 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
+  @Override public ArrayList<Tenant> getTenants()
+  {
+    ArrayList<Tenant> tenants = new ArrayList<>();
+    try
+    {
+      tenants = server.getTenants();
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+    return tenants;
+  }
 
-    @Override
+  @Override
     public void updates(String eventType, Object update)
             throws RemoteException {
         // Could include different if statements for the different events

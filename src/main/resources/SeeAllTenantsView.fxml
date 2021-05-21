@@ -21,11 +21,11 @@
             <Label styleClass="title" text="Registered Tenants" GridPane.columnIndex="1" />
             <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <columns>
-                <TableColumn prefWidth="68.19998776912689" text="CPRnr" />
-                <TableColumn prefWidth="94.59998321533203" text="First Name" />
-                  <TableColumn prefWidth="89.20001220703125" text="Last Name" />
-                  <TableColumn prefWidth="123.60003662109375" text="Municipality" />
-                  <TableColumn prefWidth="94.19998168945312" text="Email" />
+                <TableColumn fx:id="cprColumn" prefWidth="68.19998776912689" text="CPRnr" />
+                <TableColumn fx:id="firstNameColumn" prefWidth="94.59998321533203" text="First Name" />
+                  <TableColumn fx:id="lastNameColumn" prefWidth="89.20001220703125" text="Last Name" />
+                  <TableColumn fx:id="municipalityColumn" prefWidth="123.60003662109375" text="Municipality" />
+                  <TableColumn fx:id="emailColumn" prefWidth="94.19998168945312" text="Email" />
               </columns>
             </TableView>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">

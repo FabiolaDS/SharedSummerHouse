@@ -13,13 +13,14 @@ import java.rmi.RemoteException;
 
 public class AddTenantViewController implements ViewController
 {
-  public TextField cprLabel;
-  public TextField firstNameLabel;
-  public TextField lastnameLabel;
-  public TextField municipalityLabel;
-  public TextField emailLabel;
-  public TextField passwordLabel;
-  public TextField typeLabel;
+  @FXML public TextField cprLabel;
+  @FXML public TextField firstNameLabel;
+  @FXML public TextField lastnameLabel;
+  @FXML public TextField municipalityLabel;
+  @FXML public TextField emailLabel;
+  @FXML public TextField passwordLabel;
+  @FXML public TextField typeLabel;
+
 
   private RAViewHandler viewHandler;
   private AddTenantViewModel addTenantViewModel;
@@ -28,11 +29,13 @@ public class AddTenantViewController implements ViewController
   {
     this.viewHandler = RAViewHandler.getInstance();
     this.addTenantViewModel = ViewModelFactory.getInstance().getAddTenantViewModel();
-    cprLabel.textProperty().bindBidirectional(addTenantViewModel.cprProperty());
+
+
+    /*cprLabel.textProperty().bindBidirectional(addTenantViewModel.cprProperty());
     firstNameLabel.textProperty().bindBidirectional(addTenantViewModel.firstNameProperty());
     lastnameLabel.textProperty().bindBidirectional(addTenantViewModel.lastNameProperty());
     municipalityLabel.textProperty().bindBidirectional(addTenantViewModel.municipalityProperty());
-    emailLabel.textProperty().bindBidirectional(addTenantViewModel.emailProperty());
+    emailLabel.textProperty().bindBidirectional(addTenantViewModel.emailProperty());*/
 
 
   }
@@ -40,6 +43,7 @@ public class AddTenantViewController implements ViewController
   {
     try
     {
+
       addTenantViewModel.addTenant(cprLabel.getText(), firstNameLabel.getText(),
           lastnameLabel.getText(), municipalityLabel.getText(),
           emailLabel.getText());
@@ -49,18 +53,18 @@ public class AddTenantViewController implements ViewController
     {
       e.printStackTrace();
     }
-    reset();
+    //reset();
   }
 
   public void onEditTenants(javafx.event.ActionEvent actionEvent)
   {
   }
-
-  public void onBackToMain(ActionEvent actionEvent) throws IOException {
+  public void onBackToMain(javafx.event.ActionEvent actionEvent)
+  {
     viewHandler.openMainView();
   }
 
-  private void reset(){
+  /*private void reset(){
     cprLabel.clear();
     firstNameLabel.clear();
     lastnameLabel.clear();
@@ -68,7 +72,7 @@ public class AddTenantViewController implements ViewController
     emailLabel.clear();
     passwordLabel.clear();
     typeLabel.clear();
-  }
+  }*/
 
 
 }

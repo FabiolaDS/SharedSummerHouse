@@ -30,4 +30,5 @@ public interface RMIServer extends Remote
 
   SummerHousesManager getSummerHousesManager() throws RemoteException;
 
+  ArrayList<Tenant> getTenants() throws RemoteException;
 }

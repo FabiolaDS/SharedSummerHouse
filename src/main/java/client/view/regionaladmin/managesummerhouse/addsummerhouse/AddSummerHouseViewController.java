@@ -4,7 +4,8 @@ import client.core.viewhandler.RAViewHandler;
 import client.core.viewhandler.SAViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
-
+import javafx.fxml.FXML;
+import shared.domain.SummerHouse;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,17 +14,17 @@ import java.io.IOException;
 
 public class AddSummerHouseViewController implements ViewController
 {
-  public TextField regionField;
-  public TextField streetField;
-  public TextField titleField;
-  public TextField descriptionField;
-  public TextField pricePrNightField;
-  public TextField postCodeField;
-  public TextField houseNumberField;
+  @FXML public TextField regionField;
+  @FXML public TextField streetField;
+  @FXML public TextField titleField;
+  @FXML public TextField descriptionField;
+  @FXML public TextField pricePrNightField;
+  @FXML public TextField postCodeField;
+  @FXML public TextField houseNumberField;
 
 
   private RAViewHandler viewHandler;
-  private ViewModelFactory viewModelFactory;
+  //private ViewModelFactory viewModelFactory;
   private AddSummerHouseViewModel addSummerHouseViewModel;
 
   @Override public void init() throws IOException
@@ -32,11 +33,14 @@ public class AddSummerHouseViewController implements ViewController
     this.addSummerHouseViewModel = ViewModelFactory.getInstance().addSummerHouseViewModel();
   }
 
-  public void onCreateSummerHouse(ActionEvent actionEvent) {
+  public void onCreateSummerHouse(javafx.event.ActionEvent actionEvent)
+  {
     addSummerHouseViewModel.addSummerHouse(regionField.getText(),streetField.getText(),
         titleField.getText(), descriptionField.getText(), pricePrNightField.getColumns(),
         postCodeField.getColumns(), houseNumberField.getColumns());
-   reset();
+
+    viewHandler.openAddSummerHousesView();
+    reset();
   }
 
 
@@ -46,7 +50,7 @@ public class AddSummerHouseViewController implements ViewController
       viewHandler.openManageSummerHouseView();
   }
   public void reset(){
-    /*regionField.clear();
+    /*regionField.clear;
     streetField.clear();
     titleField.clear();
     descriptionField.clear();

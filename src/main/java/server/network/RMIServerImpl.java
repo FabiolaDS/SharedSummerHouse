@@ -161,4 +161,9 @@ public class RMIServerImpl implements RMIServer
   {
     return summerhouses;
   }
+
+  @Override public ArrayList<Tenant> getTenants() throws RemoteException
+  {
+    return null;
+  }
 }

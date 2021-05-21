@@ -30,16 +30,16 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="CPR number:" />
-                  <Label text="First Name:" GridPane.rowIndex="1" />
-                  <Label text="Last Name" GridPane.rowIndex="2" />
-                  <Label text="Municipality" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label text="Email" GridPane.rowIndex="4" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label  text="CPR number:" />
+                  <Label  text="First Name:" GridPane.rowIndex="1" />
+                  <Label  text="Last Name" GridPane.rowIndex="2" />
+                  <Label  text="Municipality" GridPane.rowIndex="3" />
+                  <TextField fx:id="cprField" GridPane.columnIndex="1" />
+                  <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="municipalityField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label  text="Email" GridPane.rowIndex="4" />
+                  <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -58,7 +58,7 @@
                   <Button mnemonicParsing="false" onAction="#onEditTenants" text="Edit" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" text="Back" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#onBackToMain" text="Back" GridPane.columnIndex="2" />
             <Label styleClass="title" text="Create Tenants" GridPane.columnIndex="1" />
          </children>
       </GridPane>

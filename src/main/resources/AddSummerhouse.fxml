@@ -37,15 +37,15 @@
                             <Label text="Region:" GridPane.rowIndex="1" />
                             <Label text="Street" GridPane.rowIndex="2" />
                             <Label text="Post Code" GridPane.rowIndex="3" />
-                            <TextField GridPane.columnIndex="1" />
-                            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <TextField fx:id="titleLabel" GridPane.columnIndex="1" />
+                            <TextField fx:id="regionLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <TextField fx:id="streetLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <TextField fx:id="postCodeLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             <Label text="House Number" GridPane.rowIndex="4" />
-                            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                            <TextField fx:id="descriptionLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      <Label prefHeight="18.0" prefWidth="92.0" text="Description" GridPane.rowIndex="5" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                     <TextField fx:id="houseNumberLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     <TextField fx:id="pricePerNightField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      <Label text="Price per Night" GridPane.rowIndex="6" />
                         </children>
                     </GridPane>
@@ -61,7 +61,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                         <children>
-                            <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <Button mnemonicParsing="false" onAction="#onCreateSummerHouse" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         </children>
                     </GridPane>
                     <Button mnemonicParsing="false" onAction="#onBackToMain" text="Back" GridPane.columnIndex="2" />
