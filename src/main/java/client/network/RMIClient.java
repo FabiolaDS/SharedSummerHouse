@@ -48,7 +48,7 @@ public class RMIClient implements Client, ClientCallback {
                     server.validateUser(user));
         } catch (RemoteException | SQLException e) {
             support.firePropertyChange(EventType.LOGIN.toString(), null,
-                    "Connection lost: Restart application"); // give feedback to client
+                    "Connection lost: Restart application");
         }
     }
 

@@ -3,16 +3,17 @@ package shared.transferobjects;
 import java.io.Serializable;
 
 /**
- * This class might not be useful becuase we are using RMI
+ * This class might not be useful because we are using RMI
  */
 public class User implements Serializable
 {
-  private String username, password;
+  private String username, password, userType;
 
-  public User(String username, String password)
+  public User(String username, String password, String userType)
   {
     this.username = username;
     this.password = password;
+    this.userType = userType;
   }
 
   public String getUsername()
@@ -23,6 +24,11 @@ public class User implements Serializable
   public String getPassword()
   {
     return password;
+  }
+
+  public String getUserType()
+  {
+    return userType;
   }
 
   @Override public String toString()

@@ -9,8 +9,6 @@ import java.sql.SQLException;
 
 public class LoginModelManager implements LoginModel
 {
-  // I only use the interface, this way if I want to exchange the InMemoryAccess
-  // with a database access class I can do it without changing this code
   private UserDAO userDAO;
   private PropertyChangeSupport support;
 
@@ -22,7 +20,30 @@ public class LoginModelManager implements LoginModel
 
   @Override public String validateUser(User user) throws SQLException
   {
-    return userDAO.validateUser(user);
+    User foundUser = userDAO.validateUser(user);
+    String result = "User type, username or password are incorrect";
+    boolean userFound = false;
+
+    if (foundUser != null)
+    {
+      if (foundUser.getUsername().equals(user.getUsername()))
+      {
+        if (foundUser.getPassword().equals(user.getPassword()))
+        {
+          result = "OK";
+        }
+        else
+        {
+          result = "Incorrect password";
+        }
+        userFound = true;
+      }
+      if (!userFound)
+      {
+        result = "User not found";
+      }
+    }
+    return result;
   }
 
   @Override public void addPropertyChangeListener(String name,

@@ -18,7 +18,8 @@ public class LoginModelManager implements LoginModel
   {
     this.client = client;
     support = new PropertyChangeSupport(this);
-   // client.addPropertyChangeListener(EventType.LOGIN.toString(), this::onLoginResult);
+    client.addPropertyChangeListener(EventType.LOGIN.toString(), this::onLoginResult);
+
   }
 
   private void onLoginResult(PropertyChangeEvent propertyChangeEvent)
@@ -30,9 +31,9 @@ public class LoginModelManager implements LoginModel
     support.firePropertyChange(EventType.LOGIN.toString(), null, loginResult);
   }
 
-  @Override public void login(String username, String password)
+  @Override public void login(String username, String password, String userType)
   {
-    loggedInUser = new User(username, password);
+    loggedInUser = new User(username, password, userType);
     client.login(loggedInUser);
   }
 

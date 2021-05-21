@@ -47,9 +47,9 @@ public class LoginViewModel
     });
   }
 
-  public void login()
+  public void login(String userType)
   {
-    loginModel.login(username.get(), password.get());
+    loginModel.login(username.get(), password.get(), userType);
   }
 
   public StringProperty passwordProperty()

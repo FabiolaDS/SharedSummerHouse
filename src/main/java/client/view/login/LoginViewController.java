@@ -8,9 +8,7 @@ import client.core.ViewModelFactory;
 import client.view.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 
@@ -20,6 +18,7 @@ public class LoginViewController implements ViewController
   @FXML private TextField usernameTextField;
   @FXML private TextField passwordTextField;
   @FXML private Label loginResultLabel;
+  @FXML private ToggleGroup userType;
   private LoginViewModel loginViewModel;
   private ViewHandler viewHandler;
 
@@ -50,7 +49,11 @@ public class LoginViewController implements ViewController
 
     if ("OK".equals(result)) {
       // TODO: open main view
-
+      // TODO: If the validation was successful, we can get the userType from the RadioButton
+      /* This way
+      if (selectedUserType.equals(...) // Create a field for selectedUserType that is assigned when the login button is pressed
+        { open whatever view...}
+       */
     }
   }
 
@@ -69,6 +72,13 @@ public class LoginViewController implements ViewController
     // } else { --> has to be system admin
     // }
    /// RAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage());
+    /* TODO: We can include the logic to chose a view in the onLoginResult
+     */
+    RadioButton selectedRadionButton = (RadioButton) userType.getSelectedToggle();
+    String toggleGroupValue = selectedRadionButton.getText();
+    System.out.println(toggleGroupValue);
+
+    loginViewModel.login(toggleGroupValue);
   }
 
   public void onExitButton(ActionEvent actionEvent)

@@ -22,43 +22,56 @@ public class UserDAOImpl extends DatabaseDAO implements UserDAO
     return instance;
   }
 
-  @Override public String validateUser(User user) throws SQLException
+  @Override public User validateUser(User user) throws SQLException
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement(
-          "SELECT * FROM \"shared_summerhouse\".\"system_admin\" WHERE system_admin_cpr = ?");
-      statement.setString(1, user.getUsername());
-      ResultSet resultSet = statement.executeQuery();
-      String result = "User not found";
-      if (resultSet.next())
+      System.out.println("Connected");
+      PreparedStatement statement = null;
+      User foundUser = null;
+      ResultSet resultSet = null;
+      if ("Tenant".equals(user.getUserType()))
       {
-        String cpr = resultSet.getString("system_admin_cpr");
-        String password = resultSet.getString("password");
-
-        // TODO: Maybe this logic should be in the model
-
-        boolean userFound = false;
-        System.out.println(cpr + password);
-        System.out.println(user.getUsername() + user.getPassword());
-        if (cpr.equals(user.getUsername()))
+        statement = connection.prepareStatement(
+            "SELECT * FROM \"shared_summerhouse\".\"tenant\" WHERE tenant_cpr = ?");
+        statement.setString(1, user.getUsername());
+        resultSet = statement.executeQuery();
+        if (resultSet.next())
         {
-          if (password.equals(user.getPassword()))
-          {
-            result = "OK";
-          }
-          else
-          {
-            result = "Incorrect password";
-          }
-          userFound = true;
+          String cpr = resultSet.getString("tenant_cpr");
+          String password = resultSet.getString("password");
+          foundUser = new User(cpr, password, user.getUserType());
+
         }
-        if (!userFound)
+      } else if ("Regional Admin".equals(user.getUserType()))
+      {
+        statement = connection.prepareStatement(
+            "SELECT * FROM \"shared_summerhouse\".\"regional_admin\" WHERE regional_admin_cpr = ?");
+        statement.setString(1, user.getUsername());
+        resultSet = statement.executeQuery();
+        if (resultSet.next())
         {
-          result = "User not found";
+          String cpr = resultSet.getString("regional_admin_cpr");
+          String password = resultSet.getString("password");
+          foundUser = new User(cpr, password, user.getUserType());
+
         }
       }
-      return result;
+      else if ("System Admin".equals(user.getUserType()))
+      {
+        statement = connection.prepareStatement(
+            "SELECT * FROM \"shared_summerhouse\".\"system_admin\" WHERE system_admin_cpr = ?");
+        statement.setString(1, user.getUsername());
+        resultSet = statement.executeQuery();
+        if (resultSet.next())
+        {
+          String cpr = resultSet.getString("system_admin_cpr");
+          String password = resultSet.getString("password");
+          foundUser = new User(cpr, password, user.getUserType());
+        }
+      }
+
+      return foundUser;
     }
   }
 }

@@ -6,5 +6,5 @@ import java.sql.SQLException;
 
 public interface UserDAO
 {
-  String validateUser(User user) throws SQLException;
+  User validateUser(User user) throws SQLException;
 }

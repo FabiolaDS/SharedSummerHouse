@@ -4,6 +4,6 @@ import shared.util.PropertyChangeSubject;
 
 public interface LoginModel extends PropertyChangeSubject
 {
-  void login(String username, String password);
+  void login(String username, String password, String userType);
 
 }
