@@ -12,15 +12,15 @@ public class Tenant
     private String password;
     private StringProperty type;    // Tenant OR ReginalAdmin OR SystemAdmin
 
-    public Tenant(String cpr, String firstName, String lastName, String municipality, String email, String password, StringProperty userType)
+    public Tenant(String cpr, String firstName, String lastName, String municipality, String email)
     {
         this.cpr = cpr;
         this.firstName = firstName;
         this.lastName = lastName;
         this.municipality = municipality;
         this.email = email;
-        this.password = password;
-        this.type = userType;
+        //this.password = password;
+       // this.type = userType;
     }
 
     public String getCpr()

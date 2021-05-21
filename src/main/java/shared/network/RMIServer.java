@@ -26,4 +26,5 @@ public interface RMIServer extends Remote
 
 
   BookingsManager getBookingsManager() throws RemoteException;
+
 }

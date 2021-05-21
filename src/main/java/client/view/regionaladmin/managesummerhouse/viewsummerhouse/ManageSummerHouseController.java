@@ -19,13 +19,13 @@ public class ManageSummerHouseController implements ViewController
   public TableColumn<SummerHouse, String> streetColumn;
   public TableColumn<SummerHouse, String> postCodeColumn;
   public TableColumn<SummerHouse, String> descriptionColumn;
-  public TableColumn <SummerHouse, String> houseNrColumn;
-  public TableColumn<SummerHouse, String> priceNightColumn;
+  public TableColumn <SummerHouse, String> houseNumberColumn;
+  public TableColumn<SummerHouse, String> pricePerNightColumn;
   public TableColumn<SummerHouse, String> avgRatingColumn;
-  public DatePicker isAvailableDate;
+  //public DatePicker isAvailableDate;
   public ListView<Municipality> sharedWithList;
   public TableView<SummerHouse> summerHouseTableView;
-  public TableView pastBookings;
+ // public TableView pastBookings;
 
   private RAViewHandler viewHandler;
   private ViewModelFactory vmf;
@@ -39,22 +39,22 @@ public class ManageSummerHouseController implements ViewController
     this.mvm = vmf.getManageSummerHouseModel();
     viewHandler = RAViewHandler.getInstance();
 
-    titleColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("title"));
-    regionColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("region"));
-    streetColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("street"));
-    postCodeColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("postCode"));
-    descriptionColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("description"));
-    houseNrColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("houseNumber"));
-    priceNightColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("pricePerNight"));
-    avgRatingColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("avgRating"));
-    isAvailableDate.getChronology();
+    /*titleColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("Title"));
+    regionColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("Region"));
+    streetColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("Street"));
+    postCodeColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("PostCode"));
+    descriptionColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("Description"));
+    houseNumberColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("HouseNumber"));
+    pricePerNightColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("PricePerNight"));
+    avgRatingColumn.setCellValueFactory(new PropertyValueFactory<SummerHouse, String>("AvgRating"));
+    //isAvailableDate.getChronology();*/
 
 
 
     sharedWithList = new ListView<>();
     sharedWithList.getItems().addAll();
     sharedWithList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-    tableViewLoad();
+    //tableViewLoad();
 
 
 
@@ -62,22 +62,27 @@ public class ManageSummerHouseController implements ViewController
   private void tableViewLoad()
   {
     summerHouseTableView.setItems(mvm.getSummerHouses());
+
   }
 
-  public void onCreateSummerHouse(ActionEvent actionEvent) throws IOException
+  public void onAddSummerHouse(ActionEvent actionEvent) throws IOException
   {
     viewHandler.openAddSummerHousesView();
-
+  }
+  public void onSharedWith(ActionEvent actionEvent){
+    viewHandler.openMainView();
   }
 
-  public void onViewDetails(ActionEvent actionEvent) {
+  /*public void onViewDetails(ActionEvent actionEvent) {
     summerHouseTableView.getSelectionModel().getSelectedItem();
 
     viewHandler.openManageSummerHouseView();
 
-  }
+  }*/
 
-  public void onAddSummerHouse(ActionEvent actionEvent) {
+  public void onEditSummerHouse(ActionEvent actionEvent) {
+    //viewHandler.openManageSummerHouseView();
+   // summerHouseTableView.edit(summerHouseTableView.getSelectionModel().getSelectedItem(), );
   }
 
   public void onBackToMain(ActionEvent actionEvent) throws IOException {
@@ -88,5 +93,6 @@ public class ManageSummerHouseController implements ViewController
 
   public void removeSummerhouse(ActionEvent actionEvent)
   {
+    summerHouseTableView.getItems().removeAll(summerHouseTableView.getSelectionModel().getSelectedItem());
   }
 }

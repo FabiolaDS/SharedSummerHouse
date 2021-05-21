@@ -28,9 +28,16 @@ public class ManageTenantsModelImpl implements TenantsModel
         this::getTenants);
   }
 
-  @Override public void addTenant(Tenant tenants) throws RemoteException
+  @Override public void addTenant(Tenant tenants)
   {
-    client.addTenant(tenants);
+    try
+    {
+      client.addTenant(tenants);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
 
   }
 
@@ -40,7 +47,7 @@ public class ManageTenantsModelImpl implements TenantsModel
   }
 
 
-  public void getTenants(PropertyChangeEvent event)
+  @Override public void getTenants(PropertyChangeEvent event)
   {
     support.firePropertyChange(event);
   }
@@ -68,8 +75,8 @@ public class ManageTenantsModelImpl implements TenantsModel
     support.removePropertyChangeListener(listener);
   }
 
-   public void propertyChange(PropertyChangeEvent evt)
+   /*public void propertyChange(PropertyChangeEvent evt)
   {
 
-  }
+  }*/
 }

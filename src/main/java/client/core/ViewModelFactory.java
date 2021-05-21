@@ -44,7 +44,8 @@ public class ViewModelFactory
   {
     if (addTenantViewModel == null)
     {
-    addTenantViewModel = new AddTenantViewModel();
+    addTenantViewModel = new AddTenantViewModel(ModelFactory.getInstance()
+        .getTenantsModel());
     }
     return addTenantViewModel;
   }
@@ -53,7 +54,7 @@ public class ViewModelFactory
   {
     if (tenantDetailsViewModel == null)
     {
-      tenantDetailsViewModel = new TenantDetailsViewModel();
+      tenantDetailsViewModel = new TenantDetailsViewModel(ModelFactory.getInstance().getTenantsModel());
     }
     return tenantDetailsViewModel;
   }

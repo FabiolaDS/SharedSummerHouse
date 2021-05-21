@@ -17,7 +17,7 @@
           <RowConstraints maxHeight="71.39999999999998" minHeight="10.0" prefHeight="56.39999999999998" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="Back" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#onBackToMain" text="Back" GridPane.columnIndex="2" />
             <Label styleClass="title" text="Registered Tenants" GridPane.columnIndex="1" />
             <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <columns>
@@ -42,9 +42,9 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" text="Create Tenant" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" text="Edit Tenant" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" text="Remove Tenant" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#onCreateTenant" text="Create Tenant" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#onEditTenants" text="Edit Tenant" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#onRemoveTenant" text="Remove Tenant" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>

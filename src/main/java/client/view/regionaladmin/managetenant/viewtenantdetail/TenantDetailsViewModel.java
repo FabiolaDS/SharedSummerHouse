@@ -26,10 +26,7 @@ public class TenantDetailsViewModel
     selectedTenant = FXCollections.observableSet();
   }
 
-  public TenantDetailsViewModel()
-  {
 
-  }
 
   public ObservableList<Tenant> getTenants()
   {

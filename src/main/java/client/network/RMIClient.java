@@ -44,10 +44,7 @@ public class RMIClient implements Client, ClientCallback
     }
   }
 
-  @Override public void addSummerHouse(SummerHouse summerHouse)
-  {
 
-  }
 
   @Override public void login(User user)
   {
@@ -140,13 +137,32 @@ public class RMIClient implements Client, ClientCallback
     }
     return summerHouseList;
   }
-
-
-
-  @Override public void addTenant(Tenant tenants) throws RemoteException
+  @Override public void addSummerHouse(SummerHouse summerHouse)
   {
-    support.firePropertyChange(EventType.TENANTS.toString(), null,
-        server.addTenant(tenants));
+    try
+    {
+      support.firePropertyChange(EventType.SUMMERHOUSE.toString(), null,
+          server.addSummerHouse(summerHouse));
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+
+
+  @Override public void addTenant(Tenant tenants)
+  {
+    try
+    {
+      support.firePropertyChange(EventType.TENANTS.toString(), null,
+          server.addTenant(tenants));
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
   }
 
   @Override

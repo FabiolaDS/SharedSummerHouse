@@ -27,19 +27,34 @@ public class AddTenantViewController implements ViewController
   @Override public void init() throws IOException
   {
     this.viewHandler = RAViewHandler.getInstance();
-    this.addTenantViewModel = ViewModelFactory.getInstance().addTenantViewModel();
+    this.addTenantViewModel = ViewModelFactory.getInstance().getAddTenantViewModel();
+    cprLabel.textProperty().bindBidirectional(addTenantViewModel.cprProperty());
+    firstNameLabel.textProperty().bindBidirectional(addTenantViewModel.firstNameProperty());
+    lastnameLabel.textProperty().bindBidirectional(addTenantViewModel.lastNameProperty());
+    municipalityLabel.textProperty().bindBidirectional(addTenantViewModel.municipalityProperty());
+    emailLabel.textProperty().bindBidirectional(addTenantViewModel.emailProperty());
+
 
   }
-
-  public void onCreateTenants(ActionEvent actionEvent) throws RemoteException
+  public void onCreateTenants(javafx.event.ActionEvent actionEvent)
   {
-    addTenantViewModel.addTenant(cprLabel.getText(), firstNameLabel.getText(),
-        lastnameLabel.getText(), municipalityLabel.getText(),
-        emailLabel.getText(), passwordLabel.getText(), typeLabel.textProperty());
+    try
+    {
+      addTenantViewModel.addTenant(cprLabel.getText(), firstNameLabel.getText(),
+          lastnameLabel.getText(), municipalityLabel.getText(),
+          emailLabel.getText());
+          //passwordLabel.getSelectedText(), typeLabel.textProperty());
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
     reset();
   }
 
-  public void onEditTenants(ActionEvent actionEvent){}
+  public void onEditTenants(javafx.event.ActionEvent actionEvent)
+  {
+  }
 
   public void onBackToMain(ActionEvent actionEvent) throws IOException {
     viewHandler.openMainView();
@@ -54,4 +69,6 @@ public class AddTenantViewController implements ViewController
     passwordLabel.clear();
     typeLabel.clear();
   }
+
+
 }

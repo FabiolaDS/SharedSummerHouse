@@ -134,7 +134,8 @@ public class RMIServerImpl implements RMIServer
 
   @Override public Tenant addTenant(Tenant tenants)
   {
-    return tenantsModel.addTenant(tenants);
+     tenantsModel.addTenant(tenants);
+     return tenants;
   }
 
   @Override public ArrayList<SummerHouse> getSummerHouses()

@@ -25,7 +25,7 @@ public class ServerManageTenantsImpl implements ServerManageTenants
   /* --------
 
    */
-  TenantsList tenantsList = new TenantsList();
+  private TenantsList tenantsList = new TenantsList();
 
   @Override public Tenant addTenant(Tenant tenants)
   {
