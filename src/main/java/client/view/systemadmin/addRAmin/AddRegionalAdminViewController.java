@@ -9,8 +9,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class AddRegionalAdminViewController implements ViewController
-{
+public class AddRegionalAdminViewController implements ViewController {
 
     public Label municipalityLabel;
     private AddRegionalAdministratorViewModel addRegionalAdministratorVM;
@@ -21,35 +20,38 @@ public class AddRegionalAdminViewController implements ViewController
     public TextField passwordField;
 
 
-
-    @Override public void init() throws IOException
-    {
-       addRegionalAdministratorVM = ViewModelFactory.getInstance()
-           .getAddRegionalAdministratorViewModel();
-       municipalityLabel.textProperty().bindBidirectional(
-           addRegionalAdministratorVM.getMunicipalityId());
-       cprField.textProperty().bindBidirectional(addRegionalAdministratorVM.cprNrProperty());
-       fnameField.textProperty().bindBidirectional(addRegionalAdministratorVM.nameProperty());
-       lnameField.textProperty().bindBidirectional(addRegionalAdministratorVM.lastNameProperty());
-       emailField.textProperty().bindBidirectional(addRegionalAdministratorVM.emailProperty());
-       passwordField.textProperty().bindBidirectional(addRegionalAdministratorVM.passwordProperty());
+    @Override
+    public void init() throws IOException {
+        addRegionalAdministratorVM = ViewModelFactory.getInstance()
+                .getAddRegionalAdministratorViewModel();
+        municipalityLabel.textProperty().bindBidirectional(
+                addRegionalAdministratorVM.getMunicipalityId());
+        cprField.textProperty().bindBidirectional(addRegionalAdministratorVM.cprNrProperty());
+        fnameField.textProperty().bindBidirectional(addRegionalAdministratorVM.nameProperty());
+        lnameField.textProperty().bindBidirectional(addRegionalAdministratorVM.lastNameProperty());
+        emailField.textProperty().bindBidirectional(addRegionalAdministratorVM.emailProperty());
+        passwordField.textProperty().bindBidirectional(addRegionalAdministratorVM.passwordProperty());
 
     }
 
     public void onCreateRadmin(ActionEvent actionEvent) {
         addRegionalAdministratorVM.addRegionalAdmin();
+        reset();
     }
 
-  public Label getMunicipalityLabel()
-  {
-    return municipalityLabel;
-  }
-
-  public void onBack(ActionEvent actionEvent)
-    {
+    public void onBack(ActionEvent actionEvent) {
         ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().getMunicipalityDetailsId(
-            municipalityLabel.getText());
+                municipalityLabel.getText());
+        municipalityLabel.textProperty().setValue("");
         SAViewHandler.getInstance().openSeeMunicipalityDetailsView();
+    }
+
+    private void reset() {
+        fnameField.textProperty().setValue("");
+        cprField.textProperty().setValue("");
+        lnameField.textProperty().setValue("");
+        emailField.textProperty().setValue("");
+        passwordField.textProperty().setValue("");
     }
 
 }

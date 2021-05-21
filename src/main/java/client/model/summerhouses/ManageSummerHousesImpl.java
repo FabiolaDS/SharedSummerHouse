@@ -13,7 +13,6 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class ManageSummerHousesImpl implements ManageSummerHouses{
 
@@ -30,7 +29,10 @@ public class ManageSummerHousesImpl implements ManageSummerHouses{
 
   }
 
-
+  private void getSummerHouse(PropertyChangeEvent propertyChangeEvent)
+  {
+    support.firePropertyChange(propertyChangeEvent);
+  }
 
   public void addPropertyChangeListener(String name,
       PropertyChangeListener listener)
@@ -77,10 +79,10 @@ public class ManageSummerHousesImpl implements ManageSummerHouses{
      return client.getSummerHouses().get(id);
   }
 
-  @Override public Calendar isAvailable(Calendar calendar)
+ /* @Override public Calendar isAvailable(Calendar calendar)
   {
     return null;
-  }
+  }*/
 
   @Override public void setRating()
   {

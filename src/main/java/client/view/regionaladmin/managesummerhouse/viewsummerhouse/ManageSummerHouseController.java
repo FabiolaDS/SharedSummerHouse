@@ -25,7 +25,7 @@ public class ManageSummerHouseController implements ViewController
   //public DatePicker isAvailableDate;
   public ListView<Municipality> sharedWithList;
   public TableView<SummerHouse> summerHouseTableView;
- // public TableView pastBookings;
+  public TableView pastBookings;
 
   private RAViewHandler viewHandler;
   private ViewModelFactory vmf;
@@ -58,7 +58,6 @@ public class ManageSummerHouseController implements ViewController
 
 
 
-  }
   private void tableViewLoad()
   {
     summerHouseTableView.setItems(mvm.getSummerHouses());

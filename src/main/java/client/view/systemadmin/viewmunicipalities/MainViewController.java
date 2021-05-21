@@ -45,6 +45,7 @@ public class MainViewController implements ViewController
      {
          municipalityTable.setItems(mainViewModel.getMunicipalities());
      }
+
     public void onCreatMunicipality(ActionEvent actionEvent) throws IOException {
         viewHandler.openAddMunicipalityView();
     }

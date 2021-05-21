@@ -112,7 +112,8 @@ public class MunicipalityDetailsViewModel {
         this.id.set(id);
     }
 
-    public Municipality getMunicipalityDetailsId(String id)
+
+    public void getMunicipalityDetailsId(String id)
     {
        Municipality municipality = model.getMunicipality(id);
        setName(municipality.getName());
@@ -122,8 +123,11 @@ public class MunicipalityDetailsViewModel {
        if (municipality.getRegionalAdmin() != null)
        {
            setCpr(municipality.getRegionalAdmin().getCpr());
+           setEmail(municipality.getRegionalAdmin().getEmail());
+           setFirstName(municipality.getRegionalAdmin().getFirstname());
+           setLastName(municipality.getRegionalAdmin().getLastname());
        }
-       return municipality;
+
     }
 
 }

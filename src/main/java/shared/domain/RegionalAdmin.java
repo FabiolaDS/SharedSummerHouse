@@ -25,4 +25,16 @@ public class RegionalAdmin  implements Serializable
   {
     return cpr;
   }
+
+  public String getFirstname() {
+    return firstname;
+  }
+
+  public String getLastname() {
+    return lastname;
+  }
+
+  public String getEmail() {
+    return email;
+  }
 }
