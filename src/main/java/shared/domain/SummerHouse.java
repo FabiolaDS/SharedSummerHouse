@@ -42,7 +42,17 @@ public class SummerHouse implements Serializable
 
         System.out.println("New Summerhouse has been created");
     }
+
     public void SummerHouse(){}
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public ArrayList<Image> getImages()
     {

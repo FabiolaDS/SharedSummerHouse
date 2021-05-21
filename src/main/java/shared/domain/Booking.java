@@ -11,18 +11,17 @@ public class Booking
     private LocalDate dateTo;
 
     private SummerHouse summerHouse;
-    private ArrayList<Tenant> tenants;
+    private Tenant tenant;
     // private int guests instead?
 
+    public Booking() {}
 
-    public Booking(LocalDate dateFrom, LocalDate dateTo, ArrayList<Tenant> tenants, SummerHouse summerHouse)
+    public Booking(LocalDate dateFrom, LocalDate dateTo, Tenant tenant, SummerHouse summerHouse)
     {
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
-        this.tenants = tenants;
+        this.tenant = tenant;
         this.summerHouse = summerHouse;
-
-        tenants = new ArrayList<>();
     }
 
     public double getTotalPrice()
@@ -32,13 +31,12 @@ public class Booking
         return days * summerHouse.getPricePerNight();
     }
 
-    public ArrayList<Tenant> getTenants()
-    {
-        return tenants;
+    public Tenant getTenant() {
+        return tenant;
     }
 
-    public void addTenant(Tenant tenant) {
-        tenants.add(tenant);
+    public void setTenant(Tenant t) {
+        this.tenant = t;
     }
 
     public LocalDate getDateFrom()

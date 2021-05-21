@@ -4,7 +4,7 @@ import shared.transferobjects.User;
 
 import java.sql.*;
 
-public class UserDAOImpl implements UserDAO
+public class UserDAOImpl extends DatabaseDAO implements UserDAO
 {
   private static UserDAOImpl instance;
 
@@ -20,13 +20,6 @@ public class UserDAOImpl implements UserDAO
       instance = new UserDAOImpl();
     }
     return instance;
-  }
-
-  private Connection getConnection() throws SQLException
-  {
-    return DriverManager.getConnection(
-        "jdbc:postgresql://hattie.db.elephantsql.com:5432/widfgedd?currentSchema=shared_summerhouse",
-        "widfgedd", "eNK-T2F9iLzSsnM_49VIlSkM_qHsQ2nC");
   }
 
   @Override public String validateUser(User user) throws SQLException

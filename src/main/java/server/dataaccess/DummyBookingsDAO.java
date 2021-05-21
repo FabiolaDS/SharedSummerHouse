@@ -42,7 +42,7 @@ public class DummyBookingsDAO implements BookingDAO
         ArrayList<Booking> result = new ArrayList<>();
 
         for(Booking b: bookings) {
-            if(b.getTenants().contains(tenant)) {
+            if(b.getTenant().equals(tenant)) {
                 result.add(b);
             }
         }
