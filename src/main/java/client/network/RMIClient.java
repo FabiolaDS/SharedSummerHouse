@@ -2,6 +2,7 @@ package client.network;
 
 
 import shared.businesslogic.BookingsManager;
+import shared.businesslogic.SummerHousesManager;
 import shared.domain.*;
 import shared.network.ClientCallback;
 import shared.network.RMIServer;
@@ -153,6 +154,16 @@ public class RMIClient implements Client, ClientCallback {
             return server.getBookingsManager();
         } catch (RemoteException ex) {
             throw new RuntimeException(ex);
+        }
+    }
+
+    @Override
+    public SummerHousesManager getSummerHousesManager()
+    {
+        try {
+            return server.getSummerHousesManager();
+        } catch(RemoteException e) {        // critical error, shutdown
+            throw new RuntimeException(e);
         }
     }
 

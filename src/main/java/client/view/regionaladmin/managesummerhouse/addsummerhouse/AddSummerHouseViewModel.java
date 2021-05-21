@@ -18,6 +18,6 @@ public class AddSummerHouseViewModel
       int pricePerNight, int postCode, int houseNumber)
   {
     summerHousesModel.addSummerHouse(new SummerHouse(title, region, street,
-    postCode, description, houseNumber, pricePerNight));
+    postCode, description, houseNumber, pricePerNight, 10));  // TODO set capacity of summerhouse
   }
 }

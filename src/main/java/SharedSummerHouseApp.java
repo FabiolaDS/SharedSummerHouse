@@ -5,8 +5,9 @@ import javafx.stage.Stage;
 public class SharedSummerHouseApp extends Application
 {
 
-  @Override public void start(Stage primaryStage) throws Exception
-  {
-    LoginViewHandler.getInstance().start(primaryStage);
-  }
+    @Override
+    public void start(Stage primaryStage) throws Exception
+    {
+        LoginViewHandler.getInstance().start(primaryStage);
+    }
 }

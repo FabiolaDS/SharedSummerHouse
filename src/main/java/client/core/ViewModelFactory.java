@@ -1,143 +1,145 @@
 package client.core;
 
-import client.model.municipalities.ManageMunicipalities;
+import client.network.Client;
+import client.network.RMIClient;
 import client.view.login.LoginViewModel;
 import client.view.regionaladmin.managesummerhouse.addsummerhouse.AddSummerHouseViewModel;
 import client.view.regionaladmin.managesummerhouse.viewsummerhouse.ManageSummerHouseModel;
 import client.view.regionaladmin.managetenant.addtenant.AddTenantViewModel;
 import client.view.regionaladmin.managetenant.viewtenantdetail.TenantDetailsViewModel;
-import client.view.regionaladmin.managetenant.viewtenantdetail.TenantDetailsViewModel;
 import client.view.systemadmin.addRAmin.AddRegionalAdministratorViewModel;
 import client.view.systemadmin.addmunicipality.AddMunicipalityViewModel;
 import client.view.systemadmin.seedetails.MunicipalityDetailsViewModel;
 import client.view.systemadmin.viewmunicipalities.MainViewModel;
-import javafx.beans.property.Property;
+import client.viewmodel.SummerHousesListViewModel;
 
 public class ViewModelFactory
 {
-  private static ViewModelFactory vmf;
-  private AddTenantViewModel addTenantViewModel;
-  private TenantDetailsViewModel tenantDetailsViewModel;
-  private AddMunicipalityViewModel addMunicipalityViewModel;
-  private AddRegionalAdministratorViewModel addRegionalAdministratorViewModel;
-  private MunicipalityDetailsViewModel municipalityDetailsViewModel;
-  private MainViewModel mainViewModel;
-  private LoginViewModel loginViewModel;
-  private AddSummerHouseViewModel addSummerHouseViewModel;
-  private ManageSummerHouseModel manageSummerHouseModel;
+    private static ViewModelFactory vmf;
+    private AddTenantViewModel addTenantViewModel;
+    private TenantDetailsViewModel tenantDetailsViewModel;
+    private AddMunicipalityViewModel addMunicipalityViewModel;
+    private AddRegionalAdministratorViewModel addRegionalAdministratorViewModel;
+    private MunicipalityDetailsViewModel municipalityDetailsViewModel;
+    private MainViewModel mainViewModel;
+    private LoginViewModel loginViewModel;
+    private AddSummerHouseViewModel addSummerHouseViewModel;
+    private ManageSummerHouseModel manageSummerHouseModel;
 
+    private ModelFactory modelf;
 
-  private ViewModelFactory()
-  {
-
-  }
-
-  public static ViewModelFactory getInstance(){
-    if (vmf == null)
+    private ViewModelFactory(ModelFactory modelf)
     {
-      vmf = new ViewModelFactory();
+        this.modelf = modelf;
     }
-    return vmf;
-  }
 
-  public AddTenantViewModel getAddTenantViewModel()
-  {
-    if (addTenantViewModel == null)
+    public static ViewModelFactory getInstance()
     {
-    addTenantViewModel = new AddTenantViewModel(ModelFactory.getInstance()
-        .getTenantsModel());
+        if (vmf == null) {
+            vmf = new ViewModelFactory(ModelFactory.getInstance());    // singleton does not allow for dependency injectioN
+        }
+        return vmf;
     }
-    return addTenantViewModel;
-  }
 
-  public TenantDetailsViewModel getTenantDetailsViewModel()
-  {
-    if (tenantDetailsViewModel == null)
+    public AddTenantViewModel getAddTenantViewModel()
     {
-      tenantDetailsViewModel = new TenantDetailsViewModel(ModelFactory.getInstance().getTenantsModel());
+        if (addTenantViewModel == null) {
+            addTenantViewModel = new AddTenantViewModel(ModelFactory.getInstance()
+                    .getTenantsModel());
+        }
+        return addTenantViewModel;
     }
-    return tenantDetailsViewModel;
-  }
 
-  public AddMunicipalityViewModel addMunicipalityViewModel()
-  {
-    if (addMunicipalityViewModel == null)
+    public TenantDetailsViewModel getTenantDetailsViewModel()
     {
-      addMunicipalityViewModel = new AddMunicipalityViewModel(ModelFactory.getInstance()
-          .getMunicipalitiesModel());
+        if (tenantDetailsViewModel == null) {
+            tenantDetailsViewModel = new TenantDetailsViewModel(ModelFactory.getInstance().getTenantsModel());
+        }
+        return tenantDetailsViewModel;
     }
-    return addMunicipalityViewModel;
-  }
 
-  public AddRegionalAdministratorViewModel getAddRegionalAdministratorViewModel()
-  {
-    if (addRegionalAdministratorViewModel == null)
+    public AddMunicipalityViewModel addMunicipalityViewModel()
     {
-      addRegionalAdministratorViewModel = new AddRegionalAdministratorViewModel(ModelFactory.getInstance()
-          .getMunicipalitiesModel());
+        if (addMunicipalityViewModel == null) {
+            addMunicipalityViewModel = new AddMunicipalityViewModel(ModelFactory.getInstance()
+                    .getMunicipalitiesModel());
+        }
+        return addMunicipalityViewModel;
     }
-    return addRegionalAdministratorViewModel;
-  }
 
-  public MunicipalityDetailsViewModel getMunicipalityDetailsViewModel()
-  {
-    if (municipalityDetailsViewModel == null)
+    public AddRegionalAdministratorViewModel getAddRegionalAdministratorViewModel()
     {
-      municipalityDetailsViewModel = new MunicipalityDetailsViewModel(ModelFactory.getInstance()
-          .getMunicipalitiesModel());
+        if (addRegionalAdministratorViewModel == null) {
+            addRegionalAdministratorViewModel = new AddRegionalAdministratorViewModel(ModelFactory.getInstance()
+                    .getMunicipalitiesModel());
+        }
+        return addRegionalAdministratorViewModel;
     }
-    return municipalityDetailsViewModel;
-  }
 
-  public MainViewModel getMainViewModel()
-  {
-    if (mainViewModel == null)
+    public MunicipalityDetailsViewModel getMunicipalityDetailsViewModel()
     {
-      mainViewModel = new MainViewModel(ModelFactory.getInstance().getMunicipalitiesModel());
+        if (municipalityDetailsViewModel == null) {
+            municipalityDetailsViewModel = new MunicipalityDetailsViewModel(ModelFactory.getInstance()
+                    .getMunicipalitiesModel());
+        }
+        return municipalityDetailsViewModel;
     }
-    return mainViewModel;
-  }
 
-  public LoginViewModel getLoginViewModel()
-  {
-    if (loginViewModel == null)
+    public MainViewModel getMainViewModel()
     {
-      loginViewModel = new LoginViewModel(ModelFactory.getInstance().getLoginModel());
+        if (mainViewModel == null) {
+            mainViewModel = new MainViewModel(ModelFactory.getInstance().getMunicipalitiesModel());
+        }
+        return mainViewModel;
     }
-    return loginViewModel;
-  }
 
-  public AddSummerHouseViewModel addSummerHouseViewModel()
-  {
-    if (addSummerHouseViewModel == null)
+    public LoginViewModel getLoginViewModel()
     {
-      addSummerHouseViewModel = new AddSummerHouseViewModel(ModelFactory.getInstance()
-          .getSummerHousesModel());
+        if (loginViewModel == null) {
+            loginViewModel = new LoginViewModel(ModelFactory.getInstance().getLoginModel());
+        }
+        return loginViewModel;
     }
-    return addSummerHouseViewModel;
-  }
 
-  public ManageSummerHouseModel getManageSummerHouseModel()
-  {
-
-    if (manageSummerHouseModel == null)
+    public AddSummerHouseViewModel addSummerHouseViewModel()
     {
-      manageSummerHouseModel = new ManageSummerHouseModel(
-          ModelFactory.getInstance().getSummerHousesModel());
+        if (addSummerHouseViewModel == null) {
+            addSummerHouseViewModel = new AddSummerHouseViewModel(ModelFactory.getInstance()
+                    .getSummerHousesModel());
+        }
+        return addSummerHouseViewModel;
     }
-    return manageSummerHouseModel;
-  }
 
-
-
-  public AddTenantViewModel addTenantViewModel()
-  {
-    if (addTenantViewModel == null)
+    public ManageSummerHouseModel getManageSummerHouseModel()
     {
-      addTenantViewModel = new AddTenantViewModel(ModelFactory.getInstance()
-          .getTenantsModel());
-    }
-    return addTenantViewModel;
-  }
 
+        if (manageSummerHouseModel == null) {
+            manageSummerHouseModel = new ManageSummerHouseModel(
+                    ModelFactory.getInstance().getSummerHousesModel());
+        }
+        return manageSummerHouseModel;
+    }
+
+
+    public AddTenantViewModel addTenantViewModel()
+    {
+        if (addTenantViewModel == null) {
+            addTenantViewModel = new AddTenantViewModel(ModelFactory.getInstance()
+                    .getTenantsModel());
+        }
+        return addTenantViewModel;
+    }
+
+
+    private SummerHousesListViewModel shlvm;
+
+    public SummerHousesListViewModel getSummerHousesListVM()
+    {
+        if (shlvm == null) {
+            shlvm = new SummerHousesListViewModel(modelf.getSummerHousesManager(),
+                    modelf.getLoginModel().getCurrentUser());
+        }
+
+        return shlvm;
+    }
 }

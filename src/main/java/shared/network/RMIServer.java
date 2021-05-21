@@ -2,6 +2,7 @@ package shared.network;
 
 
 import shared.businesslogic.BookingsManager;
+import shared.businesslogic.SummerHousesManager;
 import shared.domain.*;
 import shared.transferobjects.User;
 
@@ -26,5 +27,7 @@ public interface RMIServer extends Remote
 
 
   BookingsManager getBookingsManager() throws RemoteException;
+
+  SummerHousesManager getSummerHousesManager() throws RemoteException;
 
 }

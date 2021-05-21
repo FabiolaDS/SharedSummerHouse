@@ -1,8 +1,6 @@
 package shared.domain;
 
 import javafx.scene.image.Image;
-import shared.domain.Municipality;
-import shared.domain.Review;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,11 +20,12 @@ public class SummerHouse implements Serializable
     private String description;
     private int houseNumber;
     private int pricePerNight;
-    private double avgRating;//derived attribute(no need for field)
-    private boolean isAvailable;//derived attribute
+    private double avgRating;       //derived attribute(no need for field)
+    private boolean isAvailable;    //derived attribute
+    private int capacity;
 
     public SummerHouse(String title, String region, String street,
-        int postCode, String description, int houseNumber, int pricePerNight)
+        int postCode, String description, int houseNumber, int pricePerNight, int capacity)
     {
         images = new ArrayList<>();
         sharedWith = new ArrayList<>();
@@ -37,13 +36,13 @@ public class SummerHouse implements Serializable
         this.description = description;
         this.houseNumber = houseNumber;
         this.pricePerNight = pricePerNight;
-
+        this.capacity = capacity;
 
 
         System.out.println("New Summerhouse has been created");
     }
 
-    public void SummerHouse(){}
+    public SummerHouse(){}
 
 
     public Long getId() {
@@ -168,5 +167,15 @@ public class SummerHouse implements Serializable
     public boolean isAvailable()
     {
         return isAvailable;
+    }
+
+    public int getCapacity()
+    {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity)
+    {
+        this.capacity = capacity;
     }
 }

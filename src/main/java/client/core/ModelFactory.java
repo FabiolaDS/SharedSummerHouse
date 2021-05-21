@@ -8,62 +8,60 @@ import client.model.summerhouses.ManageSummerHouses;
 import client.model.summerhouses.ManageSummerHousesImpl;
 import client.model.tenants.TenantsModel;
 import client.model.tenants.ManageTenantsModelImpl;
+import shared.businesslogic.SummerHousesManager;
 
 public class ModelFactory
 {
-  private static ModelFactory modelFactory;
-  private ManageMunicipalities manageMunicipalities;
-  private ManageSummerHouses manageSummerHouses;
-  private TenantsModel tenantsModel;
-  private LoginModel loginModel;
+    private static ModelFactory modelFactory;
+    private ManageMunicipalities manageMunicipalities;
+    private ManageSummerHouses manageSummerHouses;
+    private TenantsModel tenantsModel;
+    private LoginModel loginModel;
 
-  private ModelFactory()
-  {
+    private ModelFactory() {}
 
-  }
-  public static ModelFactory getInstance()
-  {
-    if (modelFactory == null)
+    public static ModelFactory getInstance()
     {
-      modelFactory = new ModelFactory();
+        if (modelFactory == null) {
+            modelFactory = new ModelFactory();
+        }
+        return modelFactory;
     }
-    return modelFactory;
-  }
 
-  public ManageMunicipalities getMunicipalitiesModel()
-  {
-    if (manageMunicipalities == null)
+    public ManageMunicipalities getMunicipalitiesModel()
     {
-      manageMunicipalities = new ManageMunicipalitiesImpl();
+        if (manageMunicipalities == null) {
+            manageMunicipalities = new ManageMunicipalitiesImpl();
+        }
+        return manageMunicipalities;
     }
-    return manageMunicipalities;
-  }
 
-  public ManageSummerHouses getSummerHousesModel()
-  {
-    if (manageSummerHouses == null)
+    public ManageSummerHouses getSummerHousesModel()
     {
-      manageSummerHouses = new ManageSummerHousesImpl();
+        if (manageSummerHouses == null) {
+            manageSummerHouses = new ManageSummerHousesImpl();
+        }
+        return manageSummerHouses;
     }
-    return manageSummerHouses;
-  }
 
-  public TenantsModel getTenantsModel()
-  {
-    if (tenantsModel == null)
+    public TenantsModel getTenantsModel()
     {
-      tenantsModel = new ManageTenantsModelImpl();
+        if (tenantsModel == null) {
+            tenantsModel = new ManageTenantsModelImpl();
+        }
+        return tenantsModel;
     }
-    return tenantsModel;
-  }
 
-  public LoginModel getLoginModel()
-  {
-    if (loginModel == null)
+    public LoginModel getLoginModel()
     {
-      loginModel = new LoginModelManager(ClientFactory.getClientFactory()
-          .getClient());
+        if (loginModel == null) {
+            loginModel = new LoginModelManager(ClientFactory.getClientFactory()
+                    .getClient());
+        }
+        return loginModel;
     }
-    return loginModel;
-  }
+
+    public SummerHousesManager getSummerHousesManager() {
+        return ClientFactory.getClientFactory().getClient().getSummerHousesManager();
+    }
 }
