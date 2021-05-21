@@ -26,9 +26,7 @@ public class BookingsManagerImpl extends UnicastRemoteObject implements Bookings
     @Override
     public void book(SummerHouse house, Tenant tenant, LocalDate from, LocalDate to) throws RemoteException
     {
-        ArrayList<Tenant> tenants = new ArrayList<>();
-        tenants.add(tenant);
-        Booking booking = new Booking(from, to, tenants, house);
+        Booking booking = new Booking(from, to, tenant, house);
         dao.save(booking);
     }
 }
