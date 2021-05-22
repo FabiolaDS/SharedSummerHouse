@@ -10,6 +10,7 @@ import shared.transferobjects.EventType;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.rmi.RemoteException;
 
 public class ManageMunicipalitiesImpl implements ManageMunicipalities
 {
@@ -34,7 +35,11 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities
 
   @Override public void addMunicipality(Municipality municipality)
   {
-    client.addMunicipality(municipality);
+    try {
+      client.addMunicipality(municipality);
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override public void getMunicipalities(PropertyChangeEvent event)
@@ -44,13 +49,23 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities
 
   @Override public Municipality getMunicipality(String id)
   {
-    return client.getMunicipality(id);
+    Municipality municipality = null;
+    try {
+      municipality = client.getMunicipality(id);
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
+    return municipality;
   }
 
   @Override public void addRegionalAdmin(RegionalAdmin regionalAdmin,
       String municipalityId)
   {
+    try {
       client.addRegionalAdmin(regionalAdmin, municipalityId);
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override public void addPropertyChangeListener(String name,

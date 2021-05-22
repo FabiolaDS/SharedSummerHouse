@@ -16,8 +16,8 @@ public class AddMunicipalityViewModel {
 
     }
 
-    public void addMunicipality(String name, String region, String id)
+    public void addMunicipality(String name, String region, String municipality_id)
     {
-        municipalitiesModel.addMunicipality(new Municipality(name, region, id));
+        municipalitiesModel.addMunicipality(new Municipality(name, region, municipality_id));
     }
 }

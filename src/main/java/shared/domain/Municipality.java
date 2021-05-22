@@ -25,6 +25,8 @@ public class Municipality implements Serializable
     System.out.println("New Municipality has been created");
   }
 
+
+
   public void addSummerHouse(SummerHouse house) {
     summerhouses.add(house);
   }

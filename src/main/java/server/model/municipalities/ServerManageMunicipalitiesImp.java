@@ -1,5 +1,6 @@
 package server.model.municipalities;
 
+import server.dataaccess.MunicipalityDAOImpl;
 import shared.domain.Municipality;
 import shared.domain.MunicipalityList;
 import shared.domain.RegionalAdmin;
@@ -7,6 +8,7 @@ import shared.util.PropertyChangeSubject;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,10 +35,15 @@ DUMMY DATA TO SIMULATE DATABASE
     MunicipalityList municipalityList = new MunicipalityList();
 
     @Override
-    public Municipality addMunicipality(Municipality municipality) {
+    public List<Municipality> addMunicipality(Municipality municipality) throws SQLException {
      //TODO: CONNECT TO DATABASE
-        municipalityList.add(municipality);
-      return municipality;
+        try {
+            MunicipalityDAOImpl.getInstance().create(municipality.getId(), municipality.getName(), municipality.getRegion());
+        } catch (SQLException throwable) {
+            System.out.println("not possible to ");
+            throwable.printStackTrace();
+        }
+        return getAllMunicipalities();
     }
 
     @Override public Municipality setRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId)
@@ -46,8 +53,20 @@ DUMMY DATA TO SIMULATE DATABASE
     }
 
     @Override public Municipality getMunicipality(String id)
-    {
-        return municipalityList.getMunicipalityById(id);
+    { Municipality municipality = null;
+        try {
+             municipality = MunicipalityDAOImpl.getInstance().getById(id);
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        return municipality;
+    }
+
+    @Override
+    public List<Municipality> getAllMunicipalities() throws SQLException {
+
+return MunicipalityDAOImpl.getInstance().getAll();
     }
 
     @Override public void addPropertyChangeListener(String name,
