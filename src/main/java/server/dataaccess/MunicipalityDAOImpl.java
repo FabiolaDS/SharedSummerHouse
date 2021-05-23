@@ -25,11 +25,12 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO{
     public Municipality create(String municipality_id, String name, String region) throws SQLException {
 
         try(Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO \"shared_summerhouse\".\"municipality\" VALUES (?, ?, ?, ?, null)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO \"shared_summerhouse\".\"municipality\" VALUES (?, ?, ?, ?, ?)");
             statement.setString(1, municipality_id);
             statement.setString(2, name);
             statement.setString(3, region);
             statement.setString(4, "180576-2412");
+            statement.setString(5, null);
             statement.executeUpdate();
              return new Municipality(name, region, municipality_id);
         }

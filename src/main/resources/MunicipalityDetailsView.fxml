@@ -47,40 +47,39 @@
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="196.0" minWidth="10.0" prefWidth="183.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="49.4" minHeight="10.0" prefHeight="23.6" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="49.4" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="40.599999999999994" minHeight="10.0" prefHeight="34.4" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="CPR number: " GridPane.rowIndex="1" />
-                  <HBox GridPane.rowIndex="2">
+                  <Label text="CPR: " />
+                  <HBox GridPane.rowIndex="1">
                      <children>
                         <Label text="First name: " />
                         <Label fx:id="fnameLabel" text="Label" />
                      </children>
                   </HBox>
-                  <HBox GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <HBox GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <Label text="Last name: " />
                         <Label fx:id="nameLabel" text="Label" />
                      </children>
                   </HBox>
-                  <HBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <HBox GridPane.columnIndex="1">
                      <children>
                         <Label text="Middle Name: " />
                         <Label fx:id="emailLabel" text="Label" />
                      </children>
                   </HBox>
-                  <GridPane GridPane.rowIndex="1">
+                  <GridPane>
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.40000381469727" minWidth="10.0" prefWidth="76.40000381469727" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="103.99999618530273" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.8" minWidth="10.0" prefWidth="27.799999999999997" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.59999999999997" minWidth="10.0" prefWidth="190.59999999999997" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <HBox />
+                        <HBox prefHeight="26.0" prefWidth="87.0" />
                         <Label fx:id="cprLabel" prefHeight="18.0" prefWidth="28.0" text="Label" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
