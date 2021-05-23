@@ -39,18 +39,31 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO{
 
     @Override
     public Municipality getById(String municipality_id) throws SQLException {
+        Municipality municipality = null;
         try(Connection connection = getConnection()) {
+
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"shared_summerhouse\".\"municipality\" WHERE municipality_id = ?");
             statement.setString(1, municipality_id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 String name = resultSet.getString("name");
                 String region = resultSet.getString("region");
-                return new Municipality(name, region, municipality_id);
-            } else {
-                return new Municipality("-", "-", "-");
+                String regional_admin_cpr = resultSet.getString("regional_admin_cpr");
+
+                if (regional_admin_cpr == null) {
+                    municipality = new Municipality(name, region, municipality_id);
+                }
+                else if (municipality_id != null)
+                {
+                    municipality = new Municipality(name,region,municipality_id,regional_admin_cpr);
+                }
+            }
+             else if  (municipality_id != null)
+             {
+                municipality = new Municipality("-", "-", "-");
             }
         }
+        return municipality;
     }
 
     @Override
@@ -64,8 +77,17 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO{
                 String name = resultSet.getString("name");
                 String region = resultSet.getString("region");
                 String municipality_id = resultSet.getString("municipality_id");
+                String regional_admin_cpr = resultSet.getString("regional_admin_cpr");
 
-                Municipality municipality = new Municipality(name, region, municipality_id);
+                Municipality municipality = null;
+                if (regional_admin_cpr == null)
+                {
+                    municipality = new Municipality(name, region, municipality_id);
+                }
+                else{
+                    municipality = new Municipality(name, region,municipality_id, regional_admin_cpr);
+                }
+
                 result.add(municipality);
             }
             return result;
@@ -75,6 +97,11 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO{
 
     @Override
     public void update(Municipality municipality) throws SQLException {
-
+//UPDATE "shared_summerhouse"."municipality" SET regional_admin_cpr = '241263-9865' WHERE	municipality_id = '175'
+        try(Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"shared_summerhouse\".\"municipality\" SET regional_admin_cpr = ? WHERE municipality_id = ?");
+            statement.setString(1, municipality.getRegionalAdminCPR());
+            statement.setString(2,municipality.getId());
+            statement.executeUpdate();
     }
-}
+}}

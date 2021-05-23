@@ -1,15 +1,14 @@
 package server.model.municipalities;
 
 import server.dataaccess.MunicipalityDAOImpl;
+import server.dataaccess.RegionalAdminDAOImpl;
 import shared.domain.Municipality;
 import shared.domain.MunicipalityList;
 import shared.domain.RegionalAdmin;
-import shared.util.PropertyChangeSubject;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities {
@@ -41,16 +40,36 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
         try {
             MunicipalityDAOImpl.getInstance().create(municipality.getId(), municipality.getName(), municipality.getRegion());
         } catch (SQLException throwable) {
-            System.out.println("Not insert Municipality into DATABASE");
+            System.out.println("Not possible to insert Municipality into DATABASE");
             throwable.printStackTrace();
         }
         return getAllMunicipalities();
     }
 
     @Override
-    public Municipality setRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId) {
-        municipalityList.setRegionalAdministrator(regionalAdmin, municipalityId);
-        return municipalityList.getMunicipalityById(municipalityId);
+    public List<Municipality> setRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId) {
+        System.out.println("-----------------> Server model ");
+        List<Municipality> municipalities = null;
+        try {
+            //FIRST: Create Regional Administrator
+           RegionalAdmin regionalAdmin1 = RegionalAdminDAOImpl.getInstance().create(regionalAdmin.getCpr(), regionalAdmin.getFirstname(),
+                    regionalAdmin.getMName(), regionalAdmin.getLastname(), regionalAdmin.getPassword(),
+                    municipalityId);
+            System.out.println(regionalAdmin);
+
+
+            //SECOND: update municipality
+            Municipality municipality = MunicipalityDAOImpl.getInstance().getById(municipalityId);
+            municipality.setRegionalAdmin(regionalAdmin1);
+            System.out.println(municipality.getRegionalAdminCPR());
+            MunicipalityDAOImpl.getInstance().update(municipality);
+
+            //THIRD: update list of municipalities with the changes
+            municipalities = MunicipalityDAOImpl.getInstance().getAll();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return municipalities;
     }
 
     @Override

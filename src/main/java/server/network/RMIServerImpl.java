@@ -80,13 +80,27 @@ public class RMIServerImpl implements RMIServer
   @Override public Municipality getMunicipality(String id)
       throws RemoteException
   {
-    return municipalitiesModel.getMunicipality(id);
+    Municipality municipality = null;
+    try {
+      municipality = municipalitiesModel.getMunicipality(id);
+    } catch (SQLException throwables) {
+      throwables.printStackTrace();
+    }
+    return municipality;
   }
 
-  @Override public Municipality addRegionalAdmin(RegionalAdmin regionalAdmin,
-      String municipalityID) throws RemoteException
+  @Override public List<Municipality> addRegionalAdmin(RegionalAdmin regionalAdmin,
+                                                       String municipalityID)
   {
-    return municipalitiesModel.setRegionalAdmin(regionalAdmin, municipalityID);
+    System.out.println("SERVER calling server model to add RA");
+      List<Municipality> municipalities = null;
+    try {
+      municipalities =  municipalitiesModel.setRegionalAdmin(regionalAdmin, municipalityID);
+    } catch (SQLException throwables) {
+      throwables.printStackTrace();
+    }
+   return municipalities;
+
   }
 
 
@@ -124,11 +138,6 @@ public class RMIServerImpl implements RMIServer
     }
   }
 
-  @Override public ArrayList<MunicipalityList> getMunicipalities()
-      throws RemoteException
-  {
-    return null;
-  }
 
   @Override public Municipality getMunicipality(Long id) throws RemoteException
   {

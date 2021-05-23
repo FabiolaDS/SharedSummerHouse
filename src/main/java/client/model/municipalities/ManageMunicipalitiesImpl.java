@@ -65,7 +65,9 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities {
     public void addRegionalAdmin(RegionalAdmin regionalAdmin,
                                  String municipalityId) {
         /*    try {*/
+      System.out.println("model calling to the client to add RA");
         client.addRegionalAdmin(regionalAdmin, municipalityId);
+
         /*} *//*catch (RemoteException e) {
       e.printStackTrace();
     }*/

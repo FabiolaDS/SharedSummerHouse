@@ -8,16 +8,16 @@ public class RegionalAdmin  implements Serializable
   private String cpr;
   private String firstname;
   private String lastname;
-  private String email;
+  private String mname;
   private String password;
 
   public RegionalAdmin(String cpr, String firstname, String lastname,
-      String email, String password)
+      String mname, String password)
   {
     this.cpr = cpr;
     this.firstname = firstname;
     this.lastname = lastname;
-    this.email = email;
+    this.mname = mname;
     this.password = password;
     System.out.println("Regional Admin has been created");
   }
@@ -52,14 +52,12 @@ public class RegionalAdmin  implements Serializable
     this.lastname = lastname;
   }
 
-  public String getEmail()
-  {
-    return email;
+  public String getMName() {
+    return mname;
   }
 
-  public void setEmail(String email)
-  {
-    this.email = email;
+  public void setMName(String mname) {
+    this.mname = mname;
   }
 
   public String getPassword()
