@@ -13,19 +13,18 @@ import java.io.IOException;
 public class ViewHandler
 {
     private Stage stage;
-
     private ViewModelFactory vmf;
 
     public ViewHandler(ViewModelFactory vmf, Stage primaryStage) {
         this.vmf = vmf;
         stage = primaryStage;
 
-        stage.setScene(new Scene(new Label("first")));
         stage.show();
     }
 
     public void openSummerHouseList() {
-        stage.getScene().setRoot(load("/summerhouseList.fxml", new SummerHousesListView(vmf.getSummerHousesListVM())));
+        stage.setScene(new Scene(load("/summerhouseList.fxml",
+                new SummerHousesListView(vmf.getSummerHousesListVM()))));
     }
 
     protected Parent load(String path, Object controller) {

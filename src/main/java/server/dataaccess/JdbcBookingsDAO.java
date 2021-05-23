@@ -13,15 +13,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookingsDAOImpl extends DatabaseDAO implements BookingDAO
+public class JdbcBookingsDAO extends DatabaseDAO implements BookingDAO
 {
+
+    public JdbcBookingsDAO() {
+        super("booking");
+    }
 
     @Override
     public void save(Booking b)
     {
         try(Connection con = getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO shared_summerhouse.booking (date_from, date_to, total_price, summerhouse_id, tenant_cpr)" +
+                    "INSERT INTO " + getFullTableName() + " (date_from, date_to, total_price, summerhouse_id, tenant_cpr)" +
                             "VALUES (?, ?, ?, ?, ?)");
             ps.setObject(1, b.getDateFrom());
             ps.setObject(2, b.getDateTo());
@@ -41,8 +45,8 @@ public class BookingsDAOImpl extends DatabaseDAO implements BookingDAO
     {
         try(Connection con = getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT date_from, date_to, summerhouse_id, tenant_cpr FROM shared_summerhouse.bookings " +
-                            "WHERE b.summerhouse_id = ?");
+                    "SELECT date_from, date_to, summerhouse_id, tenant_cpr FROM " + getFullTableName() +
+                            " WHERE b.summerhouse_id = ?");
             ps.setObject(1, house.getId());
 
             ResultSet rs = ps.executeQuery();
@@ -70,8 +74,8 @@ public class BookingsDAOImpl extends DatabaseDAO implements BookingDAO
     {
         try(Connection con = getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT date_from, date_to, summerhouse_id, tenant_cpr FROM shared_summerhouse.bookings " +
-                            "WHERE b.tenant_cpr = ?");
+                    "SELECT date_from, date_to, summerhouse_id, tenant_cpr FROM " + getFullTableName() +
+                            " WHERE b.tenant_cpr = ?");
             ps.setObject(1, tenant.getCpr());
 
             ResultSet rs = ps.executeQuery();
@@ -99,7 +103,7 @@ public class BookingsDAOImpl extends DatabaseDAO implements BookingDAO
     {
         try(Connection con = getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "DELETE FROM shared_summerhouse.bookings WHERE summerhouse_id = ? AND date_from = ? AND date_to = ?");
+                    "DELETE FROM " + getFullTableName() + " WHERE summerhouse_id = ? AND date_from = ? AND date_to = ?");
             ps.setObject(1, b.getSummerHouse().getId());
             ps.setObject(2, b.getDateFrom());
             ps.setObject(3, b.getDateTo());

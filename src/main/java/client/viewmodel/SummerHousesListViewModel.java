@@ -29,7 +29,6 @@ public class SummerHousesListViewModel
         canEdit.set(!currentUser.getUserType().equals("Tenant"));
 
         try {
-            System.out.println("MANAGER: " + manager);
             this.summerhouses = FXCollections.observableArrayList(manager.getAllSummerHouses());
         } catch (RemoteException e) {
             throw new RuntimeException(e);

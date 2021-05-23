@@ -35,9 +35,7 @@ public class AddSummerHouseViewController implements ViewController
 
   public void onCreateSummerHouse(javafx.event.ActionEvent actionEvent)
   {
-    addSummerHouseViewModel.addSummerHouse(regionField.getText(),streetField.getText(),
-        titleField.getText(), descriptionField.getText(), pricePrNightField.getColumns(),
-        postCodeField.getColumns(), houseNumberField.getColumns());
+    addSummerHouseViewModel.addSummerHouse();   // no args should be passed to viewmodel method call, everything should be taken from bound properties
 
     viewHandler.openAddSummerHousesView();
     reset();

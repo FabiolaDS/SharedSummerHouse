@@ -10,6 +10,7 @@ public class UserDAOImpl extends DatabaseDAO implements UserDAO
 
   private UserDAOImpl() throws SQLException
   {
+    super("");
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
 

@@ -11,6 +11,7 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO{
     private static MunicipalityDAOImpl instance;
 
     private MunicipalityDAOImpl() throws SQLException {
+        super("municipality");
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
 

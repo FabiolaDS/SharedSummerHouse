@@ -21,20 +21,54 @@ public class RegionalAdmin  implements Serializable
     this.password = password;
     System.out.println("Regional Admin has been created");
   }
+
   public String getCpr()
   {
     return cpr;
   }
 
-  public String getFirstname() {
+  public void setCpr(String cpr)
+  {
+    this.cpr = cpr;
+  }
+
+  public String getFirstname()
+  {
     return firstname;
   }
 
-  public String getLastname() {
+  public void setFirstname(String firstname)
+  {
+    this.firstname = firstname;
+  }
+
+  public String getLastname()
+  {
     return lastname;
   }
 
-  public String getEmail() {
+  public void setLastname(String lastname)
+  {
+    this.lastname = lastname;
+  }
+
+  public String getEmail()
+  {
     return email;
+  }
+
+  public void setEmail(String email)
+  {
+    this.email = email;
+  }
+
+  public String getPassword()
+  {
+    return password;
+  }
+
+  public void setPassword(String password)
+  {
+    this.password = password;
   }
 }

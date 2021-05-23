@@ -3,7 +3,6 @@ package server.dataaccess;
 import shared.domain.SummerHouse;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface SummerHousesDAO
 {
