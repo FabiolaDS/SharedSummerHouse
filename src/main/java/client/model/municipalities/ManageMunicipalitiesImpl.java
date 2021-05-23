@@ -61,7 +61,12 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities {
     return client.getAllMunicipalities();
   }
 
-  @Override
+    @Override
+    public RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR) {
+        return client.getRegionalAdminByCPR(regionalAdminCPR);
+    }
+
+    @Override
     public void addRegionalAdmin(RegionalAdmin regionalAdmin,
                                  String municipalityId) {
         /*    try {*/

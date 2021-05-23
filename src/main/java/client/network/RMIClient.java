@@ -42,7 +42,6 @@ public class RMIClient implements Client, ClientCallback {
     }
 
 
-
     @Override
     public void login(User user) {
         try {
@@ -97,58 +96,47 @@ public class RMIClient implements Client, ClientCallback {
     }
 
 
+    @Override
+    public void updateMunicipalities() throws RemoteException {
 
-  @Override public void updateMunicipalities() throws RemoteException
-  {
-
-  }
-
-  @Override public void updateMunicipality() throws RemoteException
-  {
-
-  }
-
-  @Override public ArrayList<SummerHouse> getSummerHouses()
-
-  {
-    ArrayList<SummerHouse> summerHouseList = new ArrayList<>();
-    try
-    {
-      summerHouseList = server.getSummerHouses();
     }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
+
+    @Override
+    public void updateMunicipality() throws RemoteException {
+
     }
-    return summerHouseList;
-  }
-  @Override public void addSummerHouse(SummerHouse summerHouse)
-  {
-    try
-    {
-      support.firePropertyChange(EventType.SUMMERHOUSE.toString(), null,
-          server.addSummerHouse(summerHouse));
+
+    @Override
+    public ArrayList<SummerHouse> getSummerHouses() {
+        ArrayList<SummerHouse> summerHouseList = new ArrayList<>();
+        try {
+            summerHouseList = server.getSummerHouses();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return summerHouseList;
     }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
+
+    @Override
+    public void addSummerHouse(SummerHouse summerHouse) {
+        try {
+            support.firePropertyChange(EventType.SUMMERHOUSE.toString(), null,
+                    server.addSummerHouse(summerHouse));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
-  }
 
 
-
-  @Override public void addTenant(Tenant tenants)
-  {
-    try
-    {
-      support.firePropertyChange(EventType.TENANTS.toString(), null,
-          server.addTenant(tenants));
+    @Override
+    public void addTenant(Tenant tenants) {
+        try {
+            support.firePropertyChange(EventType.TENANTS.toString(), null,
+                    server.addTenant(tenants));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
-    }
-  }
 
     @Override
     public BookingsManager getBookingsManager() {
@@ -160,11 +148,10 @@ public class RMIClient implements Client, ClientCallback {
     }
 
     @Override
-    public SummerHousesManager getSummerHousesManager()
-    {
+    public SummerHousesManager getSummerHousesManager() {
         try {
             return server.getSummerHousesManager();
-        } catch(RemoteException e) {        // critical error, shutdown
+        } catch (RemoteException e) {        // critical error, shutdown
             throw new RuntimeException(e);
         }
     }
@@ -180,21 +167,29 @@ public class RMIClient implements Client, ClientCallback {
         return municipalities;
     }
 
-    @Override public ArrayList<Tenant> getTenants()
-  {
-    ArrayList<Tenant> tenants = new ArrayList<>();
-    try
-    {
-      tenants = server.getTenants();
+    @Override
+    public RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR) {
+        RegionalAdmin regionalAdmin = null;
+        try {
+            regionalAdmin = server.getRegionalAdminByCPR(regionalAdminCPR);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return regionalAdmin;
     }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
-    }
-    return tenants;
-  }
 
-  @Override
+    @Override
+    public ArrayList<Tenant> getTenants() {
+        ArrayList<Tenant> tenants = new ArrayList<>();
+        try {
+            tenants = server.getTenants();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return tenants;
+    }
+
+    @Override
     public void updates(String eventType, Object update)
             throws RemoteException {
         // Could include different if statements for the different events

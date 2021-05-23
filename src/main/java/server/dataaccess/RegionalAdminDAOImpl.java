@@ -15,8 +15,7 @@ public class RegionalAdminDAOImpl extends DatabaseDAO implements RegionalAdminDA
     }
 
     public static synchronized RegionalAdminDAOImpl getInstance() throws SQLException {
-        if (instance == null)
-        {
+        if (instance == null) {
             instance = new RegionalAdminDAOImpl();
         }
         return instance;
@@ -37,14 +36,29 @@ public class RegionalAdminDAOImpl extends DatabaseDAO implements RegionalAdminDA
             statement.setString(7, municipality_id);
             statement.executeUpdate();
 
-            return new RegionalAdmin(regional_admin_cpr, fname, lname ,mname, password);
+            return new RegionalAdmin(regional_admin_cpr, fname, lname, mname, password);
 
         }
     }
 
     @Override
     public RegionalAdmin getById(String id) throws SQLException {
-        return null;
+        try (Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"shared_summerhouse\".\"regional_admin\" WHERE regional_admin_cpr = ?");
+            statement.setString(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String regional_admin_cpr = resultSet.getString("regional_admin_cpr");
+                String fname = resultSet.getString("fname");
+                String mname = resultSet.getString("mname");
+                String lname = resultSet.getString("lname");
+
+                RegionalAdmin regionalAdmin = new RegionalAdmin(regional_admin_cpr, fname, mname, lname);
+                return regionalAdmin;
+            } else {
+                return null;
+            }
+        }
     }
 
     @Override

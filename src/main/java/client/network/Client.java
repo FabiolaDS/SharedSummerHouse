@@ -37,4 +37,6 @@ public interface Client extends PropertyChangeSubject {
     SummerHousesManager getSummerHousesManager();
 
     List<Municipality> getAllMunicipalities();
+
+    RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR);
 }

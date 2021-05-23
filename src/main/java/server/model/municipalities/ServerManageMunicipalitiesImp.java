@@ -92,6 +92,11 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     }
 
     @Override
+    public RegionalAdmin getRegioinalAdminCPR(String regionalAdminCPR) throws SQLException {
+        return RegionalAdminDAOImpl.getInstance().getById(regionalAdminCPR);
+    }
+
+    @Override
     public void addPropertyChangeListener(String name,
                                           PropertyChangeListener listener) {
         if (name == null) {
