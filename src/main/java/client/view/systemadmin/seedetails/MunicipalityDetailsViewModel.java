@@ -4,7 +4,6 @@ package client.view.systemadmin.seedetails;
 import client.model.municipalities.ManageMunicipalities;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
 import shared.domain.Municipality;
 
 public class MunicipalityDetailsViewModel {
@@ -26,6 +25,22 @@ public class MunicipalityDetailsViewModel {
         email = new SimpleStringProperty("");
     }
 
+    public void getMunicipalityDetailsId(String id)
+    {
+        Municipality municipality = model.getMunicipality(id);
+        setName(municipality.getName());
+        setId(municipality.getId());
+        setRegion(municipality.getRegion());
+
+        if (municipality.getRegionalAdmin() != null)
+        {
+            setCpr(municipality.getRegionalAdmin().getCpr());
+            setEmail(municipality.getRegionalAdmin().getMName());
+            setFirstName(municipality.getRegionalAdmin().getFirstname());
+            setLastName(municipality.getRegionalAdmin().getLastname());
+        }
+
+    }
 
     public StringProperty cprProperty()
     {
@@ -113,21 +128,5 @@ public class MunicipalityDetailsViewModel {
     }
 
 
-    public void getMunicipalityDetailsId(String id)
-    {
-       Municipality municipality = model.getMunicipality(id);
-       setName(municipality.getName());
-       setId(municipality.getId());
-       setRegion(municipality.getRegion());
-
-       if (municipality.getRegionalAdmin() != null)
-       {
-           setCpr(municipality.getRegionalAdmin().getCpr());
-           setEmail(municipality.getRegionalAdmin().getEmail());
-           setFirstName(municipality.getRegionalAdmin().getFirstname());
-           setLastName(municipality.getRegionalAdmin().getLastname());
-       }
-
-    }
 
 }

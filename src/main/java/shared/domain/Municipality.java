@@ -25,6 +25,13 @@ public class Municipality implements Serializable
     System.out.println("New Municipality has been created");
   }
 
+  public Municipality(String name, String region, String municipality_id, String regional_admin_cpr) {
+    this.name = name;
+    this.regionalAdminCPR = regional_admin_cpr;
+    this.id = municipality_id;
+    this.region = region;
+    System.out.println(this.regionalAdminCPR);
+  }
 
 
   public void addSummerHouse(SummerHouse house) {
@@ -56,7 +63,7 @@ public class Municipality implements Serializable
 
   public String getRegionalAdminCPR()
   {
-    return regionalAdminCPR;
+    return this.regionalAdminCPR;
   }
 
   public String getName()

@@ -81,6 +81,7 @@ public class RMIClient implements Client, ClientCallback {
         try {
             support.firePropertyChange(EventType.REGIONALADMIN.toString(), null,
                     server.addRegionalAdmin(regionalAdmin, municipalityId));
+            System.out.println("client calling server to add RA");
         } catch (RemoteException e) {
             e.printStackTrace();
         }

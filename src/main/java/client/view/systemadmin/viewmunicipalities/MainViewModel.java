@@ -29,8 +29,9 @@ public class MainViewModel
 
   private void updateMunicipalities(PropertyChangeEvent propertyChangeEvent)
   {
-       Platform.runLater(() -> municipalities.add((Municipality) propertyChangeEvent.getNewValue()));
-       municipalities.removeIf(municipality -> equals(propertyChangeEvent.getNewValue()));
+       municipalities.clear();
+       Platform.runLater(() -> municipalities.setAll((List<Municipality>) propertyChangeEvent.getNewValue()));
+
   }
   private void newMunicipality(PropertyChangeEvent propertyChangeEvent) {
     municipalities.clear();
