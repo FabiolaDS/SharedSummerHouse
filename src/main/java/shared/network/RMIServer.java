@@ -44,4 +44,5 @@ public interface RMIServer extends Remote {
     ArrayList<Tenant> getTenants() throws RemoteException;
 
 
+    RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR) throws RemoteException;
 }

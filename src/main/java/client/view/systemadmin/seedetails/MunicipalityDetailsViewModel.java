@@ -5,6 +5,7 @@ import client.model.municipalities.ManageMunicipalities;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.domain.Municipality;
+import shared.domain.RegionalAdmin;
 
 public class MunicipalityDetailsViewModel {
     private ManageMunicipalities model;
@@ -28,16 +29,17 @@ public class MunicipalityDetailsViewModel {
     public void getMunicipalityDetailsId(String id)
     {
         Municipality municipality = model.getMunicipality(id);
+        RegionalAdmin regionalAdmin = model.getRegionalAdminByCPR(municipality.getRegionalAdminCPR());
         setName(municipality.getName());
         setId(municipality.getId());
         setRegion(municipality.getRegion());
 
-        if (municipality.getRegionalAdmin() != null)
+        if (municipality.getRegionalAdminCPR() != null)
         {
-            setCpr(municipality.getRegionalAdmin().getCpr());
-            setEmail(municipality.getRegionalAdmin().getMName());
-            setFirstName(municipality.getRegionalAdmin().getFirstname());
-            setLastName(municipality.getRegionalAdmin().getLastname());
+            setCpr(regionalAdmin.getCpr());
+            setEmail(regionalAdmin.getMName());
+            setFirstName(regionalAdmin.getFirstname());
+            setLastName(regionalAdmin.getLastname());
         }
 
     }

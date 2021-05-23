@@ -14,4 +14,6 @@ public interface ServerManageMunicipalities extends PropertyChangeSubject
                                       String municipalityId) throws SQLException;
   Municipality getMunicipality(String id) throws SQLException;
   List<Municipality> getAllMunicipalities() throws SQLException;
+
+  RegionalAdmin getRegioinalAdminCPR(String regionalAdminCPR) throws SQLException;
 }
