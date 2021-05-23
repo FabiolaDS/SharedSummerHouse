@@ -11,6 +11,7 @@ public class RegionalAdminDAOImpl extends DatabaseDAO implements RegionalAdminDA
     private static RegionalAdminDAOImpl instance;
 
     private RegionalAdminDAOImpl() throws SQLException {
+        super("regional_admin");
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
 
@@ -52,8 +53,9 @@ public class RegionalAdminDAOImpl extends DatabaseDAO implements RegionalAdminDA
                 String fname = resultSet.getString("fname");
                 String mname = resultSet.getString("mname");
                 String lname = resultSet.getString("lname");
+                String password = resultSet.getString("password");
 
-                RegionalAdmin regionalAdmin = new RegionalAdmin(regional_admin_cpr, fname, mname, lname);
+                RegionalAdmin regionalAdmin = new RegionalAdmin(regional_admin_cpr, fname, mname, lname, password);
                 return regionalAdmin;
             } else {
                 return null;
