@@ -1,9 +1,5 @@
 package server.network;
 
-import server.dataaccess.DummyBookingsDAO;
-import server.dataaccess.DummySummerHousesDAO;
-import server.model.BookingsManagerImpl;
-import server.model.SummerHousesManagerImpl;
 import server.model.login.LoginModel;
 import server.model.login.LoginModelManager;
 import server.model.municipalities.ServerManageMunicipalities;
@@ -30,6 +26,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RMIServerImpl implements RMIServer
@@ -69,10 +66,15 @@ public class RMIServerImpl implements RMIServer
     return loginModel.validateUser(user);
   }
 
-  @Override public Municipality addMunicipality(Municipality municipality)
+  @Override public List<Municipality> addMunicipality(Municipality municipality)
       throws RemoteException
-  {
-    return municipalitiesModel.addMunicipality(municipality);
+  { List<Municipality> municipalities = null;
+    try {
+      municipalities =  municipalitiesModel.addMunicipality(municipality);
+    } catch (SQLException throwables) {
+      throwables.printStackTrace();
+    }
+    return municipalities;
   }
 
   @Override public Municipality getMunicipality(String id)

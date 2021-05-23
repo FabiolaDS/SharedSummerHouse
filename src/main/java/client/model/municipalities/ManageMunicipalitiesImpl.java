@@ -35,11 +35,11 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities
 
   @Override public void addMunicipality(Municipality municipality)
   {
-    try {
+/*    try {*/
       client.addMunicipality(municipality);
-    } catch (RemoteException e) {
+   /* } catch (RemoteException e) {
       e.printStackTrace();
-    }
+    }*/
   }
 
   @Override public void getMunicipalities(PropertyChangeEvent event)
@@ -50,22 +50,22 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities
   @Override public Municipality getMunicipality(String id)
   {
     Municipality municipality = null;
-    try {
+   /* try {*/
       municipality = client.getMunicipality(id);
-    } catch (RemoteException e) {
+   /* } catch (RemoteException e) {
       e.printStackTrace();
-    }
+    }*/
     return municipality;
   }
 
   @Override public void addRegionalAdmin(RegionalAdmin regionalAdmin,
       String municipalityId)
   {
-    try {
+/*    try {*/
       client.addRegionalAdmin(regionalAdmin, municipalityId);
-    } catch (RemoteException e) {
+    /*} *//*catch (RemoteException e) {
       e.printStackTrace();
-    }
+    }*/
   }
 
   @Override public void addPropertyChangeListener(String name,
