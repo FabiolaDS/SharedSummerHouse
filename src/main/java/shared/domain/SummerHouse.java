@@ -1,7 +1,5 @@
 package shared.domain;
 
-import javafx.scene.image.Image;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,78 +7,97 @@ import java.util.Calendar;
 public class SummerHouse implements Serializable
 {
 
-  private Long id;    // Need the id for all the entities!!!
+    private Long id;    // Need the id for all the entities!!!
 
-    private ArrayList<Image> images;
-    private ArrayList<Municipality> sharedWith;
-    private String title;
-    private String region;
     private String street;
-    private int postCode;
-    private String description;
     private int houseNumber;
-    private int pricePerNight;
-    private double avgRating;       //derived attribute(no need for field)
-    private boolean isAvailable;    //derived attribute
+    private int postCode;
+    private String region;
+
+    private String title;
+    private String description;
+    private double pricePerNight;
     private int capacity;
 
-    public SummerHouse(String title, String region, String street,
-        int postCode, String description, int houseNumber, int pricePerNight, int capacity)
+    private RegionalAdmin admin;
+
+    private double avgRating;       //derived attribute(no need for field)
+    private boolean isAvailable;    //derived attribute
+
+    private ArrayList<Municipality> sharedWith;
+
+    /** Needs to be like this (confirming to ER diagram)
+     * CREATE TABLE shared_summerhouse.summerhouse (
+     * id SERIAL PRIMARY KEY,
+     * street VARCHAR(100) NOT NULL,
+     * house_no INT NOT NULL,
+     * post_code INT NOT NULL,
+     * region VARCHAR(50) NOT NULL,
+     * title VARCHAR(100),
+     * description TEXT,
+     * price DECIMAL(10, 2) NOT NULL,
+     * capacity INT NOT NULL,
+     * reg_admin cpr REFERENCES regional_admin(cpr)
+     * );
+     */
+
+    public SummerHouse(String street, int houseNumber, int postCode, String region,
+                       String title, String description, double pricePerNight, int capacity,
+                       RegionalAdmin admin)
     {
-        images = new ArrayList<>();
-        sharedWith = new ArrayList<>();
-        this.title = title;
-        this.region = region;
         this.street = street;
-        this.postCode = postCode;
-        this.description = description;
         this.houseNumber = houseNumber;
+        this.postCode = postCode;
+        this.region = region;
+        this.title = title;
+        this.description = description;
         this.pricePerNight = pricePerNight;
         this.capacity = capacity;
-
-
-        System.out.println("New Summerhouse has been created");
+        this.admin = admin;
     }
 
-    public SummerHouse(){}
+    public SummerHouse()
+    {
+    }
 
-
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public ArrayList<Image> getImages()
+    public String getStreet()
     {
-        return images;
+        return street;
     }
 
-    public void setImages(ArrayList<Image> images)
+    public void setStreet(String street)
     {
-        this.images = images;
+        this.street = street;
     }
 
-  public ArrayList<Municipality> getSharedWith()
-  {
-    return sharedWith;
-  }
-
-  public void setSharedWith(ArrayList<Municipality> sharedWith)
-  {
-    this.sharedWith = sharedWith;
-  }
-
-    public String getTitle()
+    public int getHouseNumber()
     {
-        return title;
+        return houseNumber;
     }
 
-    public void setTitle(String title)
+    public void setHouseNumber(int houseNumber)
     {
-        this.title = title;
+        this.houseNumber = houseNumber;
+    }
+
+    public int getPostCode()
+    {
+        return postCode;
+    }
+
+    public void setPostCode(int postCode)
+    {
+        this.postCode = postCode;
     }
 
     public String getRegion()
@@ -93,81 +110,35 @@ public class SummerHouse implements Serializable
         this.region = region;
     }
 
-  public String getStreet()
-  {
-    return street;
-  }
+    public String getTitle()
+    {
+        return title;
+    }
 
-  public void setStreet(String street)
-  {
-    this.street = street;
-  }
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
 
-  public int getPostCode()
-  {
-    return postCode;
-  }
+    public String getDescription()
+    {
+        return description;
+    }
 
-  public void setPostCode(int postCode)
-  {
-    this.postCode = postCode;
-  }
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
 
-  public String getDescription()
-  {
-    return description;
-  }
+    public double getPricePerNight()
+    {
+        return pricePerNight;
+    }
 
-  public void setDescription(String description)
-  {
-    this.description = description;
-  }
-
-  public int getHouseNumber()
-  {
-    return houseNumber;
-  }
-
-  public void setHouseNumber(int houseNumber)
-  {
-    this.houseNumber = houseNumber;
-  }
-
-  public int getPricePerNight()
-  {
-    return pricePerNight;
-  }
-
-  public void setPricePerNight(int pricePerNight)
-  {
-    this.pricePerNight = pricePerNight;
-  }
-
-  public double getAvgRating()
-  {
-    return avgRating;
-  }
-
-  public void setAvgRating(double avgRating)
-  {
-    this.avgRating = avgRating;
-  }
-
-  public boolean isAvailable(Calendar searchDateFrom, int searchDateTo,
-      Calendar dateDate)
-  {
-    return (!dateDate.after(searchDateFrom) || dateDate.before(searchDateTo));
-  }
-
-  public void setAvailable(boolean available)
-  {
-    isAvailable = available;
-  }
-
-  public boolean isAvailable()
-  {
-    return isAvailable;
-  }
+    public void setPricePerNight(double pricePerNight)
+    {
+        this.pricePerNight = pricePerNight;
+    }
 
     public int getCapacity()
     {
@@ -177,5 +148,54 @@ public class SummerHouse implements Serializable
     public void setCapacity(int capacity)
     {
         this.capacity = capacity;
+    }
+
+    public RegionalAdmin getAdmin()
+    {
+        return admin;
+    }
+
+    public void setAdmin(RegionalAdmin admin)
+    {
+        this.admin = admin;
+    }
+
+    public double getAvgRating()
+    {
+        return avgRating;
+    }
+
+    public void setAvgRating(double avgRating)
+    {
+        this.avgRating = avgRating;
+    }
+
+    public boolean isAvailable()
+    {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available)
+    {
+        isAvailable = available;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "SummerHouse{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", houseNumber=" + houseNumber +
+                ", postCode=" + postCode +
+                ", region='" + region + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", pricePerNight=" + pricePerNight +
+                ", capacity=" + capacity +
+                ", admin=" + admin +
+                ", avgRating=" + avgRating +
+                ", isAvailable=" + isAvailable +
+                '}';
     }
 }

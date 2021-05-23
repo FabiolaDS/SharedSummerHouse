@@ -1,9 +1,6 @@
 import client.core.ClientFactory;
 
-import server.dataaccess.DummyBookingsDAO;
-import server.dataaccess.DummySummerHousesDAO;
-import server.dataaccess.UserDAO;
-import server.dataaccess.UserDAOImpl;
+import server.dataaccess.*;
 import server.model.BookingsManagerImpl;
 import server.model.SummerHousesManagerImpl;
 import server.model.login.LoginModel;
@@ -21,7 +18,7 @@ public class RunServer {
        LoginModelManager loginModel = new LoginModelManager(userDAO);
         RMIServerImpl server = new RMIServerImpl(loginModel,
                 new BookingsManagerImpl(new DummyBookingsDAO()),
-                new SummerHousesManagerImpl(new DummySummerHousesDAO()));
+                new SummerHousesManagerImpl(new JdbcSummerHouseDAO()));
         server.startServer();
     }
 }

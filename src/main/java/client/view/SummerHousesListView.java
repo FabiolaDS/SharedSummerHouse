@@ -47,7 +47,6 @@ public class SummerHousesListView
         regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
         streetColumn.setCellValueFactory(new PropertyValueFactory<>("street"));
         houseNumberColumn.setCellValueFactory(new PropertyValueFactory<>("houseNumber"));
-        System.out.println("LIST VIEW: " + guestsColumn);
         guestsColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         pricePerNightColumn.setCellValueFactory(new PropertyValueFactory<>("pricePerNight"));
         avgRatingColumn.setCellValueFactory(new PropertyValueFactory<>("avgRating"));
