@@ -11,6 +11,7 @@ import shared.transferobjects.EventType;
 import javax.swing.plaf.basic.BasicListUI;
 import java.beans.PropertyChangeEvent;
 import java.util.Collection;
+import java.util.List;
 
 public class MainViewModel
 {
@@ -23,6 +24,7 @@ public class MainViewModel
     model.addPropertyChangeListener(EventType.MUNICIPALITY.toString(), this::newMunicipality);
     model.addPropertyChangeListener(EventType.REGIONALADMIN.toString(), this::updateMunicipalities);
     municipalities = FXCollections.observableArrayList();
+    municipalities.setAll(model.getMunicipalitiesStart());
   }
 
   private void updateMunicipalities(PropertyChangeEvent propertyChangeEvent)
@@ -31,7 +33,8 @@ public class MainViewModel
        municipalities.removeIf(municipality -> equals(propertyChangeEvent.getNewValue()));
   }
   private void newMunicipality(PropertyChangeEvent propertyChangeEvent) {
-    Platform.runLater(() -> municipalities.add((Municipality) propertyChangeEvent.getNewValue()));
+    municipalities.clear();
+    Platform.runLater(() -> municipalities.setAll((List<Municipality>) propertyChangeEvent.getNewValue()));
   }
   public ObservableList<Municipality> getMunicipalities() {
     return municipalities;

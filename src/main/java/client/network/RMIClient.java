@@ -18,6 +18,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RMIClient implements Client, ClientCallback {
     private RMIServer server;
@@ -167,7 +168,18 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-  @Override public ArrayList<Tenant> getTenants()
+    @Override
+    public List<Municipality> getAllMunicipalities() {
+        List<Municipality> municipalities = null;
+        try {
+            municipalities = server.getAllMunicipalities();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return municipalities;
+    }
+
+    @Override public ArrayList<Tenant> getTenants()
   {
     ArrayList<Tenant> tenants = new ArrayList<>();
     try

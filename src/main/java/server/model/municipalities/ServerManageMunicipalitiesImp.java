@@ -41,7 +41,7 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
         try {
             MunicipalityDAOImpl.getInstance().create(municipality.getId(), municipality.getName(), municipality.getRegion());
         } catch (SQLException throwable) {
-            System.out.println("not possible to");
+            System.out.println("Not insert Municipality into DATABASE");
             throwable.printStackTrace();
         }
         return getAllMunicipalities();
@@ -55,6 +55,7 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
 
     @Override
     public Municipality getMunicipality(String id) {
+
         Municipality municipality = null;
         try {
             municipality = MunicipalityDAOImpl.getInstance().getById(id);

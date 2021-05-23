@@ -168,4 +168,15 @@ public class RMIServerImpl implements RMIServer
   {
     return null;
   }
+
+  @Override
+  public List<Municipality> getAllMunicipalities() {
+    List<Municipality>  municipalities = null;
+    try {
+      municipalities = municipalitiesModel.getAllMunicipalities();
+    } catch (SQLException throwables) {
+      throwables.printStackTrace();
+    }
+    return municipalities;
+  }
 }

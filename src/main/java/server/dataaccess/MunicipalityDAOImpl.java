@@ -37,17 +37,17 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO{
     }
 
     @Override
-    public Municipality getById(String id) throws SQLException {
+    public Municipality getById(String municipality_id) throws SQLException {
         try(Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"shared_summerhouse\".\"municipality\" WHERE id = ?");
-            statement.setString(1, id);
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"shared_summerhouse\".\"municipality\" WHERE municipality_id = ?");
+            statement.setString(1, municipality_id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 String name = resultSet.getString("name");
                 String region = resultSet.getString("region");
-                return new Municipality(name, region, id);
+                return new Municipality(name, region, municipality_id);
             } else {
-                return null;
+                return new Municipality("-", "-", "-");
             }
         }
     }

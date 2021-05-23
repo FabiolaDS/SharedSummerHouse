@@ -5,6 +5,7 @@ import shared.domain.RegionalAdmin;
 import shared.util.PropertyChangeSubject;
 
 import java.beans.PropertyChangeEvent;
+import java.util.List;
 
 public interface ManageMunicipalities extends PropertyChangeSubject
 {
@@ -13,4 +14,6 @@ public interface ManageMunicipalities extends PropertyChangeSubject
   //public ArrayList<Municipality> getMunicipalities();
   void getMunicipalities(PropertyChangeEvent event);
   public Municipality getMunicipality(String id);
+
+    List<Municipality> getMunicipalitiesStart();
 }

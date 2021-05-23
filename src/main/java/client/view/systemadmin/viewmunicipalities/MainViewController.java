@@ -13,8 +13,7 @@ import shared.domain.Municipality;
 
 import java.io.IOException;
 
-public class MainViewController implements ViewController
-{
+public class MainViewController implements ViewController {
     public TableColumn<Municipality, String> muniColumn;
     public TableColumn<Municipality, String> regionColumn;
     public TableColumn<Municipality, String> idColumn;
@@ -27,7 +26,6 @@ public class MainViewController implements ViewController
     private MainViewModel mainViewModel;
 
     public void init() {
-
         this.viewModelFactory = ViewModelFactory.getInstance();
         this.mainViewModel = viewModelFactory.getMainViewModel();
 
@@ -36,33 +34,29 @@ public class MainViewController implements ViewController
         muniColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("name"));
         idColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("id"));
         regionColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("region"));
-        rAdminColumn.setCellValueFactory(new PropertyValueFactory<Municipality,String>("regionalAdminCPR"));
+        rAdminColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("regionalAdminCPR"));
 
         tableViewLoad();
-
     }
-     private void tableViewLoad()
-     {
-         municipalityTable.setItems(mainViewModel.getMunicipalities());
-     }
+
+    private void tableViewLoad() {
+        municipalityTable.setItems(mainViewModel.getMunicipalities());
+    }
 
     public void onCreatMunicipality(ActionEvent actionEvent) throws IOException {
         viewHandler.openAddMunicipalityView();
     }
 
     public void onSeeDetails(ActionEvent actionEvent) {
-    municipalityTable.getSelectionModel().getSelectedItem();
+        municipalityTable.getSelectionModel().getSelectedItem();
         updateSelectedMunicipality();
         viewHandler.openSeeMunicipalityDetailsView();
 
     }
 
-    private void updateSelectedMunicipality()
-    {
-        if (municipalityTable.getSelectionModel().getSelectedItem() != null)
-        {
-            String id = municipalityTable.getSelectionModel().getSelectedItem()
-                .getId();
+    private void updateSelectedMunicipality() {
+        if (municipalityTable.getSelectionModel().getSelectedItem() != null) {
+            String id = municipalityTable.getSelectionModel().getSelectedItem().getId();
           /*  String name = municipalityTable.getSelectionModel().getSelectedItem().getName();
             String region = municipalityTable.getSelectionModel().getSelectedItem().getRegion();
             ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().setId(id);

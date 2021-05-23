@@ -63,7 +63,7 @@ public class LoginViewController implements ViewController
 
   public void onLoginButton(ActionEvent actionEvent) throws IOException {
     //if user = SAdmin do:
-    //SAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage()); //this should be included in onLoginResult()
+    SAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage()); //this should be included in onLoginResult()
    // loginViewModel.login();
 
     // With User instead of Tenant, RegionalAdmin and SystemAdmin
@@ -71,7 +71,7 @@ public class LoginViewController implements ViewController
     // } else if(user.getType().equals("reginal_admin")) {
     // } else { --> has to be system admin
     // }
-    RAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage());
+    //RAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage());
     /* TODO: We can include the logic to chose a view in the onLoginResult
      */
     RadioButton selectedRadionButton = (RadioButton) userType.getSelectedToggle();
