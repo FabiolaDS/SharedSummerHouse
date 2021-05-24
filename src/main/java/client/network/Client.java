@@ -27,7 +27,7 @@ public interface Client extends PropertyChangeSubject {
 
     ArrayList<SummerHouse> getSummerHouses();
 
-    void addTenant(Tenant tenants) throws RemoteException;
+    void addTenant(Tenant tenant);
 
     BookingsManager getBookingsManager();
 

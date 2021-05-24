@@ -11,7 +11,7 @@ import java.rmi.RemoteException;
 public class AddTenantViewModel
 {
   private TenantsModel tenantModel;
-  private StringProperty cpr, firstName, lastName, municipality, email;
+  private StringProperty cpr, firstName, lastName, municipality, regionalAdminID, password;
 
   public AddTenantViewModel(TenantsModel tenantsModel) {
     this.tenantModel = tenantsModel;
@@ -19,7 +19,8 @@ public class AddTenantViewModel
     firstName = new SimpleStringProperty();
     lastName = new SimpleStringProperty();
     municipality = new SimpleStringProperty();
-    email = new SimpleStringProperty();
+    regionalAdminID = new SimpleStringProperty();
+    password = new SimpleStringProperty();
   }
 
   //public AddTenantViewModel() {}
@@ -51,14 +52,48 @@ public class AddTenantViewModel
   }
 
 
-  public StringProperty emailProperty()
+  public StringProperty getRegionalAdminIDProperty()
   {
-    return email;
+    return regionalAdminID;
+  }
+  public StringProperty getPasswordProperty()
+  {
+    return password;
   }
 
-  public void addTenant(String cpr, String firstName, String lastName, String municipality, String email)
-      throws RemoteException
+  public String getCpr()
   {
-    tenantModel.addTenant(new Tenant(cpr, firstName, lastName, municipality, email));
+    return cpr.get();
+  }
+
+  public String getFirstName()
+  {
+    return firstName.get();
+  }
+
+  public String getLastName()
+  {
+    return lastName.get();
+  }
+
+  public String getMunicipality()
+  {
+    return municipality.get();
+  }
+
+  public String getRegionalAdminID()
+  {
+    return regionalAdminID.get();
+  }
+
+  public String getPassword()
+  {
+    return password.get();
+  }
+
+  public void addTenant()
+
+  {
+    tenantModel.addTenant(new Tenant(getCpr(), getFirstName(), getLastName(), getMunicipality(), getPassword(), getRegionalAdminID()));
   }
 }

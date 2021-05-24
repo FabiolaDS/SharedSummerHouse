@@ -2,17 +2,20 @@ package shared.domain;
 
 import javafx.beans.property.StringProperty;
 
-public class Tenant
+import java.io.Serializable;
+
+public class Tenant implements Serializable
 {
     private String cpr;
     private String firstName;
     private String lastName;
     private String municipality;
-    private String email;
+    //private String email;
     private String password;
-    private StringProperty type;    // Tenant OR ReginalAdmin OR SystemAdmin
+    //private StringProperty type;// Tenant OR ReginalAdmin OR SystemAdmin
+    private String regionalAdminID;
 
-    public Tenant(String cpr, String firstName, String lastName, String municipality, String email)
+   /* public Tenant(String cpr, String firstName, String lastName, String municipality, String email)
     {
         this.cpr = cpr;
         this.firstName = firstName;
@@ -21,6 +24,29 @@ public class Tenant
         this.email = email;
         //this.password = password;
        // this.type = userType;
+    }*/
+    //Do not delete constructor below
+
+    public Tenant(String cpr, String firstName, String lastName,
+        String municipality, String password, String regionalAdminID)
+    {
+        this.cpr = cpr;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.municipality = municipality;
+        this.password = password;
+        this.regionalAdminID = regionalAdminID;
+    }
+    public Tenant(){}
+
+    public String getRegionalAdminID()
+    {
+        return regionalAdminID;
+    }
+
+    public String getMunicipality()
+    {
+        return municipality;
     }
 
     public String getCpr()
@@ -54,7 +80,7 @@ public class Tenant
         this.lastName = lastName;
     }
 
-    public String getEmail()
+   /* public String getEmail()
     {
         return email;
     }
@@ -62,7 +88,7 @@ public class Tenant
     public void setEmail(String email)
     {
         this.email = email;
-    }
+    }*/
 
     public String getPassword()
     {
@@ -74,7 +100,7 @@ public class Tenant
         this.password = password;
     }
 
-    public StringProperty getType()
+    /*public StringProperty getType()
     {
         return type;
     }
@@ -82,5 +108,5 @@ public class Tenant
     public void setType(StringProperty type)
     {
         this.type = type;
-    }
+    }*/
 }

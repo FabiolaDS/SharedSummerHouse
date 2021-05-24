@@ -2,24 +2,23 @@ package client.view.regionaladmin.managetenant.addtenant;
 
 import client.core.ViewModelFactory;
 import client.core.viewhandler.RAViewHandler;
-import client.core.viewhandler.SAViewHandler;
 import client.view.ViewController;
-import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.rmi.RemoteException;
 
 public class AddTenantViewController implements ViewController
 {
-  @FXML public TextField cprLabel;
-  @FXML public TextField firstNameLabel;
-  @FXML public TextField lastnameLabel;
-  @FXML public TextField municipalityLabel;
-  @FXML public TextField emailLabel;
-  @FXML public TextField passwordLabel;
-  @FXML public TextField typeLabel;
+  @FXML public TextField cprField;
+  @FXML public TextField firstNameField;
+  @FXML public TextField lastNameField;
+  @FXML public TextField municipalityField;
+  @FXML public TextField regionalAdminIDField;
+  @FXML public TextField passwordField;
+  //@FXML public TextField passwordLabel;
+  //@FXML public TextField typeLabel;
 
 
   private RAViewHandler viewHandler;
@@ -31,48 +30,40 @@ public class AddTenantViewController implements ViewController
     this.addTenantViewModel = ViewModelFactory.getInstance().getAddTenantViewModel();
 
 
-    /*cprLabel.textProperty().bindBidirectional(addTenantViewModel.cprProperty());
-    firstNameLabel.textProperty().bindBidirectional(addTenantViewModel.firstNameProperty());
-    lastnameLabel.textProperty().bindBidirectional(addTenantViewModel.lastNameProperty());
-    municipalityLabel.textProperty().bindBidirectional(addTenantViewModel.municipalityProperty());
-    emailLabel.textProperty().bindBidirectional(addTenantViewModel.emailProperty());*/
+    cprField.textProperty().bindBidirectional(addTenantViewModel.cprProperty());
+    firstNameField.textProperty().bindBidirectional(addTenantViewModel.firstNameProperty());
+    lastNameField.textProperty().bindBidirectional(addTenantViewModel.lastNameProperty());
+    municipalityField.textProperty().bindBidirectional(addTenantViewModel.municipalityProperty());
+    regionalAdminIDField.textProperty().bindBidirectional(addTenantViewModel.getRegionalAdminIDProperty());
+    passwordField.textProperty().bindBidirectional(addTenantViewModel.getPasswordProperty());
 
 
   }
-  public void onCreateTenants(javafx.event.ActionEvent actionEvent)
+  public void onCreateTenants(ActionEvent actionEvent)
   {
-    try
-    {
 
-      addTenantViewModel.addTenant(cprLabel.getText(), firstNameLabel.getText(),
-          lastnameLabel.getText(), municipalityLabel.getText(),
-          emailLabel.getText());
-          //passwordLabel.getSelectedText(), typeLabel.textProperty());
-    }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
-    }
-    //reset();
+      addTenantViewModel.addTenant();
+
+
+    reset();
   }
 
-  public void onEditTenants(javafx.event.ActionEvent actionEvent)
+  public void onEditTenants(ActionEvent actionEvent)
   {
   }
-  public void onBackToMain(javafx.event.ActionEvent actionEvent)
+  public void onBackToMain(ActionEvent actionEvent)
   {
     viewHandler.openMainView();
   }
 
-  /*private void reset(){
-    cprLabel.clear();
-    firstNameLabel.clear();
-    lastnameLabel.clear();
-    municipalityLabel.clear();
-    emailLabel.clear();
-    passwordLabel.clear();
-    typeLabel.clear();
-  }*/
+  private void reset(){
+    cprField.clear();
+    firstNameField.clear();
+    lastNameField.clear();
+    municipalityField.clear();
+    passwordField.clear();
+    regionalAdminIDField.clear();
+  }
 
 
 }

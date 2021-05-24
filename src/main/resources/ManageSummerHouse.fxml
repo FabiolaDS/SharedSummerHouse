@@ -36,7 +36,7 @@
                 <TableColumn fx:id="descriptionColumn" minWidth="84.4000244140625" prefWidth="88.0" text="Description" />
                 <TableColumn fx:id="houseNumberColumn" minWidth="87.20004272460938" prefWidth="87.20004272460938" text="House Number" />
             <TableColumn fx:id="pricePerNightColumn" prefWidth="96.4000244140625" text="Price" />
-            <TableColumn fx:id="avgRatingColumn" prefWidth="75.0" text="Rating" />
+
             </columns>
         </TableView>
         <HBox alignment="CENTER" spacing="10.0">

@@ -3,6 +3,7 @@ package client.view.regionaladmin.managetenant.viewtenantdetail;
 
 import client.model.tenants.TenantsModel;
 import javafx.application.Platform;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
@@ -19,6 +20,7 @@ public class TenantDetailsViewModel
   private ObservableSet<Tenant> selectedTenant;
 
 
+
   public TenantDetailsViewModel(TenantsModel tenantsModel) {
     model = tenantsModel;
     model.addPropertyChangeListener(EventType.TENANTS.toString(), this::newTenant);
@@ -29,6 +31,7 @@ public class TenantDetailsViewModel
 
 
   public ObservableList<Tenant> getTenants()
+
   {
     return tenants;
   }

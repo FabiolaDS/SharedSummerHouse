@@ -29,16 +29,9 @@ public class ManageTenantsModelImpl implements TenantsModel
         this::getTenants);
   }
 
-  @Override public void addTenant(Tenant tenants)
+  @Override public void addTenant(Tenant tenant)
   {
-    try
-    {
-      client.addTenant(tenants);
-    }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
-    }
+      client.addTenant(tenant);
 
   }
 

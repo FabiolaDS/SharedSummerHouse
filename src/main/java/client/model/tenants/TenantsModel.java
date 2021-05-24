@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public interface TenantsModel extends PropertyChangeSubject
 {
-  public void addTenant(Tenant tenants) throws RemoteException;
+  public void addTenant(Tenant tenant);
   ArrayList<Tenant> getTenants();
   public void getTenants(PropertyChangeEvent propertyChangeEvent);
 

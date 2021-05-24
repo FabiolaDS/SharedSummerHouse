@@ -129,10 +129,10 @@ public class RMIClient implements Client, ClientCallback {
 
 
     @Override
-    public void addTenant(Tenant tenants) {
+    public void addTenant(Tenant tenant) {
         try {
             support.firePropertyChange(EventType.TENANTS.toString(), null,
-                    server.addTenant(tenants));
+                    server.addTenant(tenant));
         } catch (RemoteException e) {
             e.printStackTrace();
         }

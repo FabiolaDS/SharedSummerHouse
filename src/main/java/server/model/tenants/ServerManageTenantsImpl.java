@@ -27,10 +27,13 @@ public class ServerManageTenantsImpl implements ServerManageTenants
    */
   private TenantsList tenantsList = new TenantsList();
 
-  @Override public Tenant addTenant(Tenant tenants)
+  @Override public Tenant addTenant(Tenant tenant)
   {
-    tenantsList.add(tenants);
-    return tenants;
+    tenantsList.add(tenant);
+    System.out.println(tenant.getCpr());
+    System.out.println(tenantsList.getTenants());
+
+    return tenant;
   }
 
   @Override public void addPropertyChangeListener(String name,

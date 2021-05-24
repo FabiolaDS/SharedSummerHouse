@@ -5,5 +5,5 @@ import shared.util.PropertyChangeSubject;
 
 public interface ServerManageTenants extends PropertyChangeSubject
 {
-  Tenant addTenant(Tenant tenants);
+  Tenant addTenant(Tenant tenant);
 }
