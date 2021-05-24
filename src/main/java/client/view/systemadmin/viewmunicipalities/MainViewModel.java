@@ -5,12 +5,9 @@ import client.model.municipalities.ManageMunicipalities;
 import javafx.application.Platform;
 import javafx.collections.*;
 import shared.domain.Municipality;
-import shared.domain.MunicipalityList;
 import shared.transferobjects.EventType;
 
-import javax.swing.plaf.basic.BasicListUI;
 import java.beans.PropertyChangeEvent;
-import java.util.Collection;
 import java.util.List;
 
 public class MainViewModel

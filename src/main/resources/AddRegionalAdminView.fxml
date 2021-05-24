@@ -62,7 +62,7 @@
               </rowConstraints>
                <children>
                   <Label text="CPR number:" />
-                  <Label text="Email:" GridPane.rowIndex="3" />
+                  <Label text="Middle Name" GridPane.rowIndex="3" />
                   <Label text="Last name" GridPane.rowIndex="2" />
                   <Label text="First name: " GridPane.rowIndex="1" />
                   <Label text="Pasword" GridPane.rowIndex="4" />

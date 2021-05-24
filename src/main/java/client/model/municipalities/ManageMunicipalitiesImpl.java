@@ -3,24 +3,20 @@ package client.model.municipalities;
 import client.core.ClientFactory;
 import client.network.Client;
 import shared.domain.Municipality;
-import shared.domain.MunicipalityList;
 import shared.domain.RegionalAdmin;
 import shared.transferobjects.EventType;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.rmi.RemoteException;
 import java.util.List;
 
 public class ManageMunicipalitiesImpl implements ManageMunicipalities {
     private PropertyChangeSupport support;
-    private MunicipalityList municipalityList;
     private Client client;
 
     public ManageMunicipalitiesImpl() {
         support = new PropertyChangeSupport(this);
-        municipalityList = new MunicipalityList();
         client = ClientFactory.getClientFactory().getClient();
         client.addPropertyChangeListener(EventType.MUNICIPALITY.toString(),
                 this::getMunicipalities);
