@@ -25,7 +25,7 @@
                 <TableColumn fx:id="firstNameColumn" prefWidth="94.59998321533203" text="First Name" />
                   <TableColumn fx:id="lastNameColumn" prefWidth="89.20001220703125" text="Last Name" />
                   <TableColumn fx:id="municipalityColumn" prefWidth="123.60003662109375" text="Municipality" />
-                  <TableColumn fx:id="emailColumn" prefWidth="94.19998168945312" text="Email" />
+                  <TableColumn fx:id="regAdminIDColumn" prefWidth="94.19998168945312" text="ID" />
               </columns>
             </TableView>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
