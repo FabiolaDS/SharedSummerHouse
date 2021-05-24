@@ -10,12 +10,12 @@ public class Tenant implements Serializable
     private String firstName;
     private String lastName;
     private String municipality;
-    //private String email;
+    private String email;
     private String password;
-    //private StringProperty type;// Tenant OR ReginalAdmin OR SystemAdmin
+    private StringProperty type;// Tenant OR ReginalAdmin OR SystemAdmin
     private String regionalAdminID;
 
-   /* public Tenant(String cpr, String firstName, String lastName, String municipality, String email)
+   public Tenant(String cpr, String firstName, String lastName, String municipality, String email)
     {
         this.cpr = cpr;
         this.firstName = firstName;
@@ -24,7 +24,7 @@ public class Tenant implements Serializable
         this.email = email;
         //this.password = password;
        // this.type = userType;
-    }*/
+    }
     //Do not delete constructor below
 
     public Tenant(String cpr, String firstName, String lastName,
@@ -80,7 +80,7 @@ public class Tenant implements Serializable
         this.lastName = lastName;
     }
 
-   /* public String getEmail()
+    public String getEmail()
     {
         return email;
     }
@@ -88,7 +88,7 @@ public class Tenant implements Serializable
     public void setEmail(String email)
     {
         this.email = email;
-    }*/
+    }
 
     public String getPassword()
     {
@@ -100,7 +100,7 @@ public class Tenant implements Serializable
         this.password = password;
     }
 
-    /*public StringProperty getType()
+    public StringProperty getType()
     {
         return type;
     }
@@ -108,5 +108,5 @@ public class Tenant implements Serializable
     public void setType(StringProperty type)
     {
         this.type = type;
-    }*/
+    }
 }

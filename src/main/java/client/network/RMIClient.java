@@ -133,7 +133,7 @@ public class RMIClient implements Client, ClientCallback {
         try {
             support.firePropertyChange(EventType.TENANTS.toString(), null,
                     server.addTenant(tenant));
-        } catch (RemoteException e) {
+        } catch (RemoteException | SQLException e) {
             e.printStackTrace();
         }
     }

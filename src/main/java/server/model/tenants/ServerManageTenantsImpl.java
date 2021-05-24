@@ -1,13 +1,17 @@
 package server.model.tenants;
 
+import server.dataaccess.TenantDAO;
+import server.dataaccess.TenantDAOImpl;
 import shared.domain.Tenant;
 import shared.domain.TenantsList;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.SQLException;
 
 public class ServerManageTenantsImpl implements ServerManageTenants
 {
+  private TenantDAO tenantDAO;
   private static ServerManageTenantsImpl serverManageTenants;
   PropertyChangeSupport support;
 
@@ -27,12 +31,10 @@ public class ServerManageTenantsImpl implements ServerManageTenants
    */
   private TenantsList tenantsList = new TenantsList();
 
-  @Override public Tenant addTenant(Tenant tenant)
+  @Override public Tenant addTenant(Tenant tenant) throws SQLException
   {
-    tenantsList.add(tenant);
-    System.out.println(tenant.getCpr());
-    System.out.println(tenantsList.getTenants());
-
+    //tenantsList.add(tenant);
+    TenantDAOImpl.getInstance().createTenant(tenant);
     return tenant;
   }
 
