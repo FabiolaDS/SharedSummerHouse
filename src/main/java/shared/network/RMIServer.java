@@ -32,7 +32,7 @@ public interface RMIServer extends Remote {
 
     SummerHouse addSummerHouse(SummerHouse summerHouse) throws RemoteException;
 
-    Tenant addTenant(Tenant tenant) throws RemoteException;
+    Tenant addTenant(Tenant tenant) throws RemoteException, SQLException;
 
     ArrayList<SummerHouse> getSummerHouses() throws RemoteException;
 
