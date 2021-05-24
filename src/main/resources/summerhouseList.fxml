@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="798.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="798.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="SummerHouses">
             <font>
@@ -20,7 +16,7 @@
             </padding>
         </Label>
         <Button mnemonicParsing="false" onAction="#onBackToMain" text="Back" />
-        <TableView fx:id="summerhouses" VBox.vgrow="ALWAYS">
+        <TableView fx:id="summerhouses" onMouseClicked="#showSummerHouse" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="regionColumn" minWidth="90.0" prefWidth="90.0" text="Region" />
                 <TableColumn fx:id="streetColumn" minWidth="97.39996337890625" prefWidth="218.0" text="Street" />
@@ -33,7 +29,6 @@
         <HBox fx:id="editBar" alignment="CENTER" spacing="10.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#onAddSummerHouse" text="Add" />
-                <Button mnemonicParsing="false" onAction="#onEditSummerHouse" text="Edit" />
             </children>
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

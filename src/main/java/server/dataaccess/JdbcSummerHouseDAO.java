@@ -1,5 +1,6 @@
 package server.dataaccess;
 
+import shared.domain.RegionalAdmin;
 import shared.domain.SummerHouse;
 
 import java.sql.*;
@@ -7,9 +8,12 @@ import java.util.ArrayList;
 
 public class JdbcSummerHouseDAO extends DatabaseDAO implements SummerHousesDAO
 {
-    public JdbcSummerHouseDAO()
+    private RegionalAdminDAO radao;
+
+    public JdbcSummerHouseDAO(RegionalAdminDAO radao)
     {
         super("summerhouse");
+        this.radao = radao;
     }
 
     @Override
@@ -94,14 +98,14 @@ public class JdbcSummerHouseDAO extends DatabaseDAO implements SummerHousesDAO
             PreparedStatement ps = conn.prepareStatement(
                     "UPDATE " + getFullTableName() + " SET"
                             + " street = ?,"
-                            + " house_no = ?"
-                            + " post_code = ?"
-                            + " region = ?"
-                            + " title = ?"
-                            + " description = ?"
-                            + " price = ?"
+                            + " house_no = ?,"
+                            + " post_code = ?,"
+                            + " region = ?,"
+                            + " title = ?,"
+                            + " description = ?,"
+                            + " price = ?,"
                             + " capacity = ?"
-                            + " reg_admin = ?"
+//                            + " reg_admin = ?"
                             + " WHERE id = ?");
 
             ps.setLong(10, id);
@@ -129,16 +133,19 @@ public class JdbcSummerHouseDAO extends DatabaseDAO implements SummerHousesDAO
 
     private SummerHouse parseSummerHouse(ResultSet rs) throws SQLException
     {
+        RegionalAdmin admin = radao.getById(rs.getString("reg_admin"));
+
         SummerHouse res = new SummerHouse(
-                rs.getString(2),
-                rs.getInt(3),
-                rs.getInt(4),
-                rs.getString(5),
-                rs.getString(6),
-                rs.getString(7),
-                rs.getDouble(8),
-                rs.getInt(9),
-                null);  // TODO needs regional admin dao -> regadmDAO.get(rs.getString(10))
+                rs.getString("street"),
+                rs.getInt("house_no"),
+                rs.getInt("post_code"),
+                rs.getString("region"),
+                rs.getString("title"),
+                rs.getString("description"),
+                rs.getDouble("price"),
+                rs.getInt("capacity"),
+                admin);
+
         res.setId(rs.getLong(1));
 
         return res;

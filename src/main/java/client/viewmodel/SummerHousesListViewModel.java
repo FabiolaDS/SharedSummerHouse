@@ -7,12 +7,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.businesslogic.SummerHousesManager;
 import shared.domain.SummerHouse;
+import shared.network.RemoteChangeListener;
 import shared.transferobjects.User;
 
+import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-public class SummerHousesListViewModel
+public class SummerHousesListViewModel extends UnicastRemoteObject implements RemoteChangeListener
 {
     private SummerHousesManager manager;
 
@@ -21,8 +24,10 @@ public class SummerHousesListViewModel
 
     private BooleanProperty canEdit = new SimpleBooleanProperty();
 
-    public SummerHousesListViewModel(SummerHousesManager manager, User currentUser)
+    public SummerHousesListViewModel(SummerHousesManager manager, User currentUser) throws RemoteException
     {
+        super(0);
+
         this.manager = manager;
         this.currentUser = currentUser;
 
@@ -30,6 +35,7 @@ public class SummerHousesListViewModel
 
         try {
             this.summerhouses = FXCollections.observableArrayList(manager.getAllSummerHouses());
+            manager.addListener(this);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
@@ -42,5 +48,11 @@ public class SummerHousesListViewModel
 
     public ReadOnlyBooleanProperty canEditProperty() {
         return canEdit;
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) throws RemoteException
+    {
+        summerhouses.setAll(manager.getAllSummerHouses());
     }
 }

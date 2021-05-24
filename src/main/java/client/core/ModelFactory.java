@@ -8,6 +8,7 @@ import client.model.summerhouses.ManageSummerHouses;
 import client.model.summerhouses.ManageSummerHousesImpl;
 import client.model.tenants.TenantsModel;
 import client.model.tenants.ManageTenantsModelImpl;
+import shared.businesslogic.BookingsManager;
 import shared.businesslogic.SummerHousesManager;
 
 public class ModelFactory
@@ -63,5 +64,9 @@ public class ModelFactory
 
     public SummerHousesManager getSummerHousesManager() {
         return ClientFactory.getClientFactory().getClient().getSummerHousesManager();
+    }
+
+    public BookingsManager getBookingsManager() {
+        return ClientFactory.getClientFactory().getClient().getBookingsManager();
     }
 }

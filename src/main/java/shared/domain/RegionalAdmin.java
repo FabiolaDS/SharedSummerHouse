@@ -11,6 +11,8 @@ public class RegionalAdmin implements Serializable
     private String mname;
     private String password;
 
+    public RegionalAdmin() {}
+
     public RegionalAdmin(String cpr, String firstname, String lastname,
                          String mname, String password)
     {
@@ -22,9 +24,15 @@ public class RegionalAdmin implements Serializable
         System.out.println("Regional Admin has been created");
     }
 
+    // Can you please stop removing setters? They are needed for testing
     public String getCpr()
     {
         return cpr;
+    }
+
+    public void setCpr(String cpr)
+    {
+        this.cpr = cpr;
     }
 
     public String getFirstname()
@@ -32,9 +40,19 @@ public class RegionalAdmin implements Serializable
         return firstname;
     }
 
+    public void setFirstname(String firstname)
+    {
+        this.firstname = firstname;
+    }
+
     public String getLastname()
     {
         return lastname;
+    }
+
+    public void setLastname(String lastname)
+    {
+        this.lastname = lastname;
     }
 
     public String getMName()
@@ -42,8 +60,18 @@ public class RegionalAdmin implements Serializable
         return mname;
     }
 
+    public void setMName(String mname)
+    {
+        this.mname = mname;
+    }
+
     public String getPassword()
     {
         return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 }

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import shared.domain.SummerHouse;
 
@@ -34,10 +35,11 @@ public class SummerHousesListView
     @FXML
     private HBox editBar;
 
-
+    private ViewHandler vh;
     private SummerHousesListViewModel vm;
 
-    public SummerHousesListView(SummerHousesListViewModel vm) {
+    public SummerHousesListView(ViewHandler vh, SummerHousesListViewModel vm) {
+        this.vh = vh;
         this.vm = vm;
     }
 
@@ -58,14 +60,19 @@ public class SummerHousesListView
 
 
     @FXML
-    void onAddSummerHouse()
+    private void onAddSummerHouse() {
+        vh.openSummerHouseAdd();
+    }
+
+    @FXML
+    private void onBackToMain()
     {}
 
     @FXML
-    void onBackToMain()
-    {}
-
-    @FXML
-    void onEditSummerHouse()
-    {}
+    private void showSummerHouse(MouseEvent e) {
+        if(e.getClickCount() == 2) {
+            vh.openSummerHouseDetails(
+                    summerhouses.getSelectionModel().getSelectedItem());
+        }
+    }
 }

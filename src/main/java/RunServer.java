@@ -18,7 +18,7 @@ public class RunServer {
        LoginModelManager loginModel = new LoginModelManager(userDAO);
         RMIServerImpl server = new RMIServerImpl(loginModel,
                 new BookingsManagerImpl(new DummyBookingsDAO()),
-                new SummerHousesManagerImpl(new JdbcSummerHouseDAO()));
+                new SummerHousesManagerImpl(new JdbcSummerHouseDAO(RegionalAdminDAOImpl.getInstance())));
         server.startServer();
     }
 }

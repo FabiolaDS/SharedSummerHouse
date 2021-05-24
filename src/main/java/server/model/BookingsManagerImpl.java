@@ -4,14 +4,11 @@ import server.dataaccess.BookingDAO;
 import shared.businesslogic.BookingsManager;
 import shared.domain.Booking;
 import shared.domain.SummerHouse;
-import shared.domain.Tenant;
-import shared.domain.User;
+import shared.transferobjects.User;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BookingsManagerImpl extends UnicastRemoteObject implements BookingsManager
 {
@@ -24,9 +21,10 @@ public class BookingsManagerImpl extends UnicastRemoteObject implements Bookings
     }
 
     @Override
-    public void book(SummerHouse house, Tenant tenant, LocalDate from, LocalDate to) throws RemoteException
+    public void book(SummerHouse house, User tenant, LocalDate from, LocalDate to) throws RemoteException
     {
-        Booking booking = new Booking(from, to, tenant, house);
-        dao.save(booking);
+        // TODO needs access to Tenant on client side
+//        Booking booking = new Booking(from, to, tenant, house);
+//        dao.save(booking);
     }
 }

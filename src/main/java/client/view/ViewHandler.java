@@ -1,12 +1,13 @@
-package client.core;
+package client.view;
 
-import client.view.SummerHousesListView;
+import client.core.ViewModelFactory;
+import client.viewmodel.SummerHouseEditViewModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import shared.domain.SummerHouse;
 
 import java.io.IOException;
 
@@ -24,10 +25,27 @@ public class ViewHandler
 
     public void openSummerHouseList() {
         stage.setScene(new Scene(load("/summerhouseList.fxml",
-                new SummerHousesListView(vmf.getSummerHousesListVM()))));
+                new SummerHousesListView(this, vmf.getSummerHousesListVM()))));
     }
 
-    protected Parent load(String path, Object controller) {
+    public void openSummerHouseDetails(SummerHouse sh) {
+        SummerHouseEditViewModel vm = vmf.getSummerHouseEditVM();
+        vm.setSelected(sh);
+
+        stage.setScene(new Scene(load("/editSummerHouse.fxml",
+                new SummerHouseEditView(this, vm))));
+    }
+
+    public void openSummerHouseAdd() {
+        SummerHouseEditViewModel vm = vmf.getSummerHouseEditVM();
+        vm.setSelected(null);
+
+        stage.setScene(new Scene(load("/editSummerHouse.fxml",
+                new SummerHouseEditView(this, vm))));
+    }
+
+
+    private Parent load(String path, Object controller) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
         loader.setController(controller);
