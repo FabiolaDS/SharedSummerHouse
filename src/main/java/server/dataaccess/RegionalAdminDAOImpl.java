@@ -72,4 +72,17 @@ public class RegionalAdminDAOImpl extends DatabaseDAO implements RegionalAdminDA
     public void update(Municipality municipality) throws SQLException {
 
     }
+
+    @Override public void delete(RegionalAdmin regionalAdmin)
+        throws SQLException
+    {
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                "DELETE FROM \"shared_summerhouse\".\"regional_admin\" WHERE regional_admin_cpr = ?");
+            statement.setString(1, regionalAdmin.getCpr());
+            statement.executeUpdate();
+
+        }
+    }
 }
