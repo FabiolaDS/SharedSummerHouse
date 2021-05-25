@@ -11,5 +11,6 @@ public interface MunicipalityDAO {
     Municipality getById(String id) throws SQLException;
     List<Municipality> getAll() throws SQLException;
     void update(Municipality municipality) throws SQLException;
+    void delete(Municipality municipality) throws SQLException;
 
 }
