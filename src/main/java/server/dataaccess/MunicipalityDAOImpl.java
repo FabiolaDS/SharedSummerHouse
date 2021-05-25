@@ -54,15 +54,16 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO{
                 if (regional_admin_cpr == null) {
                     municipality = new Municipality(name, region, municipality_id);
                 }
-                else if (municipality_id != null)
+             /*   else if (municipality_id != null)
                 {
                     municipality = new Municipality(name,region,municipality_id,regional_admin_cpr);
-                }
+                }*/
             }
-             else if  (municipality_id != null)
+
+            /* else if  (municipality_id != null)
              {
                 municipality = new Municipality("-", "-", "-");
-            }
+            }*/
         }
         return municipality;
     }

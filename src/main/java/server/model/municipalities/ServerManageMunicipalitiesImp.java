@@ -7,6 +7,7 @@ import shared.domain.RegionalAdmin;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -43,8 +44,8 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     }
     catch (SQLException throwable)
     {
-      System.out.println("Not possible to insert Municipality into DATABASE");
-      throwable.printStackTrace();
+      System.out.println(
+          "--------------------> Not possible to insert Municipality into DATABASE");
     }
     return getAllMunicipalities();
   }
@@ -93,6 +94,11 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     {
       throwable.printStackTrace();
     }
+   /* if (municipality == null)
+    {
+      //helping input validation in the gui. Avoiding retrieve null values
+      municipality = new Municipality("  ","   ","   ");
+    }*/
     return municipality;
   }
 

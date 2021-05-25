@@ -7,6 +7,7 @@ import client.view.ViewController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class AddMunicipalityViewController implements ViewController {
     public TextField muniRegionLabel;
     @FXML
     public TextField municipalityIDField;
+    @FXML Label warningLabel;
 
     private SAViewHandler viewHandler;
     private AddMunicipalityViewModel addMunicipalityViewModel;
@@ -26,6 +28,13 @@ public class AddMunicipalityViewController implements ViewController {
     public void init() throws IOException {
         this.viewHandler = SAViewHandler.getInstance();
         this.addMunicipalityViewModel = ViewModelFactory.getInstance().addMunicipalityViewModel();
+        this.warningLabel.textProperty().bind(addMunicipalityViewModel.getWarningProperty());
+        municipalityIDField.textProperty().bindBidirectional(
+            addMunicipalityViewModel.idProperty());
+        muniRegionLabel.textProperty().bindBidirectional(
+            addMunicipalityViewModel.regionProperty());
+        muniNameLabel.textProperty().bindBidirectional(
+            addMunicipalityViewModel.nameProperty());
 
     }
 
@@ -33,7 +42,6 @@ public class AddMunicipalityViewController implements ViewController {
 
         addMunicipalityViewModel.addMunicipality(muniNameLabel.getText(), muniRegionLabel.getText(), municipalityIDField.getText());
         reset();
-
     }
 
 
