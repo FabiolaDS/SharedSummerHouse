@@ -23,16 +23,6 @@ public class LoginViewController implements ViewController
   private LoginViewModel loginViewModel;
   private ViewHandler viewHandler;
 
-  /*public void init(LoginViewModel loginViewModel) throws IOException
-  {
-    this.loginViewModel = loginViewModel;
-    usernameTextField.textProperty().bindBidirectional(loginViewModel.usernameProperty());
-    passwordTextField.textProperty().bindBidirectional(loginViewModel.passwordProperty());
-    loginResultLabel.textProperty().bindBidirectional(loginViewModel.loginResultProperty());
-    loginButton.disableProperty().bind(loginViewModel.loginButtonDisabledProperty());
-    // When something changes in the loginResultLabel, the system reacts to it below
-    loginViewModel.loginResultProperty().addListener((ObservableValue, oldValue, newValue) -> onLoginResult(newValue));
-  }*/
 
   @Override public void init() throws IOException
   {
