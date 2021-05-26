@@ -32,7 +32,6 @@ public class LoginViewController implements ViewController
     passwordTextField.textProperty().bindBidirectional(loginViewModel.passwordProperty());
     loginResultLabel.textProperty().bindBidirectional(loginViewModel.loginResultProperty());
     loginButton.disableProperty().bind(loginViewModel.loginButtonDisabledProperty());
-    // When something changes in the loginResultLabel, the system reacts to it below
     loginViewModel.loginResultProperty().addListener((ObservableValue, oldValue, newValue) -> onLoginResult(newValue));
   }
   private void onLoginResult(String result)
