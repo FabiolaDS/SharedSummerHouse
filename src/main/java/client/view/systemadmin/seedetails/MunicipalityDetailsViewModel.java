@@ -10,7 +10,7 @@ public class MunicipalityDetailsViewModel
 {
   private ManageMunicipalities model;
   private StringProperty name, region, id;
-  private StringProperty cpr, firstName, lastName, email;
+  private StringProperty cpr, firstName, lastName, mName;
 
   public MunicipalityDetailsViewModel(ManageMunicipalities manageMunicipalities)
   {
@@ -22,7 +22,7 @@ public class MunicipalityDetailsViewModel
     cpr = new SimpleStringProperty("Not assigned");
     firstName = new SimpleStringProperty("");
     lastName = new SimpleStringProperty("");
-    email = new SimpleStringProperty("");
+    mName = new SimpleStringProperty("");
   }
 
   public void getMunicipalityDetailsId(String id)
@@ -30,7 +30,7 @@ public class MunicipalityDetailsViewModel
     cpr.setValue("Not assigned");
     firstName.setValue("");
     lastName.setValue("");
-    email.setValue("");
+    mName.setValue("");
     Municipality municipality = model.getMunicipality(id);
 
     setName(municipality.getName());
@@ -39,11 +39,10 @@ public class MunicipalityDetailsViewModel
 
     if (municipality.getRegionalAdminCPR() != null)
     {
-      //TODO:HIDE RA INFO WHILE IT IS NULL
       RegionalAdmin regionalAdmin = model
           .getRegionalAdminByCPR(municipality.getRegionalAdminCPR());
       setCpr(regionalAdmin.getCpr());
-      setEmail(regionalAdmin.getMName());
+      setmName(regionalAdmin.getMName());
       setFirstName(regionalAdmin.getFirstname());
       setLastName(regionalAdmin.getLastname());
     }
@@ -57,7 +56,7 @@ public class MunicipalityDetailsViewModel
       cpr.setValue("");
       firstName.setValue("");
       lastName.setValue("");
-      email.setValue("");
+      mName.setValue("");
     }
   }
 
@@ -101,19 +100,19 @@ public class MunicipalityDetailsViewModel
     this.lastName.set(lastName);
   }
 
-  public String getEmail()
+  public String getmName()
   {
-    return email.get();
+    return mName.get();
   }
 
-  public StringProperty emailProperty()
+  public StringProperty mNameProperty()
   {
-    return email;
+    return mName;
   }
 
-  public void setEmail(String email)
+  public void setmName(String mName)
   {
-    this.email.set(email);
+    this.mName.set(mName);
   }
 
   public StringProperty nameProperty()

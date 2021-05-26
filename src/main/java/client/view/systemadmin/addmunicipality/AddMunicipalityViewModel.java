@@ -53,8 +53,7 @@ public class AddMunicipalityViewModel
     return region;
   }
 
-  public void addMunicipality(String name, String region,
-      String municipality_id)
+  public void addMunicipality()
   {
     //input validation
 
@@ -68,10 +67,10 @@ public class AddMunicipalityViewModel
       warning.setValue("ID must contain only numbers");
     }
 
-    else if (isAvailable(id.get()))
+    else if (isAvailable())
     {
       municipalitiesModel
-          .addMunicipality(new Municipality(name, region, municipality_id));
+          .addMunicipality(new Municipality(getName(), getRegion(), getId()));
       warning.setValue("Municipality has been created");
     }
     else
@@ -79,15 +78,14 @@ public class AddMunicipalityViewModel
       warning.setValue("Id not available");
     }
   }
-
   public ObservableValue<String> getWarningProperty()
   {
     return warning;
   }
 
-  private boolean isAvailable(String id)
+  private boolean isAvailable()
   {
-    Municipality municipality = municipalitiesModel.getMunicipality(id);
+    Municipality municipality = municipalitiesModel.getMunicipality(id.get());
 
     return municipality == null;
   }

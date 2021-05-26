@@ -31,11 +31,10 @@ public class MunicipalityDetailsViewController implements ViewController
         .bind(detailsViewModel.regionProperty());
     municipalityNameLabel.textProperty().bind(detailsViewModel.nameProperty());
     //Regional Admin info:
-
     cprLabel.textProperty().bind(detailsViewModel.cprProperty());
     fnameLabel.textProperty().bind(detailsViewModel.firstNameProperty());
     nameLabel.textProperty().bind(detailsViewModel.lastNameProperty());
-    emailLabel.textProperty().bind(detailsViewModel.emailProperty());
+    emailLabel.textProperty().bind(detailsViewModel.mNameProperty());
   }
 
   public void onAddRegionalAdmin(ActionEvent actionEvent)
@@ -49,10 +48,6 @@ public class MunicipalityDetailsViewController implements ViewController
   public void onBack(ActionEvent actionEvent)
   {
     ViewModelFactory.getInstance().getMainViewModel().municipalityList();
-    /*cprLabel.textProperty().setValue("");
-    fnameLabel.textProperty().setValue("");
-    emailLabel.textProperty().setValue("");
-    nameLabel.textProperty().setValue("");*/
     viewHandler.openMainView();
   }
 

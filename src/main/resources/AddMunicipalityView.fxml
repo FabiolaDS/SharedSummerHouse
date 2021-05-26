@@ -35,8 +35,8 @@
                <children>
                   <Label text="Name :" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Region:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="muniNameLabel" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <TextField fx:id="muniRegionLabel" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="municipalityNameField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="municipalityRegionField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <Label text="Id:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <TextField fx:id="municipalityIDField" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                </children>
@@ -55,7 +55,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#onCreateMuni" text="Create Municipality" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#onCreateMunicipality" text="Create Municipality" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Button mnemonicParsing="false" onAction="#onBackToMain" text="Back" GridPane.columnIndex="2" />
