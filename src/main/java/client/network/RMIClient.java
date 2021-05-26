@@ -227,6 +227,27 @@ public class RMIClient implements Client, ClientCallback
     }
   }
 
+  @Override public void deleteMunicipality(String id)
+  {
+    try
+    {
+      server.deleteMunicipality(id);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+    try
+    {
+      support.firePropertyChange(EventType.REGIONALADMIN.toString(), null,
+          server.getAllMunicipalities());
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
   @Override public ArrayList<Tenant> getTenants()
   {
     ArrayList<Tenant> tenants = new ArrayList<>();

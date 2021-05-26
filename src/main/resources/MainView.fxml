@@ -44,7 +44,7 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#onCreatMunicipality" prefHeight="27.0" prefWidth="312.0" text=" Add Municipality" GridPane.columnIndex="2" />
                   <Button mnemonicParsing="false" onAction="#onSeeDetails" prefHeight="26.0" prefWidth="140.0" text="See Details" />
-                  <Button mnemonicParsing="false" text="Remove Municipality" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#onDeleteMunicipality" text="Remove Municipality" GridPane.columnIndex="1" />
                </children>
                <GridPane.margin>
                   <Insets top="10.0" />

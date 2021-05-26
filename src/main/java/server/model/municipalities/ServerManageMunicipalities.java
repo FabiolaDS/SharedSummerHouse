@@ -17,4 +17,5 @@ public interface ServerManageMunicipalities extends PropertyChangeSubject
 
   RegionalAdmin getRegioinalAdminCPR(String regionalAdminCPR) throws SQLException;
   void deleteRegionalAdmin(RegionalAdmin regionalAdmin) throws SQLException;
+  void deleteMunicipality(String id) throws SQLException;
 }

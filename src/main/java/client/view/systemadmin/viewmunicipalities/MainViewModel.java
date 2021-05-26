@@ -49,4 +49,8 @@ public class MainViewModel
     return municipalities;
   }
 
+  public void deleteMunicipality(String id)
+  {
+    model.deleteMunicipality(id);
+  }
 }

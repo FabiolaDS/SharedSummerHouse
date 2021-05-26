@@ -19,7 +19,7 @@ public class MunicipalityDetailsViewModel
     region = new SimpleStringProperty("");
     id = new SimpleStringProperty("");
 
-    cpr = new SimpleStringProperty("");
+    cpr = new SimpleStringProperty("Not assigned");
     firstName = new SimpleStringProperty("");
     lastName = new SimpleStringProperty("");
     email = new SimpleStringProperty("");
@@ -27,7 +27,7 @@ public class MunicipalityDetailsViewModel
 
   public void getMunicipalityDetailsId(String id)
   {
-    cpr.setValue("");
+    cpr.setValue("Not assigned");
     firstName.setValue("");
     lastName.setValue("");
     email.setValue("");

@@ -1,6 +1,5 @@
 package client.view.systemadmin.viewmunicipalities;
 
-
 import client.core.viewhandler.SAViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
@@ -14,51 +13,69 @@ import shared.domain.RegionalAdmin;
 
 import java.io.IOException;
 
-public class MainViewController implements ViewController {
-    public TableColumn<Municipality, String> muniColumn;
-    public TableColumn<Municipality, String> regionColumn;
-    public TableColumn<Municipality, String> idColumn;
-    public TableColumn<Municipality, String> rAdminColumn;
-    public TableView<Municipality> municipalityTable;
+public class MainViewController implements ViewController
+{
+  public TableColumn<Municipality, String> muniColumn;
+  public TableColumn<Municipality, String> regionColumn;
+  public TableColumn<Municipality, String> idColumn;
+  public TableColumn<Municipality, String> rAdminColumn;
+  public TableView<Municipality> municipalityTable;
 
+  private SAViewHandler viewHandler;
+  private ViewModelFactory viewModelFactory;
+  private MainViewModel mainViewModel;
 
-    private SAViewHandler viewHandler;
-    private ViewModelFactory viewModelFactory;
-    private MainViewModel mainViewModel;
+  public void init()
+  {
+    this.viewModelFactory = ViewModelFactory.getInstance();
+    this.mainViewModel = viewModelFactory.getMainViewModel();
 
-    public void init() {
-        this.viewModelFactory = ViewModelFactory.getInstance();
-        this.mainViewModel = viewModelFactory.getMainViewModel();
+    viewHandler = SAViewHandler.getInstance();
 
-        viewHandler = SAViewHandler.getInstance();
+    muniColumn.setCellValueFactory(
+        new PropertyValueFactory<Municipality, String>("name"));
+    idColumn.setCellValueFactory(
+        new PropertyValueFactory<Municipality, String>("id"));
+    regionColumn.setCellValueFactory(
+        new PropertyValueFactory<Municipality, String>("region"));
+    rAdminColumn.setCellValueFactory(
+        new PropertyValueFactory<Municipality, String>("regionalAdminCPR"));
 
-        muniColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("name"));
-        idColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("id"));
-        regionColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("region"));
-        rAdminColumn.setCellValueFactory(new PropertyValueFactory<Municipality, String>("regionalAdminCPR"));
+    tableViewLoad();
+  }
 
-        tableViewLoad();
+  private void tableViewLoad()
+  {
+    municipalityTable.setItems(mainViewModel.getMunicipalities());
+  }
+
+  public void onCreatMunicipality(ActionEvent actionEvent) throws IOException
+  {
+    viewHandler.openAddMunicipalityView();
+  }
+
+  public void onSeeDetails(ActionEvent actionEvent)
+  {
+    municipalityTable.getSelectionModel().getSelectedItem();
+    updateSelectedMunicipality();
+    viewHandler.openSeeMunicipalityDetailsView();
+
+  }
+
+  private void updateSelectedMunicipality()
+  {
+    if (municipalityTable.getSelectionModel().getSelectedItem() != null)
+    {
+      String id = municipalityTable.getSelectionModel().getSelectedItem()
+          .getId();
+      ViewModelFactory.getInstance().getMunicipalityDetailsViewModel()
+          .getMunicipalityDetailsId(id);
     }
+  }
 
-    private void tableViewLoad() {
-        municipalityTable.setItems(mainViewModel.getMunicipalities());
-    }
-
-    public void onCreatMunicipality(ActionEvent actionEvent) throws IOException {
-        viewHandler.openAddMunicipalityView();
-    }
-
-    public void onSeeDetails(ActionEvent actionEvent) {
-        municipalityTable.getSelectionModel().getSelectedItem();
-        updateSelectedMunicipality();
-        viewHandler.openSeeMunicipalityDetailsView();
-
-    }
-
-    private void updateSelectedMunicipality() {
-        if (municipalityTable.getSelectionModel().getSelectedItem() != null) {
-            String id = municipalityTable.getSelectionModel().getSelectedItem().getId();
-            ViewModelFactory.getInstance().getMunicipalityDetailsViewModel().getMunicipalityDetailsId(id);
-        }
+    public void onDeleteMunicipality(ActionEvent actionEvent)
+    {
+        String id = municipalityTable.getSelectionModel().getSelectedItem().getId();
+        mainViewModel.deleteMunicipality(id);
     }
 }

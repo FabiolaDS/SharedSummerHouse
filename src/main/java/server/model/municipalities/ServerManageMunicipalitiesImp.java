@@ -91,6 +91,11 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     }
   }
 
+  @Override public void deleteMunicipality(String id) throws SQLException
+  {
+    Municipality municipality = MunicipalityDAOImpl.getInstance().getById(id);
+    MunicipalityDAOImpl.getInstance().delete(municipality);
+  }
 
   @Override public Municipality getMunicipality(String id)
   {

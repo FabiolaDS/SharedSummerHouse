@@ -10,35 +10,37 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface Client extends PropertyChangeSubject {
-    void login(User user);
+public interface Client extends PropertyChangeSubject
+{
+  void login(User user);
 
-    void addMunicipality(Municipality municipality);
+  void addMunicipality(Municipality municipality);
 
-    void addRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId);
+  void addRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId);
 
-    void unregisterClient();
+  void unregisterClient();
 
-    Municipality getMunicipality(String id);
+  Municipality getMunicipality(String id);
 
-    void startClient();
+  void startClient();
 
-    void addSummerHouse(SummerHouse summerHouse);
+  void addSummerHouse(SummerHouse summerHouse);
 
-    ArrayList<SummerHouse> getSummerHouses();
+  ArrayList<SummerHouse> getSummerHouses();
 
-    void addTenant(Tenant tenant);
+  void addTenant(Tenant tenant);
 
-    BookingsManager getBookingsManager();
+  BookingsManager getBookingsManager();
 
+  ArrayList<Tenant> getTenants();
 
-    ArrayList<Tenant> getTenants();
+  SummerHousesManager getSummerHousesManager();
 
-    SummerHousesManager getSummerHousesManager();
+  List<Municipality> getAllMunicipalities();
 
-    List<Municipality> getAllMunicipalities();
+  RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR);
 
-    RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR);
+  void deleteRegionalAdmin(RegionalAdmin regionalAdmin);
 
-    void deleteRegionalAdmin(RegionalAdmin regionalAdmin);
+  void deleteMunicipality(String id);
 }
