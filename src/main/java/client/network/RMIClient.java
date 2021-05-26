@@ -19,16 +19,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RMIClient class implementing the Client and ClientCallback interfaces. It
+ * connects to the server, sending and receiving data to and from it.
+ */
 public class RMIClient implements Client, ClientCallback
 {
   private RMIServer server;
   private PropertyChangeSupport support;
 
+  /**
+   * 0-argument constructor setting the PropertyChangeSupport and starting the
+   * client.
+   */
   public RMIClient()
   {
     support = new PropertyChangeSupport(this);
     startClient();
   }
+
 
   @Override public void startClient()
   {
@@ -99,28 +108,6 @@ public class RMIClient implements Client, ClientCallback
     {
       e.printStackTrace();
     }
-  }
-
-  @Override public void unregisterClient()
-  {
-    try
-    {
-      server.unregisterClient(this);
-    }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
-    }
-  }
-
-  @Override public void updateMunicipalities() throws RemoteException
-  {
-
-  }
-
-  @Override public void updateMunicipality() throws RemoteException
-  {
-
   }
 
   @Override public ArrayList<SummerHouse> getSummerHouses()
@@ -262,11 +249,6 @@ public class RMIClient implements Client, ClientCallback
     return tenants;
   }
 
-  @Override public void updates(String eventType, Object update)
-      throws RemoteException
-  {
-    // Could include different if statements for the different events
-  }
 
   @Override public void addPropertyChangeListener(String name,
       PropertyChangeListener listener)
@@ -305,4 +287,16 @@ public class RMIClient implements Client, ClientCallback
   {
     support.removePropertyChangeListener(listener);
   }
+
+  @Override public void updates(String eventType, Object update)
+      throws RemoteException
+  {
+
+  }
+  @Override public void unregisterClient()
+  {
+
+  }
+
+
 }
