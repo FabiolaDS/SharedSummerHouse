@@ -5,6 +5,7 @@ import client.core.ViewModelFactory;
 import client.view.ViewController;
 import client.view.systemadmin.seedetails.MunicipalityDetailsViewModel;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,6 +21,7 @@ public class MainViewController implements ViewController
   public TableColumn<Municipality, String> idColumn;
   public TableColumn<Municipality, String> rAdminColumn;
   public TableView<Municipality> municipalityTable;
+  public Label warningLabel;
 
   private SAViewHandler viewHandler;
   private ViewModelFactory viewModelFactory;
@@ -40,6 +42,7 @@ public class MainViewController implements ViewController
         new PropertyValueFactory<Municipality, String>("region"));
     rAdminColumn.setCellValueFactory(
         new PropertyValueFactory<Municipality, String>("regionalAdminCPR"));
+    warningLabel.textProperty().setValue(" ");
 
     tableViewLoad();
   }
@@ -73,9 +76,19 @@ public class MainViewController implements ViewController
     }
   }
 
-    public void onDeleteMunicipality(ActionEvent actionEvent)
+  public void onDeleteMunicipality(ActionEvent actionEvent)
+  {
+
+    if (municipalityTable.getSelectionModel().getSelectedItem().getRegionalAdminCPR() == null)
     {
-        String id = municipalityTable.getSelectionModel().getSelectedItem().getId();
-        mainViewModel.deleteMunicipality(id);
+      mainViewModel.deleteMunicipality(municipalityTable.getSelectionModel().getSelectedItem()
+          .getId());
+      warningLabel.textProperty().setValue("Municipality has been deleted");
     }
+    else
+    {
+      warningLabel.textProperty().setValue(" Delete Regional Admin first ");
+    }
+
+  }
 }
