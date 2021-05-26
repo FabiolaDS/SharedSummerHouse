@@ -12,6 +12,13 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 
+/**
+ * A controller to control the Login view for all users. Users can select the
+ * type of user, enter their username, and password.
+ * @author Luis Fernandez Ponton
+ * @version 1.0
+ */
+
 public class LoginViewController implements ViewController
 {
   @FXML private Button loginButton;
@@ -23,7 +30,13 @@ public class LoginViewController implements ViewController
   private LoginViewModel loginViewModel;
   private ViewHandler viewHandler;
 
-
+  /**
+   * Initializes the controller. Sets the viewHandler and loginViewModel. Binds
+   * the text fields and login button to the viewModel. The login button is
+   * disabled until the user enters the username. Listens to the viewModel and
+   * calls the onLoginResult method.
+   * @throws IOException
+   */
   @Override public void init() throws IOException
   {
     this.viewHandler = LoginViewHandler.getInstance();
@@ -34,6 +47,13 @@ public class LoginViewController implements ViewController
     loginButton.disableProperty().bind(loginViewModel.loginButtonDisabledProperty());
     loginViewModel.loginResultProperty().addListener((ObservableValue, oldValue, newValue) -> onLoginResult(newValue));
   }
+
+  /**
+   * Called when a login result is received from the server. If the result is
+   * "OK", then the appropriate view will open depending on the type of user.
+   * @param result received from the server to decided if the login credentials
+   *               are valid.
+   */
   private void onLoginResult(String result)
   {
     if ("OK".equals(result)) {
@@ -68,10 +88,12 @@ public class LoginViewController implements ViewController
     }
   }
 
-  public void onChangePassword(ActionEvent actionEvent)
-  {
-  }
-
+  /**
+   * Takes the type of user and the credentials entered by the user and calls
+   * the loginViewModel.
+   * @param actionEvent Event trigger by the login button.
+   * @throws IOException
+   */
   public void onLoginButton(ActionEvent actionEvent) throws IOException {
 
     RadioButton selectedRadioButton = (RadioButton) userType.getSelectedToggle();
@@ -79,10 +101,5 @@ public class LoginViewController implements ViewController
 
     loginViewModel.login(selectedUserType);
   }
-
-  public void onExitButton(ActionEvent actionEvent)
-  {
-  }
-
 
 }
