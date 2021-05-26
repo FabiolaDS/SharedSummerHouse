@@ -8,41 +8,57 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-public class MunicipalityDetailsViewController implements ViewController {
-    public Label municipalityNameLabel;
-    public Label municipalityRegionLabel;
-    public Label municipalityIdLabel;
-    public Label fnameLabel;
-    public Label nameLabel;
-    public Label emailLabel;
-    public Label cprLabel;
-    private SAViewHandler viewHandler;
-    private MunicipalityDetailsViewModel detailsViewModel;
+public class MunicipalityDetailsViewController implements ViewController
+{
+  public Label municipalityNameLabel;
+  public Label municipalityRegionLabel;
+  public Label municipalityIdLabel;
+  public Label fnameLabel;
+  public Label nameLabel;
+  public Label emailLabel;
+  public Label cprLabel;
+  private SAViewHandler viewHandler;
+  private MunicipalityDetailsViewModel detailsViewModel;
 
+  @Override public void init() throws IOException
+  {
+    this.viewHandler = SAViewHandler.getInstance();
+    detailsViewModel = ViewModelFactory.getInstance()
+        .getMunicipalityDetailsViewModel();
+    //Municipality info:
+    municipalityIdLabel.textProperty().bind(detailsViewModel.idProperty());
+    municipalityRegionLabel.textProperty()
+        .bind(detailsViewModel.regionProperty());
+    municipalityNameLabel.textProperty().bind(detailsViewModel.nameProperty());
+    //Regional Admin info:
 
-    @Override
-    public void init() throws IOException {
-        this.viewHandler = SAViewHandler.getInstance();
-        detailsViewModel = ViewModelFactory.getInstance()
-                .getMunicipalityDetailsViewModel();
-        //Municipality info:
-        municipalityIdLabel.textProperty().bind(detailsViewModel.idProperty());
-        municipalityRegionLabel.textProperty().bind(detailsViewModel.regionProperty());
-        municipalityNameLabel.textProperty().bind(detailsViewModel.nameProperty());
-        //Regional Admin info:
-        cprLabel.textProperty().bind(detailsViewModel.cprProperty());
-        fnameLabel.textProperty().bind(detailsViewModel.firstNameProperty());
-        nameLabel.textProperty().bind(detailsViewModel.lastNameProperty());
-        emailLabel.textProperty().bind(detailsViewModel.emailProperty());
-    }
+    cprLabel.textProperty().bind(detailsViewModel.cprProperty());
+    fnameLabel.textProperty().bind(detailsViewModel.firstNameProperty());
+    nameLabel.textProperty().bind(detailsViewModel.lastNameProperty());
+    emailLabel.textProperty().bind(detailsViewModel.emailProperty());
+  }
 
-    public void onAddRegionalAdmin(ActionEvent actionEvent) {
-        String id = municipalityIdLabel.textProperty().get();
-        ViewModelFactory.getInstance().getAddRegionalAdministratorViewModel().setMunicipalityId(id);
-        viewHandler.openAddRegionalAdminView();
-    }
+  public void onAddRegionalAdmin(ActionEvent actionEvent)
+  {
+    String id = municipalityIdLabel.textProperty().get();
+    ViewModelFactory.getInstance().getAddRegionalAdministratorViewModel()
+        .setMunicipalityId(id);
+    viewHandler.openAddRegionalAdminView();
+  }
 
-    public void onBack(ActionEvent actionEvent) {
-        viewHandler.openMainView();
-    }
+  public void onBack(ActionEvent actionEvent)
+  {
+    ViewModelFactory.getInstance().getMainViewModel().municipalityList();
+    /*cprLabel.textProperty().setValue("");
+    fnameLabel.textProperty().setValue("");
+    emailLabel.textProperty().setValue("");
+    nameLabel.textProperty().setValue("");*/
+    viewHandler.openMainView();
+  }
+
+  public void onRemoverRA(ActionEvent actionEvent)
+  {
+    detailsViewModel.deleteRegionalAdmin();
+
+  }
 }

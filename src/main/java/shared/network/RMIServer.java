@@ -42,7 +42,6 @@ public interface RMIServer extends Remote {
     SummerHousesManager getSummerHousesManager() throws RemoteException;
 
     ArrayList<Tenant> getTenants() throws RemoteException;
-
-
+    void deleteRegionalAdmin(RegionalAdmin regionalAdmin) throws RemoteException;
     RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR) throws RemoteException;
 }

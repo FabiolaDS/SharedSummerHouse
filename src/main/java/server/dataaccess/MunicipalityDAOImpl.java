@@ -67,10 +67,10 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO
         {
           municipality = new Municipality(name, region, municipality_id);
         }
-             /*   else if (municipality_id != null)
+               else if (municipality_id != null)
                 {
                     municipality = new Municipality(name,region,municipality_id,regional_admin_cpr);
-                }*/
+                }
       }
 
             /* else if  (municipality_id != null)
@@ -117,7 +117,6 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO
 
   @Override public void update(Municipality municipality) throws SQLException
   {
-    //UPDATE "shared_summerhouse"."municipality" SET regional_admin_cpr = '241263-9865' WHERE	municipality_id = '175'
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(

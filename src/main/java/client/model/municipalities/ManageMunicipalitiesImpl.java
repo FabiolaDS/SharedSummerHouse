@@ -54,7 +54,12 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities {
         return client.getRegionalAdminByCPR(regionalAdminCPR);
     }
 
-    @Override
+  @Override public void deleteRegionalAdmin(RegionalAdmin regionalAdmin)
+  {
+    client.deleteRegionalAdmin(regionalAdmin);
+  }
+
+  @Override
     public void addRegionalAdmin(RegionalAdmin regionalAdmin,
                                  String municipalityId) {
 

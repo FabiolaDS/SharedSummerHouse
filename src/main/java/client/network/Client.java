@@ -39,4 +39,6 @@ public interface Client extends PropertyChangeSubject {
     List<Municipality> getAllMunicipalities();
 
     RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR);
+
+    void deleteRegionalAdmin(RegionalAdmin regionalAdmin);
 }

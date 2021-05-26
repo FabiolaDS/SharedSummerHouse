@@ -98,7 +98,18 @@ public class RMIServerImpl implements RMIServer {
             throwables.printStackTrace();
         }
         return municipalities;
+    }
 
+    @Override public void deleteRegionalAdmin(RegionalAdmin regionalAdmin)
+    {
+        try
+        {
+            municipalitiesModel.deleteRegionalAdmin(regionalAdmin);
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
     }
 
 

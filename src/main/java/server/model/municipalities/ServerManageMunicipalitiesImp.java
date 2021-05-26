@@ -53,7 +53,6 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
   @Override public List<Municipality> setRegionalAdmin(
       RegionalAdmin regionalAdmin, String municipalityId)
   {
-
     List<Municipality> municipalities = null;
     try
     {
@@ -81,9 +80,20 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     return municipalities;
   }
 
+  public void deleteRegionalAdmin(RegionalAdmin regionalAdmin){
+    try
+    {
+      RegionalAdminDAOImpl.getInstance().delete(regionalAdmin);
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
+  }
+
+
   @Override public Municipality getMunicipality(String id)
   {
-
     Municipality municipality = null;
     try
     {
@@ -94,11 +104,6 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     {
       throwable.printStackTrace();
     }
-   /* if (municipality == null)
-    {
-      //helping input validation in the gui. Avoiding retrieve null values
-      municipality = new Municipality("  ","   ","   ");
-    }*/
     return municipality;
   }
 

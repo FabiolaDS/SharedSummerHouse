@@ -1,134 +1,149 @@
 package client.view.systemadmin.seedetails;
 
-
 import client.model.municipalities.ManageMunicipalities;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.domain.Municipality;
 import shared.domain.RegionalAdmin;
 
-public class MunicipalityDetailsViewModel {
-    private ManageMunicipalities model;
-    private StringProperty name, region,id;
-    private StringProperty cpr, firstName, lastName, email;
+public class MunicipalityDetailsViewModel
+{
+  private ManageMunicipalities model;
+  private StringProperty name, region, id;
+  private StringProperty cpr, firstName, lastName, email;
 
-    public MunicipalityDetailsViewModel(ManageMunicipalities manageMunicipalities) {
+  public MunicipalityDetailsViewModel(ManageMunicipalities manageMunicipalities)
+  {
+    this.model = manageMunicipalities;
+    name = new SimpleStringProperty("");
+    region = new SimpleStringProperty("");
+    id = new SimpleStringProperty("");
 
-        this.model = manageMunicipalities;
+    cpr = new SimpleStringProperty("");
+    firstName = new SimpleStringProperty("");
+    lastName = new SimpleStringProperty("");
+    email = new SimpleStringProperty("");
+  }
 
-        name = new SimpleStringProperty("");
-        region = new SimpleStringProperty("");
-        id = new SimpleStringProperty("");
+  public void getMunicipalityDetailsId(String id)
+  {
+    cpr.setValue("");
+    firstName.setValue("");
+    lastName.setValue("");
+    email.setValue("");
+    Municipality municipality = model.getMunicipality(id);
 
-        cpr = new SimpleStringProperty("");
-        firstName = new SimpleStringProperty("");
-        lastName = new SimpleStringProperty("");
-        email = new SimpleStringProperty("");
-    }
+    setName(municipality.getName());
+    setId(municipality.getId());
+    setRegion(municipality.getRegion());
 
-    public void getMunicipalityDetailsId(String id)
+    if (municipality.getRegionalAdminCPR() != null)
     {
-        Municipality municipality = model.getMunicipality(id);
-        RegionalAdmin regionalAdmin = model.getRegionalAdminByCPR(municipality.getRegionalAdminCPR());
-        setName(municipality.getName());
-        setId(municipality.getId());
-        setRegion(municipality.getRegion());
-
-        if (municipality.getRegionalAdminCPR() != null)
-        {
-            setCpr(regionalAdmin.getCpr());
-            setEmail(regionalAdmin.getMName());
-            setFirstName(regionalAdmin.getFirstname());
-            setLastName(regionalAdmin.getLastname());
-        }
-
+      //TODO:HIDE RA INFO WHILE IT IS NULL
+      RegionalAdmin regionalAdmin = model
+          .getRegionalAdminByCPR(municipality.getRegionalAdminCPR());
+      setCpr(regionalAdmin.getCpr());
+      setEmail(regionalAdmin.getMName());
+      setFirstName(regionalAdmin.getFirstname());
+      setLastName(regionalAdmin.getLastname());
     }
+  }
 
-    public StringProperty cprProperty()
+  public void deleteRegionalAdmin()
+  {
+    if (!cpr.getValue().equals(""))
     {
-        return cpr;
+      model.deleteRegionalAdmin(model.getRegionalAdminByCPR(cpr.get()));
+      cpr.setValue("");
+      firstName.setValue("");
+      lastName.setValue("");
+      email.setValue("");
     }
+  }
 
-    public void setCpr(String cpr)
-    {
-        this.cpr.set(cpr);
-    }
+  public StringProperty cprProperty()
+  {
+    return cpr;
+  }
 
-    public String getFirstName()
-    {
-        return firstName.get();
-    }
+  public void setCpr(String cpr)
+  {
+    this.cpr.set(cpr);
+  }
 
-    public StringProperty firstNameProperty()
-    {
-        return firstName;
-    }
+  public String getFirstName()
+  {
+    return firstName.get();
+  }
 
-    public void setFirstName(String firstName)
-    {
-        this.firstName.set(firstName);
-    }
+  public StringProperty firstNameProperty()
+  {
+    return firstName;
+  }
 
-    public String getLastName()
-    {
-        return lastName.get();
-    }
+  public void setFirstName(String firstName)
+  {
+    this.firstName.set(firstName);
+  }
 
-    public StringProperty lastNameProperty()
-    {
-        return lastName;
-    }
+  public String getLastName()
+  {
+    return lastName.get();
+  }
 
-    public void setLastName(String lastName)
-    {
-        this.lastName.set(lastName);
-    }
+  public StringProperty lastNameProperty()
+  {
+    return lastName;
+  }
 
-    public String getEmail()
-    {
-        return email.get();
-    }
+  public void setLastName(String lastName)
+  {
+    this.lastName.set(lastName);
+  }
 
-    public StringProperty emailProperty()
-    {
-        return email;
-    }
+  public String getEmail()
+  {
+    return email.get();
+  }
 
-    public void setEmail(String email)
-    {
-        this.email.set(email);
-    }
+  public StringProperty emailProperty()
+  {
+    return email;
+  }
 
-    public StringProperty nameProperty()
-    {
-        return name;
-    }
+  public void setEmail(String email)
+  {
+    this.email.set(email);
+  }
 
-    public StringProperty regionProperty()
-    {
-        return region;
-    }
+  public StringProperty nameProperty()
+  {
+    return name;
+  }
 
-    public StringProperty idProperty()
-    {
-        return id;
-    }
+  public StringProperty regionProperty()
+  {
+    return region;
+  }
 
-    public void setName(String name)
-    {
-        this.name.set(name);
-    }
+  public StringProperty idProperty()
+  {
+    return id;
+  }
 
-    public void setRegion(String region)
-    {
-        this.region.set(region);
-    }
+  public void setName(String name)
+  {
+    this.name.set(name);
+  }
 
-    public void setId(String id)
-    {
-        this.id.set(id);
-    }
+  public void setRegion(String region)
+  {
+    this.region.set(region);
+  }
 
-
+  public void setId(String id)
+  {
+    this.id.set(id);
+  }
 
 }

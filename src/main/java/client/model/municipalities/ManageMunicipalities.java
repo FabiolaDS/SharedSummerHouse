@@ -12,7 +12,6 @@ public interface ManageMunicipalities extends PropertyChangeSubject {
 
     public void addRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId);
 
-    //public ArrayList<Municipality> getMunicipalities();
     void getMunicipalities(PropertyChangeEvent event);
 
     public Municipality getMunicipality(String id);
@@ -20,4 +19,6 @@ public interface ManageMunicipalities extends PropertyChangeSubject {
     List<Municipality> getMunicipalitiesStart();
 
     RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR);
+
+    void deleteRegionalAdmin(RegionalAdmin regionalAdmin);
 }
