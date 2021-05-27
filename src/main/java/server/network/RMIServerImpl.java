@@ -172,7 +172,7 @@ public class RMIServerImpl implements RMIServer {
     public RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR) throws RemoteException {
         RegionalAdmin regionalAdmin = null;
         try {
-            regionalAdmin = municipalitiesModel.getRegioinalAdminCPR(regionalAdminCPR);
+            regionalAdmin = municipalitiesModel.getRegionalAdmin(regionalAdminCPR);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -29,7 +29,7 @@ public class AddRegionalAdminViewController implements ViewController {
         cprField.textProperty().bindBidirectional(addRegionalAdministratorVM.cprNrProperty());
         fnameField.textProperty().bindBidirectional(addRegionalAdministratorVM.nameProperty());
         lnameField.textProperty().bindBidirectional(addRegionalAdministratorVM.lastNameProperty());
-        emailField.textProperty().bindBidirectional(addRegionalAdministratorVM.emailProperty());
+        emailField.textProperty().bindBidirectional(addRegionalAdministratorVM.mnameProperty());
         passwordField.textProperty().bindBidirectional(addRegionalAdministratorVM.passwordProperty());
 
     }

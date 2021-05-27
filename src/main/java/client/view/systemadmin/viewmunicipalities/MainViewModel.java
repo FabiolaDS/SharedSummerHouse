@@ -20,17 +20,17 @@ public class MainViewModel
     model.addPropertyChangeListener(EventType.MUNICIPALITY.toString(),
         this::newMunicipality);
     model.addPropertyChangeListener(EventType.REGIONALADMIN.toString(),
-        this::updateMunicipalities);
+        this::updateRegionalAdmin);
     municipalities = FXCollections.observableArrayList();
-    municipalities.setAll(model.getMunicipalitiesStart());
+    municipalities.setAll(model.setMunicipalityList());
   }
 
-  public void municipalityList()
+  public void setMunicipalityList()
   {
-    municipalities.setAll(model.getMunicipalitiesStart());
+    municipalities.setAll(model.setMunicipalityList());
   }
 
-  private void updateMunicipalities(PropertyChangeEvent propertyChangeEvent)
+  private void updateRegionalAdmin(PropertyChangeEvent propertyChangeEvent)
   {
     municipalities.clear();
     Platform.runLater(() -> municipalities
