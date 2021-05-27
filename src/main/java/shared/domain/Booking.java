@@ -1,27 +1,26 @@
 package shared.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
-public class Booking
+public class Booking implements Serializable
 {
+    private SummerHouse summerHouse;
+    private Tenant tenant;
+
     private LocalDate dateFrom;
     private LocalDate dateTo;
 
-    private SummerHouse summerHouse;
-    private Tenant tenant;
-    // private int guests instead?
-
     public Booking() {}
 
-    public Booking(LocalDate dateFrom, LocalDate dateTo, Tenant tenant, SummerHouse summerHouse)
+    public Booking(Tenant tenant, SummerHouse summerHouse, LocalDate dateFrom, LocalDate dateTo)
     {
-        this.dateFrom = dateFrom;
-        this.dateTo = dateTo;
         this.tenant = tenant;
         this.summerHouse = summerHouse;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
     }
 
     public double getTotalPrice()

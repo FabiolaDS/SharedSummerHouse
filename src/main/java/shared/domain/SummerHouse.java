@@ -19,14 +19,8 @@ public class SummerHouse implements Serializable
     private double pricePerNight;
     private int capacity;
 
-    private RegionalAdmin admin;
-
-    private double avgRating;       //derived attribute(no need for field)
-    private boolean isAvailable;    //derived attribute
-
-    private ArrayList<Municipality> sharedWith;
-
-    /** Needs to be like this (confirming to ER diagram)
+    /**
+     * Needs to be like this (confirming to ER diagram)
      * CREATE TABLE shared_summerhouse.summerhouse (
      * id SERIAL PRIMARY KEY,
      * street VARCHAR(100) NOT NULL,
@@ -42,8 +36,7 @@ public class SummerHouse implements Serializable
      */
 
     public SummerHouse(String street, int houseNumber, int postCode, String region,
-                       String title, String description, double pricePerNight, int capacity,
-                       RegionalAdmin admin)
+                       String title, String description, double pricePerNight, int capacity)
     {
         this.street = street;
         this.houseNumber = houseNumber;
@@ -53,7 +46,6 @@ public class SummerHouse implements Serializable
         this.description = description;
         this.pricePerNight = pricePerNight;
         this.capacity = capacity;
-        this.admin = admin;
     }
 
     public SummerHouse()
@@ -150,36 +142,6 @@ public class SummerHouse implements Serializable
         this.capacity = capacity;
     }
 
-    public RegionalAdmin getAdmin()
-    {
-        return admin;
-    }
-
-    public void setAdmin(RegionalAdmin admin)
-    {
-        this.admin = admin;
-    }
-
-    public double getAvgRating()
-    {
-        return avgRating;
-    }
-
-    public void setAvgRating(double avgRating)
-    {
-        this.avgRating = avgRating;
-    }
-
-    public boolean isAvailable()
-    {
-        return isAvailable;
-    }
-
-    public void setAvailable(boolean available)
-    {
-        isAvailable = available;
-    }
-
     @Override
     public String toString()
     {
@@ -193,9 +155,6 @@ public class SummerHouse implements Serializable
                 ", description='" + description + '\'' +
                 ", pricePerNight=" + pricePerNight +
                 ", capacity=" + capacity +
-                ", admin=" + admin +
-                ", avgRating=" + avgRating +
-                ", isAvailable=" + isAvailable +
                 '}';
     }
 }

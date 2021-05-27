@@ -3,6 +3,7 @@ package client.viewmodel;
 import client.model.login.LoginModel;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 import shared.businesslogic.BookingsManager;
 import shared.businesslogic.SummerHousesManager;
 import shared.domain.RegionalAdmin;
@@ -21,7 +22,6 @@ public class SummerHouseEditViewModel
     private StringProperty description = new SimpleStringProperty();
     private DoubleProperty price = new SimpleDoubleProperty();
     private IntegerProperty capacity = new SimpleIntegerProperty();
-    private StringProperty adminName = new SimpleStringProperty();
 
     private BooleanProperty canEdit = new SimpleBooleanProperty();
 
@@ -32,7 +32,9 @@ public class SummerHouseEditViewModel
     private LoginModel lmodel;
 
 
-    public SummerHouseEditViewModel(SummerHousesManager shmanager, BookingsManager bookingsManager, LoginModel lmodel)
+    public SummerHouseEditViewModel(SummerHousesManager shmanager,
+                                    BookingsManager bookingsManager,
+                                    LoginModel lmodel)
     {
         this.shmanager = shmanager;
         this.bookingsManager = bookingsManager;
@@ -40,8 +42,9 @@ public class SummerHouseEditViewModel
 
         canEdit.set(!lmodel.getCurrentUser().getUserType().equals("Tenant"));
 
-        selected.addListener((obs, o, n) -> {
-            if(n == null) {
+        selected.addListener((obs, o, n) ->
+        {
+            if (n == null) {
 
                 // defaults
                 street.set("");
@@ -53,8 +56,6 @@ public class SummerHouseEditViewModel
                 description.set("");
                 price.set(0d);
                 capacity.set(0);
-
-                adminName.set("");
 
             } else {
 
@@ -68,19 +69,8 @@ public class SummerHouseEditViewModel
                 price.set(n.getPricePerNight());
                 capacity.set(n.getCapacity());
 
-                if(n.getAdmin() != null) {
-                    adminName.set(String.format("%s %s %s",
-                            n.getAdmin().getFirstname(),
-                            n.getAdmin().getMName(),
-                            n.getAdmin().getLastname()));
-                }
             }
         });
-    }
-
-    public void book()
-    {
-        // bookingsManager.book(selected.get(), lmodel.getCurrentUser(), ); // TODO needs date picker
     }
 
     public void saveChanges()
@@ -98,13 +88,6 @@ public class SummerHouseEditViewModel
             updated.setPricePerNight(price.get());
             updated.setCapacity(capacity.get());
 
-            RegionalAdmin adm = new RegionalAdmin();
-            adm.setCpr("1234567890");
-
-            updated.setAdmin(adm);
-
-            // TODO handle reg admin
-
             if (selected.getValue() == null) {
                 shmanager.register(updated);
             } else {
@@ -118,6 +101,11 @@ public class SummerHouseEditViewModel
         }
     }
 
+
+    public ObjectProperty<SummerHouse> selectedProperty()
+    {
+        return selected;
+    }
 
     public void setSelected(SummerHouse sh)
     {
@@ -162,11 +150,6 @@ public class SummerHouseEditViewModel
     public IntegerProperty capacityProperty()
     {
         return capacity;
-    }
-
-    public StringProperty adminNameProperty()
-    {
-        return adminName;
     }
 
     public ReadOnlyBooleanProperty canEditProperty()
