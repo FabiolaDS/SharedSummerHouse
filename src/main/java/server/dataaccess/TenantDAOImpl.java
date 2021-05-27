@@ -52,8 +52,6 @@ public class TenantDAOImpl extends DatabaseDAO implements TenantDAO
 
             ps.setString(1, cpr);
 
-            System.out.println(ps);
-
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {

@@ -52,9 +52,7 @@ public class BookingsManagerImpl extends UnicastRemoteObject implements Bookings
         Booking booking = new Booking(tdao.get(tenant.getUsername()), house, from, to);
         bdao.save(booking);
 
-        for(RemoteChangeListener l: listeners) {
-            l.propertyChange(new PropertyChangeEvent(this, "NEW_BOOKING", null, booking));
-        }
+        fireChangeEvent("NEW_BOOKING", null, booking);
     }
 
     @Override
@@ -73,5 +71,11 @@ public class BookingsManagerImpl extends UnicastRemoteObject implements Bookings
     public void removeListener(RemoteChangeListener rcl) throws RemoteException
     {
         listeners.remove(rcl);
+    }
+
+    private void fireChangeEvent(String prop, Object oldVal, Object newVal) throws RemoteException {
+        for(RemoteChangeListener l: listeners) {
+            l.propertyChange(new PropertyChangeEvent(this, prop, oldVal, newVal));
+        }
     }
 }
