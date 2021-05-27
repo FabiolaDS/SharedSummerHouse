@@ -5,13 +5,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.domain.RegionalAdmin;
 
-import java.rmi.RemoteException;
-
 public class AddRegionalAdministratorViewModel
 {
 
   private ManageMunicipalities municipalitiesModel;
-  private StringProperty municipalityId,cprNr,name, lastName,email,password;
+  private StringProperty municipalityId,cprNr,name, lastName, mname,password;
 
   public AddRegionalAdministratorViewModel(
       ManageMunicipalities manageMunicipalities)
@@ -22,7 +20,7 @@ public class AddRegionalAdministratorViewModel
     cprNr = new SimpleStringProperty();
     name = new SimpleStringProperty();
     lastName = new SimpleStringProperty();
-    email = new SimpleStringProperty();
+    mname = new SimpleStringProperty();
     password = new SimpleStringProperty();
   }
 
@@ -40,10 +38,6 @@ public class AddRegionalAdministratorViewModel
     this.municipalityId.set(municipalityId);
   }
 
-  public StringProperty municipalityIdProperty()
-  {
-    return municipalityId;
-  }
 
   public String getCprNr()
   {
@@ -75,14 +69,14 @@ public class AddRegionalAdministratorViewModel
     return lastName;
   }
 
-  public String getEmail()
+  public String getMiddleName()
   {
-    return email.get();
+    return mname.get();
   }
 
-  public StringProperty emailProperty()
+  public StringProperty mnameProperty()
   {
-    return email;
+    return mname;
   }
 
   public String getPassword()
@@ -97,7 +91,8 @@ public class AddRegionalAdministratorViewModel
 
   public void addRegionalAdmin()
   {
-    municipalitiesModel.addRegionalAdmin(new RegionalAdmin(getCprNr(),getName(),getLastName(),getEmail(),getPassword()), getMunicipalityIdString());
+    municipalitiesModel.addRegionalAdmin(new RegionalAdmin(getCprNr(),getName(),getLastName(),
+        getMiddleName(),getPassword()), getMunicipalityIdString());
   }
 
 }

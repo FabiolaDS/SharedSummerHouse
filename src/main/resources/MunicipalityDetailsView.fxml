@@ -97,7 +97,7 @@
               </rowConstraints>
                <children>
                   <Button mnemonicParsing="false" onAction="#onAddRegionalAdmin" text="Add Regional Admin" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#onRemoverRA" text="Remove Regional Admin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#onRemoverRegionalAdmin" text="Remove Regional Admin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Button mnemonicParsing="false" onAction="#onBack" text="Back" GridPane.columnIndex="2" />

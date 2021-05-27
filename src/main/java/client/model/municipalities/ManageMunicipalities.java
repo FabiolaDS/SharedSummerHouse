@@ -14,11 +14,11 @@ public interface ManageMunicipalities extends PropertyChangeSubject
   public void addRegionalAdmin(RegionalAdmin regionalAdmin,
       String municipalityId);
 
-  void getMunicipalities(PropertyChangeEvent event);
+  void getNewMunicipalities(PropertyChangeEvent event);
 
   public Municipality getMunicipality(String id);
 
-  List<Municipality> getMunicipalitiesStart();
+  List<Municipality> setMunicipalityList();
 
   RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR);
 

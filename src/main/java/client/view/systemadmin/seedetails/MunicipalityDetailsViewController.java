@@ -47,11 +47,11 @@ public class MunicipalityDetailsViewController implements ViewController
 
   public void onBack(ActionEvent actionEvent)
   {
-    ViewModelFactory.getInstance().getMainViewModel().municipalityList();
+    ViewModelFactory.getInstance().getMainViewModel().setMunicipalityList();
     viewHandler.openMainView();
   }
 
-  public void onRemoverRA(ActionEvent actionEvent)
+  public void onRemoverRegionalAdmin(ActionEvent actionEvent)
   {
     detailsViewModel.deleteRegionalAdmin();
 

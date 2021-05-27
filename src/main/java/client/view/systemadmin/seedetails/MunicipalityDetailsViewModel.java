@@ -70,10 +70,6 @@ public class MunicipalityDetailsViewModel
     this.cpr.set(cpr);
   }
 
-  public String getFirstName()
-  {
-    return firstName.get();
-  }
 
   public StringProperty firstNameProperty()
   {
@@ -98,11 +94,6 @@ public class MunicipalityDetailsViewModel
   public void setLastName(String lastName)
   {
     this.lastName.set(lastName);
-  }
-
-  public String getmName()
-  {
-    return mName.get();
   }
 
   public StringProperty mNameProperty()

@@ -19,7 +19,7 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities {
         support = new PropertyChangeSupport(this);
         client = ClientFactory.getClientFactory().getClient();
         client.addPropertyChangeListener(EventType.MUNICIPALITY.toString(),
-                this::getMunicipalities);
+                this::getNewMunicipalities);
         client.addPropertyChangeListener(EventType.REGIONALADMIN.toString(), this::updateRegionalAdmin);
     }
 
@@ -35,7 +35,7 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities {
     }
 
     @Override
-    public void getMunicipalities(PropertyChangeEvent event) {
+    public void getNewMunicipalities(PropertyChangeEvent event) {
         support.firePropertyChange(event);
     }
 
@@ -45,7 +45,7 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities {
     }
 
   @Override
-  public List<Municipality> getMunicipalitiesStart() {
+  public List<Municipality> setMunicipalityList() {
     return client.getAllMunicipalities();
   }
 

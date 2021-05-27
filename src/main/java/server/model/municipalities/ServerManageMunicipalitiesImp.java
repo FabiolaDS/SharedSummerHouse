@@ -118,7 +118,7 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     return MunicipalityDAOImpl.getInstance().getAll();
   }
 
-  @Override public RegionalAdmin getRegioinalAdminCPR(String regionalAdminCPR)
+  @Override public RegionalAdmin getRegionalAdmin(String regionalAdminCPR)
       throws SQLException
   {
     return RegionalAdminDAOImpl.getInstance().getById(regionalAdminCPR);
