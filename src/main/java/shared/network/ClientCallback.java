@@ -15,7 +15,7 @@ public interface ClientCallback extends Remote
    * Listens to the server, receiving updates from it.
    * @param eventType type of event the client listens to
    * @param update type of object it sends
-   * @throws RemoteException
+   * @throws RemoteException connection error
    */
   void updates(String eventType, Object update) throws RemoteException;
 }

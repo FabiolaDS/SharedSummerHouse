@@ -17,7 +17,7 @@ public interface LoginModel extends PropertyChangeSubject
    * result of the validation.
    * @param user the user requesting login
    * @return the result of the validation
-   * @throws SQLException
+   * @throws SQLException exceptions from the database
    */
   String validateUser(User user) throws SQLException;
 }
