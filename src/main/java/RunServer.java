@@ -9,16 +9,24 @@ import server.network.RMIServerImpl;
 
 import java.io.IOException;
 import java.rmi.AlreadyBoundException;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class RunServer {
+public class RunServer
+{
     public static void main(String[] args)
-            throws IOException, AlreadyBoundException, SQLException {
+            throws IOException, AlreadyBoundException, SQLException
+    {
         UserDAO userDAO = UserDAOImpl.getInstance();
-       LoginModelManager loginModel = new LoginModelManager(userDAO);
+        LoginModelManager loginModel = new LoginModelManager(userDAO);
+
+        SummerHousesDAO shdao = new JdbcSummerHouseDAO();
+        TenantDAO tdao = TenantDAOImpl.getInstance();
+        BookingDAO bdao = new JdbcBookingsDAO(shdao, tdao);
+
         RMIServerImpl server = new RMIServerImpl(loginModel,
-                new BookingsManagerImpl(new DummyBookingsDAO()),
-                new SummerHousesManagerImpl(new JdbcSummerHouseDAO(RegionalAdminDAOImpl.getInstance())));
+                new BookingsManagerImpl(bdao, tdao),
+                new SummerHousesManagerImpl(shdao));
         server.startServer();
     }
 }

@@ -4,6 +4,7 @@ import shared.domain.Booking;
 import shared.domain.SummerHouse;
 import shared.domain.Tenant;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,5 +55,11 @@ public class DummyBookingsDAO implements BookingDAO
     public void delete(Booking b)
     {
         bookings.remove(b);
+    }
+
+    @Override
+    public boolean isBookedBetween(SummerHouse sh, LocalDate from, LocalDate to)
+    {
+        return false;
     }
 }

@@ -9,6 +9,7 @@ import client.view.systemadmin.addRAmin.AddRegionalAdministratorViewModel;
 import client.view.systemadmin.addmunicipality.AddMunicipalityViewModel;
 import client.view.systemadmin.seedetails.MunicipalityDetailsViewModel;
 import client.view.systemadmin.viewmunicipalities.MainViewModel;
+import client.viewmodel.SummerHouseBookingViewModel;
 import client.viewmodel.SummerHouseEditViewModel;
 import client.viewmodel.SummerHousesListViewModel;
 
@@ -120,10 +121,11 @@ public class ViewModelFactory
                 shlvm = new SummerHousesListViewModel(modelf.getSummerHousesManager(),
                         modelf.getLoginModel().getCurrentUser());
             }
+
+            return shlvm;
         } catch(RemoteException e) {
             throw new RuntimeException(e);
         }
-        return shlvm;
     }
 
     private SummerHouseEditViewModel shevm;
@@ -137,6 +139,22 @@ public class ViewModelFactory
         }
 
         return shevm;
+    }
+
+    private SummerHouseBookingViewModel shbvm;
+
+    public SummerHouseBookingViewModel getSummerHouseBookingVM() {
+        try {
+            if (null == shbvm) {
+                shbvm = new SummerHouseBookingViewModel(
+                        modelf.getBookingsManager(),
+                        modelf.getLoginModel());
+            }
+
+            return shbvm;
+        } catch(RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

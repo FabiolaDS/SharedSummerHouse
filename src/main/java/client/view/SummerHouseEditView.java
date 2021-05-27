@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
-
 public class SummerHouseEditView
 {
     // address
@@ -20,7 +19,6 @@ public class SummerHouseEditView
     @FXML private TextArea description;
     @FXML private TextField price;
     @FXML private TextField capacity;
-    @FXML private TextField admin;
 
     @FXML private Button saveChangesButton;
 
@@ -46,7 +44,6 @@ public class SummerHouseEditView
         description.editableProperty().bind(vm.canEditProperty());
         price.editableProperty().bind(vm.canEditProperty());
         capacity.editableProperty().bind(vm.canEditProperty());
-        admin.editableProperty().bind(vm.canEditProperty());
 
         // hide button for tenant
         saveChangesButton.visibleProperty().bind(vm.canEditProperty());
@@ -62,7 +59,7 @@ public class SummerHouseEditView
         description.textProperty().bindBidirectional(vm.descriptionProperty());
         price.textProperty().bindBidirectional(vm.priceProperty(), new NumberStringConverter());
         capacity.textProperty().bindBidirectional(vm.capacityProperty(), new NumberStringConverter());
-        admin.textProperty().bindBidirectional(vm.adminNameProperty());
+
     }
 
     @FXML
@@ -71,8 +68,8 @@ public class SummerHouseEditView
     }
 
     @FXML
-    private void book() {
-        vm.book();
+    private void viewBookings() {
+        vh.openSummerHouseBookings(vm.selectedProperty().get());
     }
 
     @FXML

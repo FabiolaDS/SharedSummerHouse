@@ -30,9 +30,6 @@ public class SummerHousesListView
     private TableColumn<SummerHouse, Double> pricePerNightColumn;
 
     @FXML
-    private TableColumn<SummerHouse, Double> avgRatingColumn;
-
-    @FXML
     private HBox editBar;
 
     private ViewHandler vh;
@@ -51,7 +48,6 @@ public class SummerHousesListView
         houseNumberColumn.setCellValueFactory(new PropertyValueFactory<>("houseNumber"));
         guestsColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         pricePerNightColumn.setCellValueFactory(new PropertyValueFactory<>("pricePerNight"));
-        avgRatingColumn.setCellValueFactory(new PropertyValueFactory<>("avgRating"));
 
         summerhouses.setItems(vm.getSummerHouses());
 
