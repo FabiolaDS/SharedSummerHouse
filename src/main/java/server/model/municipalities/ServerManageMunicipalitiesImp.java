@@ -7,6 +7,7 @@ import shared.domain.RegionalAdmin;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -43,8 +44,8 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     }
     catch (SQLException throwable)
     {
-      System.out.println("Not possible to insert Municipality into DATABASE");
-      throwable.printStackTrace();
+      System.out.println(
+          "--------------------> Not possible to insert Municipality into DATABASE");
     }
     return getAllMunicipalities();
   }
@@ -52,7 +53,6 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
   @Override public List<Municipality> setRegionalAdmin(
       RegionalAdmin regionalAdmin, String municipalityId)
   {
-
     List<Municipality> municipalities = null;
     try
     {
@@ -80,9 +80,25 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     return municipalities;
   }
 
+  public void deleteRegionalAdmin(RegionalAdmin regionalAdmin){
+    try
+    {
+      RegionalAdminDAOImpl.getInstance().delete(regionalAdmin);
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
+  }
+
+  @Override public void deleteMunicipality(String id) throws SQLException
+  {
+    Municipality municipality = MunicipalityDAOImpl.getInstance().getById(id);
+    MunicipalityDAOImpl.getInstance().delete(municipality);
+  }
+
   @Override public Municipality getMunicipality(String id)
   {
-
     Municipality municipality = null;
     try
     {

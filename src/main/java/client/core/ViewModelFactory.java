@@ -3,8 +3,6 @@ package client.core;
 import client.network.Client;
 import client.network.RMIClient;
 import client.view.login.LoginViewModel;
-import client.view.regionaladmin.managesummerhouse.addsummerhouse.AddSummerHouseViewModel;
-import client.view.regionaladmin.managesummerhouse.viewsummerhouse.ManageSummerHouseModel;
 import client.view.regionaladmin.managetenant.addtenant.AddTenantViewModel;
 import client.view.regionaladmin.managetenant.viewtenantdetail.TenantDetailsViewModel;
 import client.view.systemadmin.addRAmin.AddRegionalAdministratorViewModel;
@@ -15,7 +13,6 @@ import client.viewmodel.SummerHouseBookingViewModel;
 import client.viewmodel.SummerHouseEditViewModel;
 import client.viewmodel.SummerHousesListViewModel;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public class ViewModelFactory
@@ -28,8 +25,6 @@ public class ViewModelFactory
     private MunicipalityDetailsViewModel municipalityDetailsViewModel;
     private MainViewModel mainViewModel;
     private LoginViewModel loginViewModel;
-    private AddSummerHouseViewModel addSummerHouseViewModel;
-    private ManageSummerHouseModel manageSummerHouseModel;
 
     private ModelFactory modelf;
 
@@ -106,25 +101,6 @@ public class ViewModelFactory
         return loginViewModel;
     }
 
-    public AddSummerHouseViewModel addSummerHouseViewModel()
-    {
-        if (addSummerHouseViewModel == null) {
-            addSummerHouseViewModel = new AddSummerHouseViewModel(ModelFactory.getInstance()
-                    .getSummerHousesModel());
-        }
-        return addSummerHouseViewModel;
-    }
-
-    public ManageSummerHouseModel getManageSummerHouseModel()
-    {
-
-        if (manageSummerHouseModel == null) {
-            manageSummerHouseModel = new ManageSummerHouseModel(
-                    ModelFactory.getInstance().getSummerHousesModel());
-        }
-        return manageSummerHouseModel;
-    }
-
 
     public AddTenantViewModel addTenantViewModel()
     {
@@ -180,4 +156,5 @@ public class ViewModelFactory
             throw new RuntimeException(e);
         }
     }
+
 }

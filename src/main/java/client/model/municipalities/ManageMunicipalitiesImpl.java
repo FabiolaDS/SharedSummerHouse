@@ -29,11 +29,9 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities {
 
     @Override
     public void addMunicipality(Municipality municipality) {
-        /*    try {*/
+
         client.addMunicipality(municipality);
-   /* } catch (RemoteException e) {
-      e.printStackTrace();
-    }*/
+
     }
 
     @Override
@@ -43,13 +41,7 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities {
 
     @Override
     public Municipality getMunicipality(String id) {
-
-        /* try {*/
         return client.getMunicipality(id);
-   /* } catch (RemoteException e) {
-      e.printStackTrace();
-    }*/
-
     }
 
   @Override
@@ -62,16 +54,23 @@ public class ManageMunicipalitiesImpl implements ManageMunicipalities {
         return client.getRegionalAdminByCPR(regionalAdminCPR);
     }
 
-    @Override
+  @Override public void deleteRegionalAdmin(RegionalAdmin regionalAdmin)
+  {
+    client.deleteRegionalAdmin(regionalAdmin);
+  }
+
+  @Override public void deleteMunicipality(String id)
+  {
+    client.deleteMunicipality(id);
+  }
+
+  @Override
     public void addRegionalAdmin(RegionalAdmin regionalAdmin,
                                  String municipalityId) {
-        /*    try {*/
+
       System.out.println("model calling to the client to add RA");
         client.addRegionalAdmin(regionalAdmin, municipalityId);
 
-        /*} *//*catch (RemoteException e) {
-      e.printStackTrace();
-    }*/
     }
 
     @Override

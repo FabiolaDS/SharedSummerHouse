@@ -4,8 +4,6 @@ import server.model.login.LoginModel;
 import server.model.login.LoginModelManager;
 import server.model.municipalities.ServerManageMunicipalities;
 import server.model.municipalities.ServerManageMunicipalitiesImp;
-import server.model.summerhouses.ServerManageSummerHousesImpl;
-import server.model.summerhouses.ServerManageSummerhouses;
 import server.model.tenants.ServerManageTenants;
 import server.model.tenants.ServerManageTenantsImpl;
 import shared.businesslogic.BookingsManager;
@@ -34,7 +32,6 @@ public class RMIServerImpl implements RMIServer {
     private LoginModel loginModel;
     private ServerManageMunicipalities municipalitiesModel;
     private Map<ClientCallback, PropertyChangeListener> listeners = new HashMap<>();
-    private ServerManageSummerhouses summerHousesModel;
     private ServerManageTenants tenantsModel;
 
     private BookingsManager bookings;
@@ -46,7 +43,6 @@ public class RMIServerImpl implements RMIServer {
         UnicastRemoteObject.exportObject(this, 0);
         this.loginModel = loginModel;
         this.municipalitiesModel = ServerManageMunicipalitiesImp.getInstance();
-        this.summerHousesModel = ServerManageSummerHousesImpl.getInstance();
         this.tenantsModel = ServerManageTenantsImpl.getInstance();
 
         this.bookings = bookings;
@@ -98,7 +94,18 @@ public class RMIServerImpl implements RMIServer {
             throwables.printStackTrace();
         }
         return municipalities;
+    }
 
+    @Override public void deleteRegionalAdmin(RegionalAdmin regionalAdmin)
+    {
+        try
+        {
+            municipalitiesModel.deleteRegionalAdmin(regionalAdmin);
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
     }
 
 
@@ -137,11 +144,6 @@ public class RMIServerImpl implements RMIServer {
         return null;
     }
 
-    @Override
-    public SummerHouse addSummerHouse(SummerHouse summerHouse)
-            throws RemoteException {
-        return summerHousesModel.addSummerHouse(summerHouse);
-    }
 
     @Override
     public Tenant addTenant(Tenant tenant) throws SQLException
@@ -150,10 +152,6 @@ public class RMIServerImpl implements RMIServer {
         return tenant;
     }
 
-    @Override
-    public ArrayList<SummerHouse> getSummerHouses() {
-        return summerHousesModel.getSummerHouses();
-    }
 
     @Override
     public BookingsManager getBookingsManager() {
@@ -179,6 +177,18 @@ public class RMIServerImpl implements RMIServer {
             throwables.printStackTrace();
         }
         return regionalAdmin;
+    }
+
+    @Override public void deleteMunicipality(String id)
+    {
+        try
+        {
+            municipalitiesModel.deleteMunicipality(id);
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
     }
 
     @Override

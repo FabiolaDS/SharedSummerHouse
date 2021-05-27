@@ -7,16 +7,27 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.sql.SQLException;
 
+/**
+ * Implements the LoginModel interface. Validates the login credentials received
+ * from the client and sends the result of the validation to the client.
+ * @author Luis Fernandez Ponton
+ * @version 1.0
+ */
 public class LoginModelManager implements LoginModel
 {
   private UserDAO userDAO;
   private PropertyChangeSupport support;
 
+  /**
+   * 1-argument constructor setting the userDAO and the PropertyChangeSupport.
+   * @param userDAO user data access object
+   */
   public LoginModelManager(UserDAO userDAO)
   {
     this.userDAO = userDAO;
     support = new PropertyChangeSupport(this);
   }
+
 
   @Override public String validateUser(User user) throws SQLException
   {

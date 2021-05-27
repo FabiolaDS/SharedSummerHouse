@@ -7,17 +7,21 @@ import shared.util.PropertyChangeSubject;
 import java.beans.PropertyChangeEvent;
 import java.util.List;
 
-public interface ManageMunicipalities extends PropertyChangeSubject {
-    public void addMunicipality(Municipality municipality);
+public interface ManageMunicipalities extends PropertyChangeSubject
+{
+  public void addMunicipality(Municipality municipality);
 
-    public void addRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId);
+  public void addRegionalAdmin(RegionalAdmin regionalAdmin,
+      String municipalityId);
 
-    //public ArrayList<Municipality> getMunicipalities();
-    void getMunicipalities(PropertyChangeEvent event);
+  void getMunicipalities(PropertyChangeEvent event);
 
-    public Municipality getMunicipality(String id);
+  public Municipality getMunicipality(String id);
 
-    List<Municipality> getMunicipalitiesStart();
+  List<Municipality> getMunicipalitiesStart();
 
-    RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR);
+  RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR);
+
+  void deleteRegionalAdmin(RegionalAdmin regionalAdmin);
+  void deleteMunicipality(String id);
 }

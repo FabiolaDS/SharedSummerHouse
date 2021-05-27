@@ -6,37 +6,55 @@ import shared.domain.*;
 import shared.transferobjects.User;
 import shared.util.PropertyChangeSubject;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface Client extends PropertyChangeSubject {
-    void login(User user);
+/**
+ * Client interface extending PropertyChangeSubject.
+ * @author Luis Fernandez Ponton
+ * @version 1.0
+ */
+public interface Client extends PropertyChangeSubject
+{
+  /**
+   * Sends the user object ot the server for validation and when validation is
+   * received, it fires a property to the model with the result.
+   * @param user
+   */
+  void login(User user);
 
-    void addMunicipality(Municipality municipality);
+  void addMunicipality(Municipality municipality);
 
-    void addRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId);
+  void addRegionalAdmin(RegionalAdmin regionalAdmin, String municipalityId);
 
-    void unregisterClient();
+  /**
+   * Unregister the client from the server as a listener.
+   */
+  void unregisterClient();
 
-    Municipality getMunicipality(String id);
+  Municipality getMunicipality(String id);
 
-    void startClient();
+  /** Starts the client. Export the client as a remote object, locates the
+   * server registry and looks for the server. Finally, it registers the client
+   * as a listener of the server.
+   */
+  void startClient();
 
-    void addSummerHouse(SummerHouse summerHouse);
+  void addTenant(Tenant tenant);
 
-    ArrayList<SummerHouse> getSummerHouses();
+  BookingsManager getBookingsManager();
 
-    void addTenant(Tenant tenant);
+  ArrayList<Tenant> getTenants();
 
-    BookingsManager getBookingsManager();
+  SummerHousesManager getSummerHousesManager();
 
+  List<Municipality> getAllMunicipalities();
 
-    ArrayList<Tenant> getTenants();
+  RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR);
 
-    SummerHousesManager getSummerHousesManager();
+  void deleteRegionalAdmin(RegionalAdmin regionalAdmin);
 
-    List<Municipality> getAllMunicipalities();
-
-    RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR);
+  void deleteMunicipality(String id);
 }
