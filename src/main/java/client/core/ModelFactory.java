@@ -1,7 +1,7 @@
 package client.core;
 
 import client.model.login.LoginModel;
-import client.model.login.LoginModelManager;
+import client.model.login.LoginModelImpl;
 import client.model.municipalities.ManageMunicipalities;
 import client.model.municipalities.ManageMunicipalitiesImpl;
 import client.model.tenants.TenantsModel;
@@ -46,7 +46,7 @@ public class ModelFactory
     public LoginModel getLoginModel()
     {
         if (loginModel == null) {
-            loginModel = new LoginModelManager(ClientFactory.getClientFactory()
+            loginModel = new LoginModelImpl(ClientFactory.getClientFactory()
                     .getClient());
         }
         return loginModel;

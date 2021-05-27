@@ -15,7 +15,7 @@ import java.beans.PropertyChangeSupport;
  * @version 1.0
  */
 
-public class LoginModelManager implements LoginModel
+public class LoginModelImpl implements LoginModel
 {
     private Client client;
     private User loggedInUser;
@@ -26,7 +26,7 @@ public class LoginModelManager implements LoginModel
      * listening to the client calling onLoginResult.
      * @param client the client using the system
      */
-    public LoginModelManager(Client client)
+    public LoginModelImpl(Client client)
     {
         this.client = client;
         support = new PropertyChangeSupport(this);
