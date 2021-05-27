@@ -28,7 +28,7 @@ public class UserDAOImpl extends DatabaseDAO implements UserDAO
   /**
    * Singleton returning an instance of the UserDAOImpl.
    * @return instance of the UserDAOImpl.
-   * @throws SQLException
+   * @throws SQLException exceptions from the database
    */
   public static synchronized UserDAOImpl getInstance() throws SQLException
   {

@@ -21,7 +21,7 @@ public interface Client extends PropertyChangeSubject
   /**
    * Sends the user object ot the server for validation and when validation is
    * received, it fires a property to the model with the result.
-   * @param user
+   * @param user user trying to login
    */
   void login(User user);
 

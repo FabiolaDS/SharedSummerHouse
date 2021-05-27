@@ -24,7 +24,7 @@ public class LoginModelManager implements LoginModel
     /**
      * 1-argument constructor setting the client, the PropertyChangSupport and
      * listening to the client calling onLoginResult.
-     * @param client
+     * @param client the client using the system
      */
     public LoginModelManager(Client client)
     {

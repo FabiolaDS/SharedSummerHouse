@@ -35,9 +35,8 @@ public class LoginViewController implements ViewController
    * the text fields and login button to the viewModel. The login button is
    * disabled until the user enters the username. Listens to the viewModel and
    * calls the onLoginResult method.
-   * @throws IOException
    */
-  @Override public void init() throws IOException
+  @Override public void init()
   {
     this.viewHandler = LoginViewHandler.getInstance();
     this.loginViewModel = ViewModelFactory.getInstance().getLoginViewModel();
@@ -92,9 +91,9 @@ public class LoginViewController implements ViewController
    * Takes the type of user and the credentials entered by the user and calls
    * the loginViewModel.
    * @param actionEvent Event trigger by the login button.
-   * @throws IOException
+   *
    */
-  public void onLoginButton(ActionEvent actionEvent) throws IOException {
+  public void onLoginButton(ActionEvent actionEvent) {
 
     RadioButton selectedRadioButton = (RadioButton) userType.getSelectedToggle();
     selectedUserType = selectedRadioButton.getText();
