@@ -24,7 +24,7 @@ public class BookingsManagerImpl extends UnicastRemoteObject implements Bookings
 
     public BookingsManagerImpl(BookingDAO bdao, TenantDAO tdao) throws RemoteException
     {
-        super(0);   //call  super constructor form Uni to export to RMI
+        super(0);   //  call super constructor form UnicastRemoteObject to export object for RMI
 
         this.bdao = bdao;
         this.tdao = tdao;

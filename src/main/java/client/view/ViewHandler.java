@@ -12,11 +12,21 @@ import shared.domain.SummerHouse;
 
 import java.io.IOException;
 
+/**
+ * Class responsible for managing Views
+ * @author Fabiola
+ */
 public class ViewHandler
 {
     private Stage stage;
     private ViewModelFactory vmf;
 
+    /**
+     * Constructor to initialize ViewHandler with ViewModelFactory and Stage to display views in.
+     *
+     * @param vmf               ViewModelFactory to get the viewmodels from
+     * @param primaryStage      Stage to show views in
+     */
     public ViewHandler(ViewModelFactory vmf, Stage primaryStage)
     {
         this.vmf = vmf;
@@ -25,12 +35,20 @@ public class ViewHandler
         stage.show();
     }
 
+    /**
+     * Shows SummerHouseListView in the stage.
+     */
     public void openSummerHouseList()
     {
         stage.setScene(new Scene(load("/summerhouseList.fxml",
                 new SummerHousesListView(this, vmf.getSummerHousesListVM()))));
     }
 
+    /**
+     * Shows SummerHouse editing/details view for SummerHouse sh in the stage.
+     *
+     * @param sh    SummerHouse to edit/display
+     */
     public void openSummerHouseDetails(SummerHouse sh)
     {
         SummerHouseEditViewModel vm = vmf.getSummerHouseEditVM();
@@ -40,11 +58,19 @@ public class ViewHandler
                 new SummerHouseEditView(this, vm))));
     }
 
+    /**
+     * Shows view to register new SummerHouses in the stage.
+     */
     public void openSummerHouseAdd()
     {
         openSummerHouseDetails(null);
     }
 
+    /**
+     * Shows bookings list view for given SummerHouse in the stage.
+     *
+     * @param sh    summerhouse to show bookings for
+     */
     public void openSummerHouseBookings(SummerHouse sh)
     {
         SummerHouseBookingViewModel vm = vmf.getSummerHouseBookingVM();

@@ -10,12 +10,35 @@ import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface BookingsManager extends RemoteChangeSubject, Remote // to be able to use from client side
+/**
+ * Interface to encapsulate business logic for bookings
+ *
+ * @author Fabiola
+ */
+public interface BookingsManager extends RemoteChangeSubject, Remote // to be able to use from client side via RMI
 {
 
+    /**
+     * Books a summerhouse {@code house} for the tenant {@code tenant} from date {@code from} to date {@code to}
+     *
+     * @param house         summerhouse to book
+     * @param tenant        booking tenant
+     * @param from          start date of the booking
+     * @param to            end date of the booking
+     *
+     * @throws RemoteException  Remote interface
+     */
     void book(SummerHouse house, User tenant, LocalDate from, LocalDate to)
             throws RemoteException;
 
+    /**
+     * Returns all bookings for given summerhouse
+     *
+     * @param sh    summerhouse to search by
+     * @return      List containing all the bookings for given summerhouse
+     *
+     * @throws RemoteException  Remote interface
+     */
     List<Booking> getBookingsFor(SummerHouse sh)
             throws RemoteException;
 }

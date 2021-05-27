@@ -19,7 +19,7 @@ public class SummerHouse implements Serializable
     private double pricePerNight;
     private int capacity;
 
-    /**
+    /*
      * Needs to be like this (confirming to ER diagram)
      * CREATE TABLE shared_summerhouse.summerhouse (
      * id SERIAL PRIMARY KEY,

@@ -1,11 +1,15 @@
 package server.dataaccess;
 
-import shared.domain.RegionalAdmin;
 import shared.domain.SummerHouse;
 
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * JDBC based implementation of SummerHouseDAO
+ *
+ * @author Fabiola
+ */
 public class JdbcSummerHouseDAO extends DatabaseDAO implements SummerHousesDAO
 {
 
