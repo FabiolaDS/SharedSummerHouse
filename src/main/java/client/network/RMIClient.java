@@ -110,33 +110,6 @@ public class RMIClient implements Client, ClientCallback
     }
   }
 
-  @Override public ArrayList<SummerHouse> getSummerHouses()
-  {
-    ArrayList<SummerHouse> summerHouseList = new ArrayList<>();
-    try
-    {
-      summerHouseList = server.getSummerHouses();
-    }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
-    }
-    return summerHouseList;
-  }
-
-  @Override public void addSummerHouse(SummerHouse summerHouse)
-  {
-    try
-    {
-      support.firePropertyChange(EventType.SUMMERHOUSE.toString(), null,
-          server.addSummerHouse(summerHouse));
-    }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
-    }
-  }
-
   @Override public void addTenant(Tenant tenant)
   {
     try

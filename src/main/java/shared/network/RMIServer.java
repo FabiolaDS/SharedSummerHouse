@@ -30,11 +30,8 @@ public interface RMIServer extends Remote {
     //ArrayList<MunicipalityList> getMunicipalities() throws RemoteException;
     Municipality getMunicipality(Long id) throws RemoteException;// what does that do(return one munip)So which one(need argthen) - yes that is why it isnt compling
 
-    SummerHouse addSummerHouse(SummerHouse summerHouse) throws RemoteException;
 
     Tenant addTenant(Tenant tenant) throws RemoteException, SQLException;
-
-    ArrayList<SummerHouse> getSummerHouses() throws RemoteException;
 
 
     BookingsManager getBookingsManager() throws RemoteException;

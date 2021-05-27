@@ -42,10 +42,6 @@ public interface Client extends PropertyChangeSubject
    */
   void startClient();
 
-  void addSummerHouse(SummerHouse summerHouse);
-
-  ArrayList<SummerHouse> getSummerHouses();
-
   void addTenant(Tenant tenant);
 
   BookingsManager getBookingsManager();

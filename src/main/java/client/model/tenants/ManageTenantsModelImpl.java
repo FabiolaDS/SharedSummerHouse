@@ -3,7 +3,7 @@ package client.model.tenants;
 import client.core.ClientFactory;
 import client.network.Client;
 import shared.domain.SummerHouse;
-import shared.domain.TenantsList;
+
 import shared.domain.Tenant;
 import shared.transferobjects.EventType;
 
@@ -17,13 +17,13 @@ public class ManageTenantsModelImpl implements TenantsModel
 {
 
   private PropertyChangeSupport support;
-  private TenantsList tenantsList;
+
   private Client client;
 
   public ManageTenantsModelImpl()
   {
     support = new PropertyChangeSupport(this);
-    tenantsList = new TenantsList();
+
     client = ClientFactory.getClientFactory().getClient();
     client.addPropertyChangeListener(EventType.TENANTS.toString(),
         this::getTenants);

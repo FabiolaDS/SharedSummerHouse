@@ -3,7 +3,7 @@ package server.model.tenants;
 import server.dataaccess.TenantDAO;
 import server.dataaccess.TenantDAOImpl;
 import shared.domain.Tenant;
-import shared.domain.TenantsList;
+
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -26,10 +26,6 @@ public class ServerManageTenantsImpl implements ServerManageTenants
     return serverManageTenants;
   }
 
-  /* --------
-
-   */
-  private TenantsList tenantsList = new TenantsList();
 
   @Override public Tenant addTenant(Tenant tenant) throws SQLException
   {

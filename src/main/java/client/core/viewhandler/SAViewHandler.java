@@ -2,7 +2,6 @@ package client.core.viewhandler;
 
 import client.core.ViewModelFactory;
 import client.view.ViewController;
-import client.view.regionaladmin.managesummerhouse.viewsummerhouse.ManageSummerHouseModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
