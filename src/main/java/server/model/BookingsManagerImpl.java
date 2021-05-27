@@ -37,11 +37,19 @@ public class BookingsManagerImpl extends UnicastRemoteObject implements Bookings
     public void book(SummerHouse house, User tenant, LocalDate from,
                      LocalDate to) throws RemoteException
     {
+        if(from.isAfter(to)) {
+            throw new IllegalArgumentException("Start date has to be after end date");
+        }
+
+        if(!from.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("Booking has to start earliest tomorrow");
+        }
+
         if(bdao.isBookedBetween(house, from, to)) {
             throw new IllegalArgumentException("Summerhouse is already booked at that time");
         }
 
-        Booking booking = new Booking(tdao.get(tenant.getCpr()), house, from, to);
+        Booking booking = new Booking(tdao.get(tenant.getUsername()), house, from, to);
         bdao.save(booking);
 
         for(RemoteChangeListener l: listeners) {

@@ -42,15 +42,14 @@ public class SummerHouse implements Serializable
         this.houseNumber = houseNumber;
         this.postCode = postCode;
         this.region = region;
+
         this.title = title;
         this.description = description;
         this.pricePerNight = pricePerNight;
         this.capacity = capacity;
     }
 
-    public SummerHouse()
-    {
-    }
+    public SummerHouse() {}
 
     public Long getId()
     {

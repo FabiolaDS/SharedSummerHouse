@@ -3,6 +3,7 @@ package server.dataaccess;
 import shared.domain.SummerHouse;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Interface for Data Access Object for the summerhouses
@@ -35,7 +36,7 @@ public interface SummerHousesDAO
      *
      * @return      list of all persisted summerhouses
      */
-    ArrayList<SummerHouse> getAllSummerHouses();
+    List<SummerHouse> getAllSummerHouses();
 
     /**
      * Updateds summerhouse data

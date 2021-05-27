@@ -123,8 +123,6 @@ public class JdbcBookingsDAO extends DatabaseDAO implements BookingDAO
             ps.setObject(4, from);
             ps.setObject(5, to);
 
-            System.out.println(ps);
-
             ResultSet rs = ps.executeQuery();
             rs.next();
             long res = rs.getLong(1);
