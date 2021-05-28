@@ -67,8 +67,10 @@ public class SummerHousesListView
     @FXML
     private void showSummerHouse(MouseEvent e) {
         if(e.getClickCount() == 2) {
-            vh.openSummerHouseDetails(
-                    summerhouses.getSelectionModel().getSelectedItem());
+            if(summerhouses.getSelectionModel().getSelectedItem() != null) {
+                vh.openSummerHouseDetails(
+                        summerhouses.getSelectionModel().getSelectedItem());
+            }
         }
     }
 }

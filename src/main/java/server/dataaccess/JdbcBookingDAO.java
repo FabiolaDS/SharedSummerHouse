@@ -13,13 +13,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JdbcBookingsDAO extends DatabaseDAO implements BookingDAO
+public class JdbcBookingDAO extends DatabaseDAO implements BookingDAO
 {
 
     private SummerHousesDAO shdao;
     private TenantDAO tdao;
 
-    public JdbcBookingsDAO(SummerHousesDAO shdao, TenantDAO tdao)
+    public JdbcBookingDAO(SummerHousesDAO shdao, TenantDAO tdao)
     {
         super("booking");
 
