@@ -1,7 +1,10 @@
 package client.view.regionaladmin.mainview;
 
+import client.core.ViewModelFactory;
+import client.core.viewhandler.LoginViewHandler;
 import client.core.viewhandler.RAViewHandler;
 import client.view.ViewController;
+import client.view.ViewHandler;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -21,12 +24,10 @@ public class RegionalAdminMainViewController implements ViewController
 
   public void onManageSummerHouse(ActionEvent actionEvent)
   {
-    raViewHandler.openManageSummerHouseView();
-  }
-
-  public void onManageBookings(ActionEvent actionEvent)
-  {
-    raViewHandler.openManageBookings();
+    new client.view.ViewHandler(
+        ViewModelFactory.getInstance(),
+        LoginViewHandler.getInstance().getStage())
+        .openSummerHouseList();
   }
 
 }
