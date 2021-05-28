@@ -12,25 +12,18 @@ import java.sql.SQLException;
 public class ServerManageTenantsImpl implements ServerManageTenants
 {
   private TenantDAO tenantDAO;
-  private static ServerManageTenantsImpl serverManageTenants;
   PropertyChangeSupport support;
 
-  private ServerManageTenantsImpl(){
+  public ServerManageTenantsImpl(TenantDAO tenantDAO){
+    this.tenantDAO = tenantDAO;
     support = new PropertyChangeSupport(this);
-  }
-
-  public static ServerManageTenantsImpl getInstance(){
-    if (serverManageTenants == null) {
-      serverManageTenants = new ServerManageTenantsImpl();
-    }
-    return serverManageTenants;
   }
 
 
   @Override public Tenant addTenant(Tenant tenant) throws SQLException
   {
     //tenantsList.add(tenant);
-    TenantDAOImpl.getInstance().createTenant(tenant);
+    tenantDAO.createTenant(tenant);
     return tenant;
   }
 
