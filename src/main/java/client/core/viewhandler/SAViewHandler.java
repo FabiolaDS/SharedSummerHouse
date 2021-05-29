@@ -46,7 +46,7 @@ public class SAViewHandler implements ViewHandler
   {
     Scene scene;
     stage.setTitle("Main View for System Admin");
-    scene = new Scene(loadFXML("/MainView.fxml"));
+    scene = new Scene(loadFXML("/mainView.fxml"));
     stage.setScene(scene);
     stage.show();
   }
@@ -54,9 +54,9 @@ public class SAViewHandler implements ViewHandler
   public void openSeeMunicipalityDetailsView()
   {
     Scene scene;
-   // Parent root = getRoot("/MunicipalityDetailsView.fxml");
+   // Parent root = getRoot("/municipalityDetailsView.fxml");
     stage.setTitle("Municipality details");
-    scene = new Scene(loadFXML("/MunicipalityDetailsView.fxml"));
+    scene = new Scene(loadFXML("/municipalityDetailsView.fxml"));
     stage.setScene(scene);
     stage.show();
   }
@@ -64,7 +64,7 @@ public class SAViewHandler implements ViewHandler
   public void openAddMunicipalityView()
   {
     Scene scene;
-    Parent root = loadFXML("/AddMunicipalityView.fxml");
+    Parent root = loadFXML("/addMunicipalityView.fxml");
     stage.setTitle("Add Municipality");
     scene = new Scene(root);
     stage.setScene(scene);
@@ -74,7 +74,7 @@ public class SAViewHandler implements ViewHandler
   public void openAddRegionalAdminView()
   {
     Scene scene;
-    Parent root = loadFXML("/AddRegionalAdminView.fxml");
+    Parent root = loadFXML("/addRegionalAdminView.fxml");
     stage.setTitle("Add Regional Admin");
     scene = new Scene(root);
     stage.setScene(scene);
@@ -95,7 +95,7 @@ public class SAViewHandler implements ViewHandler
   public void openAddTenantsView()
   {
     Scene scene;
-    Parent root = loadFXML("/SeeAllTenantsView.fxml");
+    Parent root = loadFXML("/seeAllTenantsView.fxml");
     stage.setTitle("Registered tenants");
     scene = new Scene(root);
     stage.setScene(scene);

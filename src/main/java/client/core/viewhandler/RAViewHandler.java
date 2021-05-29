@@ -41,7 +41,7 @@ public class RAViewHandler implements ViewHandler
   {
     Scene scene;
     stage.setTitle("Regional Admin Main View ");
-    scene = new Scene(loadFXML("/RegionalAdminMainView.fxml"));
+    scene = new Scene(loadFXML("/regionalAdminMainView.fxml"));
     stage.setScene(scene);
     stage.show();
   }
@@ -69,7 +69,7 @@ public class RAViewHandler implements ViewHandler
   {
     Scene scene;
     stage.setTitle("Add Tenants view");
-    scene = new Scene(loadFXML("/AddTenantView.fxml"));
+    scene = new Scene(loadFXML("/addTenantView.fxml"));
     stage.setScene(scene);
     stage.show();
   }
@@ -77,7 +77,7 @@ public class RAViewHandler implements ViewHandler
   {
     Scene scene;
     stage.setTitle("See all tenants");
-    scene = new Scene(loadFXML("/SeeAllTenantsView.fxml"));
+    scene = new Scene(loadFXML("/seeAllTenantsView.fxml"));
     stage.setScene(scene);
     stage.show();
   }

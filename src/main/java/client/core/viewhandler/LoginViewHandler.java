@@ -40,7 +40,7 @@ public class LoginViewHandler implements ViewHandler {
     public void openLoginView() {
         Scene scene;
         stage.setTitle("Login");
-        scene = new Scene(loadFXML("/LoginView.fxml"));
+        scene = new Scene(loadFXML("/loginView.fxml"));
         stage.setScene(scene);
         stage.show();
     }

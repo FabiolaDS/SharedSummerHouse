@@ -60,6 +60,8 @@ public class LoginViewController implements ViewController
       if ("Tenant".equals(selectedUserType))
         {
           // TODO: I'm not sure what view to open here.
+
+        new client.view.ViewHandler(ViewModelFactory.getInstance(),LoginViewHandler.getInstance().getStage());
         }
       if ("Regional Admin".equals(selectedUserType))
       {
