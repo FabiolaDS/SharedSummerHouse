@@ -7,6 +7,7 @@ import java.sql.*;
 /**
  * Class implementing the UserDAO interface and extending the DatabaseDAO class.
  * Accesses the database to find the user trying to log in.
+ *
  * @author Luis Fernandez Ponton
  * @version 1.0
  */
@@ -17,6 +18,7 @@ public class UserDAOImpl extends DatabaseDAO implements UserDAO
   /**
    * 0-argument constructor for the UserDAOImpl inheriting from DatabaseDAO and
    * setting the postgresql Driver class.
+   *
    * @throws SQLException
    */
   private UserDAOImpl() throws SQLException
@@ -27,6 +29,7 @@ public class UserDAOImpl extends DatabaseDAO implements UserDAO
 
   /**
    * Singleton returning an instance of the UserDAOImpl.
+   *
    * @return instance of the UserDAOImpl.
    * @throws SQLException exceptions from the database
    */
@@ -43,7 +46,6 @@ public class UserDAOImpl extends DatabaseDAO implements UserDAO
   {
     try (Connection connection = getConnection())
     {
-      System.out.println("Connected");
       PreparedStatement statement = null;
       User foundUser = null;
       ResultSet resultSet = null;
@@ -60,7 +62,8 @@ public class UserDAOImpl extends DatabaseDAO implements UserDAO
           foundUser = new User(cpr, password, user.getUserType());
 
         }
-      } else if ("Regional Admin".equals(user.getUserType()))
+      }
+      else if ("Regional Admin".equals(user.getUserType()))
       {
         statement = connection.prepareStatement(
             "SELECT * FROM \"shared_summerhouse\".\"regional_admin\" WHERE regional_admin_cpr = ?");
