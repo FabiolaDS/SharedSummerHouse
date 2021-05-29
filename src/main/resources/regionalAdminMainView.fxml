@@ -46,7 +46,6 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#onSeeAllTenants" text="Tenants" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" onAction="#onManageSummerHouse" text="SummerHouses" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#onManageBookings" text="Bookings" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>

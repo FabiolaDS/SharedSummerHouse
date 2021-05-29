@@ -1,6 +1,8 @@
 package server.model.municipalities;
 
+import server.dataaccess.MunicipalityDAO;
 import server.dataaccess.MunicipalityDAOImpl;
+import server.dataaccess.RegionalAdminDAO;
 import server.dataaccess.RegionalAdminDAOImpl;
 import shared.domain.Municipality;
 import shared.domain.RegionalAdmin;
@@ -13,24 +15,15 @@ import java.util.List;
 
 public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
 {
-
-  private static ServerManageMunicipalitiesImp serverManageMunicipalities;
+  private MunicipalityDAO municipalityDAO;
+  private RegionalAdminDAO regionalAdminDAO;
   PropertyChangeSupport support;
 
-  private ServerManageMunicipalitiesImp()
+  public ServerManageMunicipalitiesImp(MunicipalityDAO municipalityDAO, RegionalAdminDAO regionalAdminDAO)
   {
-
+    this.municipalityDAO = municipalityDAO;
+    this.regionalAdminDAO = regionalAdminDAO;
     support = new PropertyChangeSupport(this);
-  }
-
-  public static ServerManageMunicipalitiesImp getInstance()
-  {
-
-    if (serverManageMunicipalities == null)
-    {
-      serverManageMunicipalities = new ServerManageMunicipalitiesImp();
-    }
-    return serverManageMunicipalities;
   }
 
   @Override public List<Municipality> addMunicipality(Municipality municipality)
@@ -38,7 +31,7 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
   {
     try
     {
-      MunicipalityDAOImpl.getInstance()
+      municipalityDAO
           .create(municipality.getId(), municipality.getName(),
               municipality.getRegion());
     }
@@ -57,21 +50,21 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     try
     {
       //FIRST: Create Regional Administrator
-      RegionalAdmin regionalAdmin1 = RegionalAdminDAOImpl.getInstance()
+      RegionalAdmin regionalAdmin1 = regionalAdminDAO
           .create(regionalAdmin.getCpr(), regionalAdmin.getFirstname(),
               regionalAdmin.getMName(), regionalAdmin.getLastname(),
               regionalAdmin.getPassword(), municipalityId);
       System.out.println(regionalAdmin);
 
       //SECOND: update municipality
-      Municipality municipality = MunicipalityDAOImpl.getInstance()
+      Municipality municipality = municipalityDAO
           .getById(municipalityId);
       municipality.setRegionalAdmin(regionalAdmin1);
       System.out.println(municipality.getRegionalAdminCPR());
       MunicipalityDAOImpl.getInstance().update(municipality);
 
       //THIRD: update list of municipalities with the changes
-      municipalities = MunicipalityDAOImpl.getInstance().getAll();
+      municipalities = municipalityDAO.getAll();
     }
     catch (SQLException throwables)
     {
@@ -83,7 +76,7 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
   public void deleteRegionalAdmin(RegionalAdmin regionalAdmin){
     try
     {
-      RegionalAdminDAOImpl.getInstance().delete(regionalAdmin);
+      regionalAdminDAO.delete(regionalAdmin);
     }
     catch (SQLException throwables)
     {
@@ -93,8 +86,8 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
 
   @Override public void deleteMunicipality(String id) throws SQLException
   {
-    Municipality municipality = MunicipalityDAOImpl.getInstance().getById(id);
-    MunicipalityDAOImpl.getInstance().delete(municipality);
+    Municipality municipality = municipalityDAO.getById(id);
+    municipalityDAO.delete(municipality);
   }
 
   @Override public Municipality getMunicipality(String id)
@@ -102,7 +95,7 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     Municipality municipality = null;
     try
     {
-      municipality = MunicipalityDAOImpl.getInstance().getById(id);
+      municipality = municipalityDAO.getById(id);
 
     }
     catch (SQLException throwable)
@@ -115,13 +108,13 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
   @Override public List<Municipality> getAllMunicipalities() throws SQLException
   {
 
-    return MunicipalityDAOImpl.getInstance().getAll();
+    return municipalityDAO.getAll();
   }
 
   @Override public RegionalAdmin getRegionalAdmin(String regionalAdminCPR)
       throws SQLException
   {
-    return RegionalAdminDAOImpl.getInstance().getById(regionalAdminCPR);
+    return regionalAdminDAO.getById(regionalAdminCPR);
   }
 
   @Override public void addPropertyChangeListener(String name,

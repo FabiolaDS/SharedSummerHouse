@@ -37,13 +37,15 @@ public class RMIServerImpl implements RMIServer {
     private BookingsManager bookings;
     private SummerHousesManager summerhouses;
 
-    public RMIServerImpl(LoginModelManager loginModel,
+    public RMIServerImpl(LoginModel loginModel,
+                         ServerManageMunicipalities manageMunicipalities,
+                         ServerManageTenants manageTenants,
                          BookingsManager bookings,
                          SummerHousesManager houses) throws RemoteException {
         UnicastRemoteObject.exportObject(this, 0);
         this.loginModel = loginModel;
-        this.municipalitiesModel = ServerManageMunicipalitiesImp.getInstance();
-        this.tenantsModel = ServerManageTenantsImpl.getInstance();
+        this.municipalitiesModel = manageMunicipalities;
+        this.tenantsModel = manageTenants;
 
         this.bookings = bookings;
         this.summerhouses = houses;
