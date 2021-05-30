@@ -1,16 +1,11 @@
 package client.view.login;
 
-import client.core.viewhandler.LoginViewHandler;
-import client.core.viewhandler.RAViewHandler;
-import client.core.viewhandler.SAViewHandler;
-import client.core.viewhandler.ViewHandler;
-import client.core.ViewModelFactory;
-import client.view.ViewController;
+
+
+import client.core.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.io.IOException;
 
 /**
  * A controller to control the Login view for all users. Users can select the
@@ -19,7 +14,7 @@ import java.io.IOException;
  * @version 1.0
  */
 
-public class LoginViewController implements ViewController
+public class LoginViewController
 {
   @FXML private Button loginButton;
   @FXML private TextField usernameTextField;
@@ -30,16 +25,23 @@ public class LoginViewController implements ViewController
   private LoginViewModel loginViewModel;
   private ViewHandler viewHandler;
 
+  public LoginViewController(ViewHandler viewHandler, LoginViewModel loginViewModel)
+  {
+    this.viewHandler = viewHandler;
+    this.loginViewModel = loginViewModel;
+  }
+
+
+
   /**
    * Initializes the controller. Sets the viewHandler and loginViewModel. Binds
    * the text fields and login button to the viewModel. The login button is
    * disabled until the user enters the username. Listens to the viewModel and
    * calls the onLoginResult method.
    */
-  @Override public void init()
+   public void  initialize()
   {
-    this.viewHandler = LoginViewHandler.getInstance();
-    this.loginViewModel = ViewModelFactory.getInstance().getLoginViewModel();
+
     usernameTextField.textProperty().bindBidirectional(loginViewModel.usernameProperty());
     passwordTextField.textProperty().bindBidirectional(loginViewModel.passwordProperty());
     loginResultLabel.textProperty().bindBidirectional(loginViewModel.loginResultProperty());
@@ -59,32 +61,15 @@ public class LoginViewController implements ViewController
 
       if ("Tenant".equals(selectedUserType))
         {
-          new client.view.ViewHandler(
-              ViewModelFactory.getInstance(),
-              LoginViewHandler.getInstance().getStage())
-              .openSummerHouseList();
+          viewHandler.openSummerHouseList();
         }
       if ("Regional Admin".equals(selectedUserType))
       {
-        try
-        {
-          RAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage());
-        }
-        catch (IOException e)
-        {
-          e.printStackTrace();
-        }
+        viewHandler.openMainView();
       }
       if ("System Admin".equals(selectedUserType))
       {
-        try
-        {
-          SAViewHandler.getInstance().start(LoginViewHandler.getInstance().getStage());
-        }
-        catch (IOException e)
-        {
-          e.printStackTrace();
-        }
+        viewHandler.openMainViewSystemAdmin();
       }
 
     }

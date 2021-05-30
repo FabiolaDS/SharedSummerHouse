@@ -1,14 +1,11 @@
 package client.view.systemadmin.seedetails;
 
-import client.core.viewhandler.SAViewHandler;
+import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import client.view.ViewController;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
-import java.io.IOException;
-
-public class MunicipalityDetailsViewController implements ViewController
+public class MunicipalityDetailsViewController
 {
   public Label municipalityNameLabel;
   public Label municipalityRegionLabel;
@@ -17,14 +14,17 @@ public class MunicipalityDetailsViewController implements ViewController
   public Label nameLabel;
   public Label emailLabel;
   public Label cprLabel;
-  private SAViewHandler viewHandler;
+  private ViewHandler viewHandler;
   private MunicipalityDetailsViewModel detailsViewModel;
 
-  @Override public void init() throws IOException
+  public MunicipalityDetailsViewController(ViewHandler viewHandler, MunicipalityDetailsViewModel municipalityDetailsViewModel)
   {
-    this.viewHandler = SAViewHandler.getInstance();
-    detailsViewModel = ViewModelFactory.getInstance()
-        .getMunicipalityDetailsViewModel();
+    this.viewHandler = viewHandler;
+    this.detailsViewModel = municipalityDetailsViewModel;
+  }
+
+ public void initialize()
+  {
     //Municipality info:
     municipalityIdLabel.textProperty().bind(detailsViewModel.idProperty());
     municipalityRegionLabel.textProperty()
@@ -48,7 +48,7 @@ public class MunicipalityDetailsViewController implements ViewController
   public void onBack(ActionEvent actionEvent)
   {
     ViewModelFactory.getInstance().getMainViewModel().setMunicipalityList();
-    viewHandler.openMainView();
+    viewHandler.openMainViewSystemAdmin();
   }
 
   public void onRemoverRegionalAdmin(ActionEvent actionEvent)

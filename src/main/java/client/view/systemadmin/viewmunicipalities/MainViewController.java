@@ -1,20 +1,18 @@
 package client.view.systemadmin.viewmunicipalities;
 
-import client.core.viewhandler.SAViewHandler;
+
 import client.core.ViewModelFactory;
-import client.view.ViewController;
-import client.view.systemadmin.seedetails.MunicipalityDetailsViewModel;
+import client.core.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.domain.Municipality;
-import shared.domain.RegionalAdmin;
 
 import java.io.IOException;
 
-public class MainViewController implements ViewController
+public class MainViewController
 {
   public TableColumn<Municipality, String> muniColumn;
   public TableColumn<Municipality, String> regionColumn;
@@ -23,16 +21,20 @@ public class MainViewController implements ViewController
   public TableView<Municipality> municipalityTable;
   public Label warningLabel;
 
-  private SAViewHandler viewHandler;
+  private ViewHandler viewHandler;
   private ViewModelFactory viewModelFactory;
   private MainViewModel mainViewModel;
 
-  public void init()
-  {
-    this.viewModelFactory = ViewModelFactory.getInstance();
-    this.mainViewModel = viewModelFactory.getMainViewModel();
 
-    viewHandler = SAViewHandler.getInstance();
+
+  public MainViewController(ViewHandler viewHandler, MainViewModel mainViewModel)
+  {
+    this.mainViewModel = mainViewModel;
+    this.viewHandler = viewHandler;
+  }
+
+  public void initialize()
+  {
 
     muniColumn.setCellValueFactory(
         new PropertyValueFactory<Municipality, String>("name"));

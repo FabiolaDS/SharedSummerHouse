@@ -1,15 +1,12 @@
 package client.view.regionaladmin.managetenant.addtenant;
 
-import client.core.ViewModelFactory;
-import client.core.viewhandler.RAViewHandler;
-import client.view.ViewController;
+
+import client.core.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
-
-public class AddTenantViewController implements ViewController
+public class AddTenantViewController
 {
   @FXML public TextField cprField;
   @FXML public TextField firstNameField;
@@ -21,30 +18,28 @@ public class AddTenantViewController implements ViewController
   //@FXML public TextField typeLabel;
 
 
-  private RAViewHandler viewHandler;
+  private ViewHandler viewHandler;
   private AddTenantViewModel addTenantViewModel;
 
-  @Override public void init() throws IOException
+  public AddTenantViewController(ViewHandler viewHandler, AddTenantViewModel addTenantViewModel)
   {
-    this.viewHandler = RAViewHandler.getInstance();
-    this.addTenantViewModel = ViewModelFactory.getInstance().getAddTenantViewModel();
+    this.viewHandler = viewHandler;
+    this.addTenantViewModel = addTenantViewModel;
+  }
 
-
+ public void  initialize()
+  {
     cprField.textProperty().bindBidirectional(addTenantViewModel.cprProperty());
     firstNameField.textProperty().bindBidirectional(addTenantViewModel.firstNameProperty());
     lastNameField.textProperty().bindBidirectional(addTenantViewModel.lastNameProperty());
     municipalityField.textProperty().bindBidirectional(addTenantViewModel.municipalityProperty());
     regionalAdminIDField.textProperty().bindBidirectional(addTenantViewModel.getRegionalAdminIDProperty());
     passwordField.textProperty().bindBidirectional(addTenantViewModel.getPasswordProperty());
-
-
   }
+
   public void onCreateTenants(ActionEvent actionEvent)
   {
-
-      addTenantViewModel.addTenant();
-
-
+    addTenantViewModel.addTenant();
     reset();
   }
 

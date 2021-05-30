@@ -1,33 +1,33 @@
 package client.view.regionaladmin.mainview;
 
 import client.core.ViewModelFactory;
-import client.core.viewhandler.LoginViewHandler;
-import client.core.viewhandler.RAViewHandler;
-import client.view.ViewController;
-import client.view.ViewHandler;
+import client.core.ViewHandler;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
-public class RegionalAdminMainViewController implements ViewController
+public class RegionalAdminMainViewController
 {
-  private RAViewHandler raViewHandler;
+  private ViewHandler viewHandler;
 
-  @Override public void init() throws IOException
+  public RegionalAdminMainViewController(ViewHandler viewHandler, Object o)
   {
-  raViewHandler = RAViewHandler.getInstance();
+    this.viewHandler = viewHandler;
+  }
+
+   public void initialize()
+  {
+
   }
   public void onSeeAllTenants(ActionEvent actionEvent)
   {
-    raViewHandler.openSeeAllTenants();
+    viewHandler.openSeeAllTenants();
   }
 
   public void onManageSummerHouse(ActionEvent actionEvent)
   {
-    new client.view.ViewHandler(
-        ViewModelFactory.getInstance(),
-        LoginViewHandler.getInstance().getStage())
-        .openSummerHouseList();
+
+        viewHandler.openSummerHouseList();
   }
 
 }

@@ -1,6 +1,7 @@
 package client.view;
 
 
+import client.core.ViewHandler;
 import client.viewmodel.SummerHouseEditViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

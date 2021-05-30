@@ -1,8 +1,7 @@
 package client.view.regionaladmin.managetenant.viewtenantdetail;
 
+import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import client.core.viewhandler.RAViewHandler;
-import client.view.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -13,7 +12,7 @@ import shared.domain.Tenant;
 
 import java.io.IOException;
 
-public class TenantDetailsViewController implements ViewController
+public class TenantDetailsViewController
 {
   @FXML private TableColumn<Tenant, String> cprColumn;
   @FXML private TableColumn<Tenant, String> firstNameColumn;
@@ -22,18 +21,19 @@ public class TenantDetailsViewController implements ViewController
   @FXML private TableColumn<Tenant, String> regAdminIDColumn;
         private TableView<Tenant> tenantTable;
 
-  private RAViewHandler viewHandler;
-  private ViewModelFactory viewModelFactory;
+  private ViewHandler viewHandler;
   private TenantDetailsViewModel tenantDetailsViewModel;
 
-  public TenantDetailsViewController(){}
 
-  @Override public void init()
+  public TenantDetailsViewController(ViewHandler viewHandler, TenantDetailsViewModel tenantDetailsViewModel)
   {
-    this.viewModelFactory = ViewModelFactory.getInstance();
-    this.tenantDetailsViewModel = viewModelFactory.getTenantDetailsViewModel();
+    this.viewHandler = viewHandler;
+    this.tenantDetailsViewModel = tenantDetailsViewModel;
+  }
 
-    viewHandler = RAViewHandler.getInstance();
+   public void  initialize()
+  {
+
 
     cprColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("cpr"));
     firstNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("firstname"));

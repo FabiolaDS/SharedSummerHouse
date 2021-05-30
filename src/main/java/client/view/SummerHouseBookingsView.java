@@ -1,5 +1,6 @@
 package client.view;
 
+import client.core.ViewHandler;
 import client.viewmodel.SummerHouseBookingViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

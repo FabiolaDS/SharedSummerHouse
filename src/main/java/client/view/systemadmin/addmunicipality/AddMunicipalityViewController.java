@@ -1,8 +1,6 @@
 package client.view.systemadmin.addmunicipality;
 
-import client.core.viewhandler.SAViewHandler;
-import client.core.ViewModelFactory;
-import client.view.ViewController;
+import client.core.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,22 +8,28 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class AddMunicipalityViewController implements ViewController
+
+
+public class AddMunicipalityViewController
 {
   @FXML public TextField municipalityNameField;
   @FXML public TextField municipalityRegionField;
   @FXML public TextField municipalityIDField;
   @FXML Label warningLabel;
 
-  private SAViewHandler viewHandler;
+  private ViewHandler viewHandler;
   private AddMunicipalityViewModel addMunicipalityViewModel;
 
-  @Override public void init() throws IOException
+  public AddMunicipalityViewController(ViewHandler viewHandler,
+      AddMunicipalityViewModel addMunicipalityViewModel)
+  {
+    this.viewHandler = viewHandler;
+    this.addMunicipalityViewModel = addMunicipalityViewModel;
+  }
+
+  public void initialize()
   {
 
-    this.viewHandler = SAViewHandler.getInstance();
-    this.addMunicipalityViewModel = ViewModelFactory.getInstance()
-        .addMunicipalityViewModel();
     this.warningLabel.textProperty()
         .bind(addMunicipalityViewModel.getWarningProperty());
     municipalityIDField.textProperty()
@@ -44,7 +48,7 @@ public class AddMunicipalityViewController implements ViewController
 
   public void onBackToMain(ActionEvent actionEvent) throws IOException
   {
-    viewHandler.openMainView();
+    viewHandler.openMainViewSystemAdmin();
   }
 
   private void reset()
