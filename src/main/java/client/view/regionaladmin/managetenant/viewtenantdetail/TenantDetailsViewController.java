@@ -20,7 +20,7 @@ public class TenantDetailsViewController implements ViewController
   @FXML private TableColumn<Tenant, String> lastNameColumn;
   @FXML private TableColumn<Tenant, String> municipalityColumn;
   @FXML private TableColumn<Tenant, String> regAdminIDColumn;
-        private TableView<Tenant> tenantTable;
+        @FXML private TableView<Tenant> tenantTable;
 
   private RAViewHandler viewHandler;
   private ViewModelFactory viewModelFactory;
@@ -33,16 +33,17 @@ public class TenantDetailsViewController implements ViewController
     this.viewModelFactory = ViewModelFactory.getInstance();
     this.tenantDetailsViewModel = viewModelFactory.getTenantDetailsViewModel();
 
+
     viewHandler = RAViewHandler.getInstance();
 
     cprColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("cpr"));
-    firstNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("firstname"));
-    lastNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("lastname"));
-    municipalityColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("municipality"));
-    regAdminIDColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("regAdminID"));
+    firstNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("firstName"));
+    lastNameColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("lastName"));
+    //municipalityColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("municipality"));
+    regAdminIDColumn.setCellValueFactory(new PropertyValueFactory<Tenant, String>("regionalAdminID"));
 
 
-    //tableViewLoad();
+    tableViewLoad();
 
   }
 

@@ -35,6 +35,8 @@ public class TenantDetailsViewModel
     model.addPropertyChangeListener(EventType.TENANTS.toString(), this::newTenant);
     tenants = FXCollections.observableArrayList();
     selectedTenant = FXCollections.observableSet();
+    tenants.setAll(model.getAllTenants());
+
 
 
     // constructor
@@ -124,6 +126,11 @@ public class TenantDetailsViewModel
   public ObservableList<Tenant> getTenants()
   {
     return tenants;
+  }
+
+  public void setTenants(ObservableList<Tenant> tenants)
+  {
+    this.tenants = tenants;
   }
 
   private void updateTenants(PropertyChangeEvent propertyChangeEvent){

@@ -42,4 +42,5 @@ public interface RMIServer extends Remote {
     void deleteRegionalAdmin(RegionalAdmin regionalAdmin) throws RemoteException;
     RegionalAdmin getRegionalAdminByCPR(String regionalAdminCPR) throws RemoteException;
   void deleteMunicipality(String id) throws RemoteException;
+    List<Tenant> getAllTenants() throws RemoteException;
 }

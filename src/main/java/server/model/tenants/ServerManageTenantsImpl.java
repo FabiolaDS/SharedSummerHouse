@@ -8,6 +8,7 @@ import shared.domain.Tenant;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ServerManageTenantsImpl implements ServerManageTenants
 {
@@ -25,6 +26,20 @@ public class ServerManageTenantsImpl implements ServerManageTenants
     //tenantsList.add(tenant);
     tenantDAO.createTenant(tenant);
     return tenant;
+  }
+
+  @Override public List<Tenant> getAllTenants()
+  {
+    List<Tenant> tenants = null;
+    try
+    {
+      tenants = tenantDAO.getAll();
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
+    return tenants;
   }
 
   @Override public void addPropertyChangeListener(String name,

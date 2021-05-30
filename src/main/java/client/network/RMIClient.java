@@ -208,6 +208,19 @@ public class RMIClient implements Client, ClientCallback
     }
   }
 
+  @Override public List<Tenant> getAllTenants()
+  {
+    List<Tenant> tenants = null;
+    try
+    {
+      tenants = server.getAllTenants();
+    }
+    catch (RemoteException e){
+      e.printStackTrace();
+    }
+    return tenants;
+  }
+
   @Override public ArrayList<Tenant> getTenants()
   {
     ArrayList<Tenant> tenants = new ArrayList<>();
