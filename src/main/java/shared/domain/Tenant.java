@@ -8,6 +8,7 @@ public class Tenant implements Serializable
 {
     private String cpr;
     private String firstName;
+    private String mName;
     private String lastName;
     private String municipality;
     private String email;
@@ -15,13 +16,14 @@ public class Tenant implements Serializable
     private StringProperty type;// Tenant OR ReginalAdmin OR SystemAdmin
     private String regionalAdminID;
 
-   public Tenant(String cpr, String firstName, String lastName, String municipality, String email)
+   public Tenant(String cpr, String firstName, String mName, String lastName, String regionalAdminID)
     {
         this.cpr = cpr;
         this.firstName = firstName;
+        this.mName = mName;
         this.lastName = lastName;
-        this.municipality = municipality;
-        this.email = email;
+        this.regionalAdminID = regionalAdminID;
+
         //this.password = password;
        // this.type = userType;
     }
@@ -39,7 +41,15 @@ public class Tenant implements Serializable
     }
     public Tenant(){}
 
-    public String getRegionalAdminID()
+  public Tenant(String tenant_cpr, String fname, String lname, String municipality_id)
+  {
+    this.cpr = tenant_cpr;
+    this.firstName = fname;
+    this.lastName = lname;
+    this.regionalAdminID = municipality_id;
+  }
+
+  public String getRegionalAdminID()
     {
         return regionalAdminID;
     }
@@ -109,4 +119,10 @@ public class Tenant implements Serializable
     {
         this.type = type;
     }
+
+  public String getmName()
+  {
+    return mName;
+  }
+
 }

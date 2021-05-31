@@ -57,4 +57,5 @@ public interface Client extends PropertyChangeSubject
   void deleteRegionalAdmin(RegionalAdmin regionalAdmin);
 
   void deleteMunicipality(String id);
+  List<Tenant> getAllTenants();
 }

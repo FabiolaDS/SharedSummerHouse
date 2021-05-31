@@ -12,6 +12,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ManageTenantsModelImpl implements TenantsModel
 {
@@ -48,7 +49,13 @@ public class ManageTenantsModelImpl implements TenantsModel
   {
     support.firePropertyChange(event);
   }
-   @Override public void addPropertyChangeListener(String name,
+
+  @Override public List<Tenant> getAllTenants()
+  {
+    return client.getAllTenants();
+  }
+
+  @Override public void addPropertyChangeListener(String name,
       PropertyChangeListener listener)
   {
     support.addPropertyChangeListener(name, listener);

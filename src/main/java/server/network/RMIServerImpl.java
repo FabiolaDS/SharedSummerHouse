@@ -193,6 +193,19 @@ public class RMIServerImpl implements RMIServer {
         }
     }
 
+    @Override public List<Tenant> getAllTenants()
+    {
+        List<Tenant> tenants = null;
+        try
+        {
+            tenants = tenantsModel.getAllTenants();
+        }
+        catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return tenants;
+    }
+
     @Override
     public List<Municipality> getAllMunicipalities() {
         List<Municipality> municipalities = null;

@@ -1,8 +1,11 @@
 package server.dataaccess;
 
+import shared.domain.Municipality;
 import shared.domain.Tenant;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TenantDAOImpl extends DatabaseDAO implements TenantDAO
 {
@@ -67,6 +70,33 @@ public class TenantDAOImpl extends DatabaseDAO implements TenantDAO
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override public List<Tenant> getAll() throws SQLException
+    {
+        // SELECT * FROM "shared_summerhouse"."tenant" LIMIT 100
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                "SELECT * FROM \"shared_summerhouse\".\"tenant\" LIMIT 100");
+
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Tenant> result = new ArrayList<>();
+            while (resultSet.next())
+            {
+                String tenant_cpr = resultSet.getString("tenant_cpr");
+                String fname = resultSet.getString("fname");
+                String mname = resultSet.getString("mname");
+                String lname = resultSet.getString("lname");
+                String password = resultSet.getString("password");
+                String municipality_id = resultSet.getString("municipality_id");
+
+                Tenant tenant = new Tenant(tenant_cpr, fname, lname, municipality_id);
+
+                result.add(tenant);
+            }
+            return result;
         }
     }
 }

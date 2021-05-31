@@ -49,7 +49,8 @@ public class BookingsManagerImpl extends UnicastRemoteObject implements Bookings
             throw new IllegalArgumentException("Summerhouse is already booked at that time");
         }
 
-        Booking booking = new Booking(tdao.get(tenant.getUsername()), house, from, to);
+
+        Booking booking =  new Booking(tdao.get(tenant.getUsername()), house, from, to);
         bdao.save(booking);
 
         fireChangeEvent("NEW_BOOKING", null, booking);
