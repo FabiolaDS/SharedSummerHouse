@@ -9,7 +9,7 @@ public interface TenantDAO
 {
   void createTenant(Tenant tenant) throws SQLException;
 
-  Tenant get(String cpr) throws SQLException;
+  Tenant get(String cpr);
   List<Tenant> getAll() throws SQLException;
 
 }
