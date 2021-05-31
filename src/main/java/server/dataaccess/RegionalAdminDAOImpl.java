@@ -75,7 +75,7 @@ public class RegionalAdminDAOImpl extends DatabaseDAO
       }
       else
       {
-        return null;
+        throw new NullPointerException("Regional admin does not exists");
       }
     }
   }
@@ -94,10 +94,17 @@ public class RegionalAdminDAOImpl extends DatabaseDAO
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement(
-          "DELETE FROM \"shared_summerhouse\".\"regional_admin\" WHERE regional_admin_cpr = ?");
-      statement.setString(1, regionalAdmin.getCpr());
-      statement.executeUpdate();
+      if (regionalAdmin == null)
+      {
+        throw new IllegalArgumentException("Regional admin does not exist");
+      }
+      else{
+
+        PreparedStatement statement = connection.prepareStatement(
+            "DELETE FROM \"shared_summerhouse\".\"regional_admin\" WHERE regional_admin_cpr = ?");
+        statement.setString(1, regionalAdmin.getCpr());
+        statement.executeUpdate();
+      }
 
     }
   }

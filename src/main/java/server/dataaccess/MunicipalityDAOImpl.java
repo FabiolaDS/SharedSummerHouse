@@ -33,15 +33,24 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO
 
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement(
-          "INSERT INTO \"shared_summerhouse\".\"municipality\" VALUES (?, ?, ?, ?, ?)");
-      statement.setString(1, municipality_id);
-      statement.setString(2, name);
-      statement.setString(3, region);
-      statement.setString(4, "180576-2412");
-      statement.setString(5, null);
-      statement.executeUpdate();
-      return new Municipality(name, region, municipality_id);
+      if (municipality_id.length() != 3 || !municipality_id.matches("[0-9]+")
+          || !isAvailable(municipality_id))
+      {
+        throw new IllegalArgumentException();
+      }
+      else
+      {
+
+        PreparedStatement statement = connection.prepareStatement(
+            "INSERT INTO \"shared_summerhouse\".\"municipality\" VALUES (?, ?, ?, ?, ?)");
+        statement.setString(1, municipality_id);
+        statement.setString(2, name);
+        statement.setString(3, region);
+        statement.setString(4, "180576-2412");
+        statement.setString(5, null);
+        statement.executeUpdate();
+        return new Municipality(name, region, municipality_id);
+      }
     }
 
   }
@@ -53,33 +62,32 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO
     try (Connection connection = getConnection())
     {
 
-      PreparedStatement statement = connection.prepareStatement(
-          "SELECT * FROM \"shared_summerhouse\".\"municipality\" WHERE municipality_id = ?");
-      statement.setString(1, municipality_id);
-      ResultSet resultSet = statement.executeQuery();
-      if (resultSet.next())
-      {
-        String name = resultSet.getString("name");
-        String region = resultSet.getString("region");
-        String regional_admin_cpr = resultSet.getString("regional_admin_cpr");
-
-        if (regional_admin_cpr == null)
+        PreparedStatement statement = connection.prepareStatement(
+            "SELECT * FROM \"shared_summerhouse\".\"municipality\" WHERE municipality_id = ?");
+        statement.setString(1, municipality_id);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next())
         {
-          municipality = new Municipality(name, region, municipality_id);
+          String name = resultSet.getString("name");
+          String region = resultSet.getString("region");
+          String regional_admin_cpr = resultSet.getString("regional_admin_cpr");
+
+          if (regional_admin_cpr == null)
+          {
+            municipality = new Municipality(name, region, municipality_id);
+          }
+          else if (regional_admin_cpr != null)
+          {
+            municipality = new Municipality(name, region, municipality_id,
+                regional_admin_cpr);
+          }
+
         }
-               else if (municipality_id != null)
-                {
-                    municipality = new Municipality(name,region,municipality_id,regional_admin_cpr);
-                }
       }
 
-            /* else if  (municipality_id != null)
-             {
-                municipality = new Municipality("-", "-", "-");
-            }*/
+      return municipality;
     }
-    return municipality;
-  }
+
 
   @Override public List<Municipality> getAll() throws SQLException
   {
@@ -126,15 +134,26 @@ public class MunicipalityDAOImpl extends DatabaseDAO implements MunicipalityDAO
       statement.executeUpdate();
     }
   }
+
   @Override public void delete(Municipality municipality) throws SQLException
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement(
-          "DELETE FROM \"shared_summerhouse\".\"municipality\" WHERE municipality_id = ?");
-      statement.setString(1, municipality.getId());
-      statement.executeUpdate();
+
+        PreparedStatement statement = connection.prepareStatement(
+            "DELETE FROM \"shared_summerhouse\".\"municipality\" WHERE municipality_id = ?");
+        statement.setString(1, municipality.getId());
+        statement.executeUpdate();
+
+
     }
+  }
+
+  private boolean isAvailable(String municipality_id) throws SQLException
+  {
+    Municipality municipality = getById(municipality_id);
+
+    return municipality == null;
   }
 }
 

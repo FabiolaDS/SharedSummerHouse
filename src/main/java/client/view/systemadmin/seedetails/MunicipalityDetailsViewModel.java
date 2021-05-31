@@ -48,9 +48,11 @@ public class MunicipalityDetailsViewModel
     }
   }
 
+
+
   public void deleteRegionalAdmin()
   {
-    if (!cpr.getValue().equals(""))
+    if (!cpr.getValue().equals("Not assigned"))
     {
       model.deleteRegionalAdmin(model.getRegionalAdminByCPR(cpr.get()));
       cpr.setValue("");

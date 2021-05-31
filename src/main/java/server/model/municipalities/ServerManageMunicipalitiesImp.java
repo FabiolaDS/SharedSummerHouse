@@ -37,8 +37,7 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     }
     catch (SQLException throwable)
     {
-      System.out.println(
-          "--------------------> Not possible to insert Municipality into DATABASE");
+      throwable.printStackTrace();
     }
     return getAllMunicipalities();
   }

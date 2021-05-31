@@ -43,6 +43,7 @@ public class MunicipalityDetailsViewController
     ViewModelFactory.getInstance().getAddRegionalAdministratorViewModel()
         .setMunicipalityId(id);
     viewHandler.openAddRegionalAdminView();
+
   }
 
   public void onBack(ActionEvent actionEvent)
