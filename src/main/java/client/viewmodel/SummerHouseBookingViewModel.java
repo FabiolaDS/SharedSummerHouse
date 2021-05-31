@@ -14,6 +14,7 @@ import shared.network.RemoteChangeListener;
 import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class SummerHouseBookingViewModel extends UnicastRemoteObject implements RemoteChangeListener
@@ -46,7 +47,7 @@ public class SummerHouseBookingViewModel extends UnicastRemoteObject implements 
     {
         try {
             bman.book(selected.get(), lm.getCurrentUser(), dateFrom.get(), dateTo.get());
-        } catch (RemoteException e) {
+        } catch (RemoteException | SQLException e) {
             throw new RuntimeException(e);
         }
     }

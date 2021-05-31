@@ -7,6 +7,7 @@ import shared.transferobjects.User;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public interface BookingsManager extends RemoteChangeSubject, Remote // to be ab
      * @throws RemoteException  Remote interface
      */
     void book(SummerHouse house, User tenant, LocalDate from, LocalDate to)
-            throws RemoteException;
+        throws RemoteException, SQLException;
 
     /**
      * Returns all bookings for given summerhouse

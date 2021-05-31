@@ -11,6 +11,7 @@ import shared.transferobjects.User;
 import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class BookingsManagerImpl extends UnicastRemoteObject implements Bookings
 
     @Override
     public void book(SummerHouse house, User tenant, LocalDate from,
-                     LocalDate to) throws RemoteException
+                     LocalDate to) throws RemoteException, SQLException
     {
         if(from.isAfter(to)) {
             throw new IllegalArgumentException("Start date has to be after end date");
