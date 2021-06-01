@@ -13,7 +13,7 @@ public class Tenant implements Serializable
     private String municipality;
     private String email;
     private String password;
-    private StringProperty type;// Tenant OR ReginalAdmin OR SystemAdmin
+    private StringProperty type;
     private String regionalAdminID;
 
    public Tenant(String cpr, String firstName, String mName, String lastName, String regionalAdminID)
