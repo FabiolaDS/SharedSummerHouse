@@ -29,7 +29,8 @@ public class ModelFactory
     public ManageMunicipalities getMunicipalitiesModel()
     {
         if (manageMunicipalities == null) {
-            manageMunicipalities = new ManageMunicipalitiesImpl();
+            manageMunicipalities = new ManageMunicipalitiesImpl(ClientFactory.getClientFactory()
+                .getClient());
         }
         return manageMunicipalities;
     }

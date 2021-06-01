@@ -13,33 +13,44 @@ import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * class Managing all the events related to Municipalities
+ *
+ * @author Agostina Mezzabotta
+ */
 public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
 {
   private MunicipalityDAO municipalityDAO;
   private RegionalAdminDAO regionalAdminDAO;
-  PropertyChangeSupport support;
 
-  public ServerManageMunicipalitiesImp(MunicipalityDAO municipalityDAO, RegionalAdminDAO regionalAdminDAO)
+  /**
+   * 2-argument constructor allowing the class to acces the Data Access Object classes
+   *
+   * @param municipalityDAO  DataAccessObject for Municipalities
+   * @param regionalAdminDAO DataAccessObject for RegionalAdmins
+   */
+  public ServerManageMunicipalitiesImp(MunicipalityDAO municipalityDAO,
+      RegionalAdminDAO regionalAdminDAO)
   {
     this.municipalityDAO = municipalityDAO;
     this.regionalAdminDAO = regionalAdminDAO;
-    support = new PropertyChangeSupport(this);
   }
 
   @Override public List<Municipality> addMunicipality(Municipality municipality)
-      throws SQLException
   {
+    List<Municipality> municipalities = null;
+
     try
     {
-      municipalityDAO
-          .create(municipality.getId(), municipality.getName(),
-              municipality.getRegion());
+      municipalityDAO.create(municipality.getId(), municipality.getName(),
+          municipality.getRegion());
+      municipalities = getAllMunicipalities();
     }
     catch (SQLException throwable)
     {
       throwable.printStackTrace();
     }
-    return getAllMunicipalities();
+    return municipalities;
   }
 
   @Override public List<Municipality> setRegionalAdmin(
@@ -48,22 +59,16 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     List<Municipality> municipalities = null;
     try
     {
-      //FIRST: Create Regional Administrator
       RegionalAdmin regionalAdmin1 = regionalAdminDAO
           .create(regionalAdmin.getCpr(), regionalAdmin.getFirstname(),
               regionalAdmin.getMName(), regionalAdmin.getLastname(),
               regionalAdmin.getPassword(), municipalityId);
-      System.out.println(regionalAdmin);
 
-      //SECOND: update municipality
-      Municipality municipality = municipalityDAO
-          .getById(municipalityId);
+      Municipality municipality = municipalityDAO.getById(municipalityId);
       municipality.setRegionalAdmin(regionalAdmin1);
-      System.out.println(municipality.getRegionalAdminCPR());
       MunicipalityDAOImpl.getInstance().update(municipality);
 
-      //THIRD: update list of municipalities with the changes
-      municipalities = municipalityDAO.getAll();
+      municipalities = getAllMunicipalities();
     }
     catch (SQLException throwables)
     {
@@ -72,7 +77,8 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     return municipalities;
   }
 
-  public void deleteRegionalAdmin(RegionalAdmin regionalAdmin){
+  public void deleteRegionalAdmin(RegionalAdmin regionalAdmin)
+  {
     try
     {
       regionalAdminDAO.delete(regionalAdmin);
@@ -116,41 +122,4 @@ public class ServerManageMunicipalitiesImp implements ServerManageMunicipalities
     return regionalAdminDAO.getById(regionalAdminCPR);
   }
 
-  @Override public void addPropertyChangeListener(String name,
-      PropertyChangeListener listener)
-  {
-    if (name == null)
-    {
-      addPropertyChangeListener(listener);
-    }
-    else
-    {
-      support.addPropertyChangeListener(name, listener);
-    }
-  }
-
-  @Override public void addPropertyChangeListener(
-      PropertyChangeListener listener)
-  {
-    support.addPropertyChangeListener(listener);
-  }
-
-  @Override public void removePropertyChangeListener(String name,
-      PropertyChangeListener listener)
-  {
-    if (name == null)
-    {
-      removePropertyChangeListener(listener);
-    }
-    else
-    {
-      support.removePropertyChangeListener(listener);
-    }
-  }
-
-  @Override public void removePropertyChangeListener(
-      PropertyChangeListener listener)
-  {
-    support.removePropertyChangeListener(listener);
-  }
 }

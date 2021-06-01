@@ -6,6 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * class controlling the view for Adding a new RegionalAdmin to the system
+ * @author Agsotina Mezzabotta
+ */
 public class AddRegionalAdminViewController
 {
 
@@ -56,7 +60,9 @@ public class AddRegionalAdminViewController
     municipalityLabel.textProperty().setValue("");
     viewHandler.openSeeMunicipalityDetailsView();
   }
-
+  /**
+   * reset view components
+   */
   private void reset()
   {
     fnameField.textProperty().setValue("");

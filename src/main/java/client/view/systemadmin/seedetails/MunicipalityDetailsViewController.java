@@ -5,6 +5,10 @@ import client.core.ViewModelFactory;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
+/**
+ * Class controlling the view for MunicipalityDetails
+ * @author Agostina Mezzabotta
+ */
 public class MunicipalityDetailsViewController
 {
   public Label municipalityNameLabel;

@@ -5,9 +5,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.domain.RegionalAdmin;
 
+/**
+ * class processing the data given by the user
+ * @author Agostina Mezzabotta
+ */
 public class AddRegionalAdministratorViewModel
 {
-
   private ManageMunicipalities municipalitiesModel;
   private StringProperty municipalityId,cprNr,name, lastName, mname,password;
 

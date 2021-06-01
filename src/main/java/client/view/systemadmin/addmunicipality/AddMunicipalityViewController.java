@@ -8,7 +8,11 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-
+/**
+ * This class controls the view to create municipalities
+ * @author Agostina Mezzabotta
+ * @version 1.0
+ */
 
 public class AddMunicipalityViewController
 {
@@ -27,6 +31,10 @@ public class AddMunicipalityViewController
     this.addMunicipalityViewModel = addMunicipalityViewModel;
   }
 
+  /**
+   * initializes the components used in the view and binds its content to the
+   * AddMunicipalityViewModel class
+   */
   public void initialize()
   {
 
@@ -51,6 +59,9 @@ public class AddMunicipalityViewController
     viewHandler.openMainViewSystemAdmin();
   }
 
+  /**
+   * resents the components in the view
+   */
   private void reset()
   {
     municipalityNameField.clear();

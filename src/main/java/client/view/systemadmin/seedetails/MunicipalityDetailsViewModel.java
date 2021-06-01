@@ -6,6 +6,10 @@ import javafx.beans.property.StringProperty;
 import shared.domain.Municipality;
 import shared.domain.RegionalAdmin;
 
+/**
+ * Class processing the data given by the user
+ * @author Agostina Mezzabotta
+ */
 public class MunicipalityDetailsViewModel
 {
   private ManageMunicipalities model;
