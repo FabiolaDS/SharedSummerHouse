@@ -24,7 +24,6 @@ public class RegionalAdmin implements Serializable
         System.out.println("Regional Admin has been created");
     }
 
-    // Can you please stop removing setters? They are needed for testing
     public String getCpr()
     {
         return cpr;

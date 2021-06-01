@@ -6,7 +6,7 @@ import java.util.Objects;
 public class SummerHouse implements Serializable
 {
 
-    private Long id;    // Need the id for all the entities!!!
+    private Long id;
 
     private String street;
     private int houseNumber;
@@ -18,21 +18,6 @@ public class SummerHouse implements Serializable
     private double pricePerNight;
     private int capacity;
 
-    /*
-     * Needs to be like this (confirming to ER diagram)
-     * CREATE TABLE shared_summerhouse.summerhouse (
-     * id SERIAL PRIMARY KEY,
-     * street VARCHAR(100) NOT NULL,
-     * house_no INT NOT NULL,
-     * post_code INT NOT NULL,
-     * region VARCHAR(50) NOT NULL,
-     * title VARCHAR(100),
-     * description TEXT,
-     * price DECIMAL(10, 2) NOT NULL,
-     * capacity INT NOT NULL,
-     * reg_admin cpr REFERENCES regional_admin(cpr)
-     * );
-     */
 
     public SummerHouse(String street, int houseNumber, int postCode, String region,
                        String title, String description, double pricePerNight, int capacity)

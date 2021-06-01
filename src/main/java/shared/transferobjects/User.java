@@ -2,9 +2,6 @@ package shared.transferobjects;
 
 import java.io.Serializable;
 
-/**
- * This class might not be useful because we are using RMI
- */
 public class User implements Serializable
 {
   private String username, password, userType;

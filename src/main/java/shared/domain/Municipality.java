@@ -6,7 +6,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class Municipality implements Serializable
 {
-  //made by database
   private String id;
   private String name;
   private String region;

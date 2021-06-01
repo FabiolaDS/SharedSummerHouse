@@ -25,7 +25,6 @@ public class LoginModelManager implements LoginModel
   public LoginModelManager(UserDAO userDAO)
   {
     this.userDAO = userDAO;
-    support = new PropertyChangeSupport(this);
   }
 
 
