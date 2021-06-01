@@ -3,7 +3,6 @@ package server.dataaccess;
 import shared.domain.Booking;
 import shared.domain.SummerHouse;
 import shared.domain.Tenant;
-import shared.domain.User;
 
 import java.time.LocalDate;
 import java.util.List;
