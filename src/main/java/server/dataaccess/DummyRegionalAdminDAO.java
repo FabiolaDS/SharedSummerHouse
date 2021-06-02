@@ -45,16 +45,6 @@ public class DummyRegionalAdminDAO implements RegionalAdminDAO
   }
   }
 
-  @Override public List<RegionalAdmin> getAll() throws SQLException
-  {
-    return regionalAdmins;
-  }
-
-  @Override public void update(Municipality municipality) throws SQLException
-  {
-
-  }
-
   @Override public void delete(RegionalAdmin regionalAdmin) throws SQLException
   {
    if (regionalAdmin == null)
