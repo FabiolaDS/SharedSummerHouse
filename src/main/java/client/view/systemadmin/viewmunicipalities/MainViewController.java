@@ -12,6 +12,10 @@ import shared.domain.Municipality;
 
 import java.io.IOException;
 
+/**
+ * class controlling the main view for the SystemAdmin
+ * @author Agostina Mezzabotta
+ */
 public class MainViewController
 {
   public TableColumn<Municipality, String> muniColumn;
@@ -33,9 +37,11 @@ public class MainViewController
     this.viewHandler = viewHandler;
   }
 
+  /**
+   * initializes the view components and loads the info to the tableview
+   */
   public void initialize()
   {
-
     muniColumn.setCellValueFactory(
         new PropertyValueFactory<Municipality, String>("name"));
     idColumn.setCellValueFactory(
@@ -49,6 +55,9 @@ public class MainViewController
     tableViewLoad();
   }
 
+  /**
+   * private methods setting the items to be displayed in a table view
+   */
   private void tableViewLoad()
   {
     municipalityTable.setItems(mainViewModel.getMunicipalities());
@@ -67,6 +76,9 @@ public class MainViewController
 
   }
 
+  /**
+   * private method, calls the seeDetailsViewModel to set the details to the selected municipality
+   */
   private void updateSelectedMunicipality()
   {
     if (municipalityTable.getSelectionModel().getSelectedItem() != null)
@@ -78,6 +90,10 @@ public class MainViewController
     }
   }
 
+  /**
+   * checks if the municipality still has a RegionalAdmin
+   * @param actionEvent click on the button
+   */
   public void onDeleteMunicipality(ActionEvent actionEvent)
   {
 

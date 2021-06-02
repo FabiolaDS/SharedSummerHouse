@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * reading the data from databade
+ * reading the data from database
  * @author alina
  */
 

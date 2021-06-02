@@ -80,15 +80,6 @@ public class RegionalAdminDAOImpl extends DatabaseDAO
     }
   }
 
-  @Override public List<RegionalAdmin> getAll() throws SQLException
-  {
-    return null;
-  }
-
-  @Override public void update(Municipality municipality) throws SQLException
-  {
-
-  }
 
   @Override public void delete(RegionalAdmin regionalAdmin) throws SQLException
   {

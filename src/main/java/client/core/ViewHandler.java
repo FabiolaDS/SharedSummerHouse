@@ -91,28 +91,37 @@ public class ViewHandler
                 new SummerHouseBookingsView(this, vm))));
     }
 
-    //Logging view
+    /**
+     * Opens the login view
+     */
 
     public void openLoginView() {
-
         stage.setScene(new Scene(load("/loginView.fxml",
             new LoginViewController(this, vmf.getLoginViewModel()))));
     }
-    //Views for Regional Administrator
+
+    /**
+     * Opens the main view for the Regional Admin
+     */
     public void openMainView()
     {stage.setTitle("Main view");
         stage.setScene(new Scene(load("/regionalAdminMainView.fxml",
             new RegionalAdminMainViewController(this, null))));
     }
 
+    /**
+     * Opens a view for adding tenants
+     */
     public void openAddTenantView()
     {
         stage.setTitle("Add a Tenant");
         stage.setScene(new Scene(load("/addTenantView.fxml",
             new AddTenantViewController(this, vmf.addTenantViewModel()))));
-
     }
 
+    /**
+     * opens a general view for all the tenants
+     */
     public void openSeeAllTenants()
     {
         stage.setTitle("See All Registered Tenants");
@@ -136,20 +145,26 @@ public class ViewHandler
             new MunicipalityDetailsViewController(this, vmf.getMunicipalityDetailsViewModel()))));
     }
 
+    /**
+     * Opens a view for Adding municipalities
+     */
     public void openAddMunicipalityView()
     {
-
         stage.setTitle("Add Municipality");
         stage.setScene(new Scene(load("/addMunicipalityView.fxml",
             new AddMunicipalityViewController(this, vmf.addMunicipalityViewModel()))));
     }
 
+    /**
+     * Opens a view for adding regional administrators
+     */
     public void openAddRegionalAdminView()
     {
         stage.setTitle("Add Regional Administrator");
         stage.setScene(new Scene(load("/addRegionalAdminView.fxml",
             new AddRegionalAdminViewController(this, vmf.getAddRegionalAdministratorViewModel()))));
     }
+
 
     private Parent load(String path, Object controller)
     {

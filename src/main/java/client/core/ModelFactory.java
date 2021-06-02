@@ -9,6 +9,9 @@ import client.model.tenants.ManageTenantsModelImpl;
 import shared.businesslogic.BookingsManager;
 import shared.businesslogic.SummerHousesManager;
 
+/**
+ * ModelFactory class creating all the models used in the client side
+ */
 public class ModelFactory
 {
     private static ModelFactory modelFactory;
@@ -16,8 +19,15 @@ public class ModelFactory
     private TenantsModel tenantsModel;
     private LoginModel loginModel;
 
+    /**
+     * 0-argument private constructor
+     */
     private ModelFactory() {}
 
+    /**
+     *
+     * @return
+     */
     public static ModelFactory getInstance()
     {
         if (modelFactory == null) {

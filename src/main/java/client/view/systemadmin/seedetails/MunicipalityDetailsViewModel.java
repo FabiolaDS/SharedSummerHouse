@@ -29,6 +29,10 @@ public class MunicipalityDetailsViewModel
     mName = new SimpleStringProperty("");
   }
 
+  /**
+   * sets the municipality details to display
+   * @param id identifying the municipality
+   */
   public void getMunicipalityDetailsId(String id)
   {
     cpr.setValue("Not assigned");
@@ -52,8 +56,9 @@ public class MunicipalityDetailsViewModel
     }
   }
 
-
-
+  /**
+   * checks if the Municipality has a regional admin before to delete it
+   */
   public void deleteRegionalAdmin()
   {
     if (!cpr.getValue().equals("Not assigned"))

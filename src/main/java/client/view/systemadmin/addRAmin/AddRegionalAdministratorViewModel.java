@@ -14,10 +14,13 @@ public class AddRegionalAdministratorViewModel
   private ManageMunicipalities municipalitiesModel;
   private StringProperty municipalityId,cprNr,name, lastName, mname,password;
 
+  /**
+   * 1-argument constructor associating the class to the Manage Municipalities model
+   * @param manageMunicipalities model for Manage Municipalities
+   */
   public AddRegionalAdministratorViewModel(
       ManageMunicipalities manageMunicipalities)
   {
-
     this.municipalitiesModel = manageMunicipalities;
     municipalityId = new SimpleStringProperty();
     cprNr = new SimpleStringProperty();
@@ -92,6 +95,9 @@ public class AddRegionalAdministratorViewModel
     return password;
   }
 
+  /**
+   * creates a new RegionalAdmin
+   */
   public void addRegionalAdmin()
   {
     municipalitiesModel.addRegionalAdmin(new RegionalAdmin(getCprNr(),getName(),getLastName(),

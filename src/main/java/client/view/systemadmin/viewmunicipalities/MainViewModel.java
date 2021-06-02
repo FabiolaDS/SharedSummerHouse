@@ -9,11 +9,19 @@ import shared.transferobjects.EventType;
 import java.beans.PropertyChangeEvent;
 import java.util.List;
 
+/**
+ * MainViewModel class listening to events in the model
+ */
 public class MainViewModel
 {
   private ManageMunicipalities model;
   private ObservableList<Municipality> municipalities;
 
+  /**
+   * 1-argument constructor associating the class with the model and
+   * subscribing two methods as listeners of the model
+   * @param manageMunicipalities
+   */
   public MainViewModel(ManageMunicipalities manageMunicipalities)
   {
     model = manageMunicipalities;

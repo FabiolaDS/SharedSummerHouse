@@ -29,6 +29,9 @@ public class AddRegionalAdminViewController
     this.viewHandler = viewHandler;
   }
 
+  /**
+   * initializes  the textfields and labels and binds them to the ViewModel
+   */
   public void  initialize()
   {
 

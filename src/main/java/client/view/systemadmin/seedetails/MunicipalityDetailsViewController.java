@@ -27,14 +27,15 @@ public class MunicipalityDetailsViewController
     this.detailsViewModel = municipalityDetailsViewModel;
   }
 
+  /**
+   * initializes the view components and binds them to the View Model
+   */
  public void initialize()
   {
-    //Municipality info:
     municipalityIdLabel.textProperty().bind(detailsViewModel.idProperty());
     municipalityRegionLabel.textProperty()
         .bind(detailsViewModel.regionProperty());
     municipalityNameLabel.textProperty().bind(detailsViewModel.nameProperty());
-    //Regional Admin info:
     cprLabel.textProperty().bind(detailsViewModel.cprProperty());
     fnameLabel.textProperty().bind(detailsViewModel.firstNameProperty());
     nameLabel.textProperty().bind(detailsViewModel.lastNameProperty());

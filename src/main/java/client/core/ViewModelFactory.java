@@ -15,6 +15,9 @@ import client.viewmodel.SummerHousesListViewModel;
 
 import java.rmi.RemoteException;
 
+/**
+ * View Model Factory for accessing view models
+ */
 public class ViewModelFactory
 {
     private static ViewModelFactory vmf;
@@ -25,22 +28,32 @@ public class ViewModelFactory
     private MunicipalityDetailsViewModel municipalityDetailsViewModel;
     private MainViewModel mainViewModel;
     private LoginViewModel loginViewModel;
-
     private ModelFactory modelf;
 
+    /**
+     * 1-argument private constructor
+     * @param modelf Model Factory
+     */
     private ViewModelFactory(ModelFactory modelf)
     {
         this.modelf = modelf;
     }
 
+    /**
+     * static method. Gets the unique instance of the ViewModelFactoryClass
+     * @return ViewModelFactory instance
+     */
     public static ViewModelFactory getInstance()
     {
         if (vmf == null) {
-            vmf = new ViewModelFactory(ModelFactory.getInstance());    // singleton does not allow for dependency injectioN
+            vmf = new ViewModelFactory(ModelFactory.getInstance());
         }
         return vmf;
     }
-
+    /**
+     * gets the AddTenantViewModel
+     * @return AddTenantViewModel instance
+     */
     public AddTenantViewModel getAddTenantViewModel()
     {
         if (addTenantViewModel == null) {
@@ -50,6 +63,10 @@ public class ViewModelFactory
         return addTenantViewModel;
     }
 
+    /**
+     * gets the TenantDetailsViewModel
+     * @return TenantDetailsViewModel
+     */
     public TenantDetailsViewModel getTenantDetailsViewModel()
     {
         if (tenantDetailsViewModel == null) {
@@ -58,6 +75,10 @@ public class ViewModelFactory
         return tenantDetailsViewModel;
     }
 
+    /**
+     * gets the AddMunicipalityViewModel
+     * @return AddMunicipalityViewModel
+     */
     public AddMunicipalityViewModel addMunicipalityViewModel()
     {
         if (addMunicipalityViewModel == null) {
@@ -67,6 +88,10 @@ public class ViewModelFactory
         return addMunicipalityViewModel;
     }
 
+    /**
+     * gets AddRegionalAdministratorViewModel
+     * @return AddRegionalAdministratorViewModel
+     */
     public AddRegionalAdministratorViewModel getAddRegionalAdministratorViewModel()
     {
         if (addRegionalAdministratorViewModel == null) {
@@ -76,6 +101,10 @@ public class ViewModelFactory
         return addRegionalAdministratorViewModel;
     }
 
+    /**
+     * gets the MunicipalityDetailsViewModel
+     * @return MunicipalityDetailsViewModel
+     */
     public MunicipalityDetailsViewModel getMunicipalityDetailsViewModel()
     {
         if (municipalityDetailsViewModel == null) {
@@ -85,6 +114,10 @@ public class ViewModelFactory
         return municipalityDetailsViewModel;
     }
 
+    /**
+     * gets MainViewModel
+     * @return MainViewModel
+     */
     public MainViewModel getMainViewModel()
     {
         if (mainViewModel == null) {
@@ -93,6 +126,10 @@ public class ViewModelFactory
         return mainViewModel;
     }
 
+    /**
+     * gets a LoginViewModel
+     * @return LoginViewModel
+     */
     public LoginViewModel getLoginViewModel()
     {
         if (loginViewModel == null) {
@@ -101,7 +138,10 @@ public class ViewModelFactory
         return loginViewModel;
     }
 
-
+    /**
+     * gets a AddTenantViewModel
+     * @return AddTenantViewModel
+     */
     public AddTenantViewModel addTenantViewModel()
     {
         if (addTenantViewModel == null) {
@@ -114,6 +154,10 @@ public class ViewModelFactory
 
     private SummerHousesListViewModel shlvm;
 
+    /**
+     * gets a SummerHousesListViewModel
+     * @return SummerHousesListViewModel
+     */
     public SummerHousesListViewModel getSummerHousesListVM()
     {
         try {
@@ -130,6 +174,10 @@ public class ViewModelFactory
 
     private SummerHouseEditViewModel shevm;
 
+    /**
+     * gets a SummerHouseEditViewModel
+     * @return SummerHouseEditViewModel
+     */
     public SummerHouseEditViewModel getSummerHouseEditVM() {
         if(null == shevm) {
             shevm = new SummerHouseEditViewModel(
@@ -143,6 +191,10 @@ public class ViewModelFactory
 
     private SummerHouseBookingViewModel shbvm;
 
+    /**
+     * gets a SummerHouseBookingViewModel
+     * @return SummerHouseBookingViewModel
+     */
     public SummerHouseBookingViewModel getSummerHouseBookingVM() {
         try {
             if (null == shbvm) {
