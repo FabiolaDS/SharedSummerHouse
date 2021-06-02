@@ -14,13 +14,22 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class implementing ManageTenants
+ *
+ * @author alina
+ */
+
 public class ManageTenantsModelImpl implements TenantsModel
 {
 
   private PropertyChangeSupport support;
-
   private Client client;
 
+  /**
+   * constructers setting the client and PropertyChangeSupport
+   * adding subscribers to events happening in the client
+   */
   public ManageTenantsModelImpl()
   {
     support = new PropertyChangeSupport(this);

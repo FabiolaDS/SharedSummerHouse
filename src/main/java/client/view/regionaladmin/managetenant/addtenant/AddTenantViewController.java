@@ -6,6 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+/**
+ * controls the view to create tenants
+ * @author alina
+ */
+
 public class AddTenantViewController
 {
   @FXML public TextField cprField;
@@ -27,6 +32,9 @@ public class AddTenantViewController
     this.addTenantViewModel = addTenantViewModel;
   }
 
+  /**
+   * initialises the fields variable(properties) and binds with AddTenantViewModel class
+   */
  public void  initialize()
   {
     cprField.textProperty().bindBidirectional(addTenantViewModel.cprProperty());
@@ -50,7 +58,9 @@ public class AddTenantViewController
   {
     viewHandler.openMainView();
   }
-
+  /**
+   * resents the components in the view
+   */
   private void reset(){
     cprField.clear();
     firstNameField.clear();

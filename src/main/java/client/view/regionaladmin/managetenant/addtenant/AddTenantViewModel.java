@@ -8,11 +8,21 @@ import shared.domain.Tenant;
 
 import java.rmi.RemoteException;
 
+/**
+ * Receives the information to create a new tenant.
+ *  Validates the input to avoid exceptions in the classes related
+ * @author alina
+ */
+
 public class AddTenantViewModel
 {
   private TenantsModel tenantModel;
   private StringProperty cpr, firstName, lastName, municipality, regionalAdminID, password;
 
+  /**
+   * argument constructor setting the TenantModel class as a model
+   * @param tenantsModel model
+   */
   public AddTenantViewModel(TenantsModel tenantsModel) {
     this.tenantModel = tenantsModel;
     cpr = new SimpleStringProperty();
@@ -22,8 +32,6 @@ public class AddTenantViewModel
     regionalAdminID = new SimpleStringProperty();
     password = new SimpleStringProperty();
   }
-
-  //public AddTenantViewModel() {}
 
 
   public StringProperty cprProperty()
@@ -91,6 +99,9 @@ public class AddTenantViewModel
     return password.get();
   }
 
+  /**
+   * creating a new tenant
+   */
   public void addTenant()
 
   {

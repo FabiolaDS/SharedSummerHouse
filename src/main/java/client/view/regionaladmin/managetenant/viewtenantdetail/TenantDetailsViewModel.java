@@ -15,6 +15,11 @@ import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * calls the methods in the TenantsModel class
+ * @author alina
+ */
+
 public class TenantDetailsViewModel
 {
 

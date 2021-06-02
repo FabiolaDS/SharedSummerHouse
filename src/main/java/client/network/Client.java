@@ -35,7 +35,10 @@ public interface Client extends PropertyChangeSubject
    * as a listener of the server.
    */
   void startClient();
-
+  /**
+   *
+   * @param tenant - Create a new tenant in the system
+   */
   void addTenant(Tenant tenant);
 
   BookingsManager getBookingsManager();
@@ -43,7 +46,10 @@ public interface Client extends PropertyChangeSubject
   ArrayList<Tenant> getTenants();
 
   SummerHousesManager getSummerHousesManager();
-
+  /**
+   * getting all the tenants from the system
+   * @return a tenant list
+   */
   List<Tenant> getAllTenants();
 
   /**
