@@ -5,6 +5,10 @@ import java.time.LocalDate;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
+/**
+ * Booking class
+ * @author Fabiola Gesuato
+ */
 public class Booking implements Serializable
 {
     private SummerHouse summerHouse;

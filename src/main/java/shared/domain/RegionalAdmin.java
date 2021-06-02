@@ -2,6 +2,10 @@ package shared.domain;
 
 import java.io.Serializable;
 
+/**
+ * Regional Administrator class
+ * @author Fabiola Gesuato
+ */
 public class RegionalAdmin implements Serializable
 {
 

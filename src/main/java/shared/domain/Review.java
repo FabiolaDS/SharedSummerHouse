@@ -1,5 +1,9 @@
 package shared.domain;
 
+/**
+ * Review class
+ * @author Fabiola Gesuato
+ */
 public class Review
 {
     private SummerHouse summerHouse;

@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * Municipality class
+ * @author Agostina Mezzabotta
+ */
 public class Municipality implements Serializable
 {
   private String id;
@@ -13,17 +17,27 @@ public class Municipality implements Serializable
   private RegionalAdmin regionalAdmin;
   private String regionalAdminCPR;
 
-
-
+  /**
+   * 3-argument constructor to create municipalities without regionAladmin
+   * @param name
+   * @param region
+   * @param id
+   */
   public Municipality(String name, String region, String id)
   {
     this.name = name;
     this.region = region;
     this.id = id;
     summerhouses = new ArrayList<>();
-    System.out.println("New Municipality has been created");
   }
 
+  /**
+   * 4-argument constructor creating municipality object with a Regional Admin assigned
+   * @param name
+   * @param region
+   * @param municipality_id
+   * @param regional_admin_cpr
+   */
   public Municipality(String name, String region, String municipality_id, String regional_admin_cpr) {
     this.name = name;
     this.regionalAdminCPR = regional_admin_cpr;

@@ -4,6 +4,10 @@ import javafx.beans.property.StringProperty;
 
 import java.io.Serializable;
 
+/**
+ * Tenant Class
+ * @author Fabiola Gesuato
+ */
 public class Tenant implements Serializable
 {
     private String cpr;
@@ -23,12 +27,7 @@ public class Tenant implements Serializable
         this.mName = mName;
         this.lastName = lastName;
         this.regionalAdminID = regionalAdminID;
-
-        //this.password = password;
-       // this.type = userType;
     }
-    //Do not delete constructor below
-
     public Tenant(String cpr, String firstName, String lastName,
         String municipality, String password, String regionalAdminID)
     {
@@ -64,7 +63,6 @@ public class Tenant implements Serializable
         return cpr;
     }
 
-    // need setters for database
     public void setCpr(String cpr)
     {
         this.cpr = cpr;

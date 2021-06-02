@@ -3,6 +3,10 @@ package shared.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Summerhouse class
+ * @author Fabiola Gesuato
+ */
 public class SummerHouse implements Serializable
 {
 
