@@ -142,12 +142,6 @@ public class RMIServerImpl implements RMIServer {
 
 
     @Override
-    public Municipality getMunicipality(Long id) throws RemoteException {
-        return null;
-    }
-
-
-    @Override
     public Tenant addTenant(Tenant tenant) throws SQLException
     {
         tenantsModel.addTenant(tenant);
