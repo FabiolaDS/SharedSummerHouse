@@ -25,8 +25,8 @@ public class ModelFactory
     private ModelFactory() {}
 
     /**
-     *
-     * @return
+     *gets a unique instance of the ModelFactory class
+     * @return ModelFactory object
      */
     public static ModelFactory getInstance()
     {

@@ -19,9 +19,9 @@ public class Municipality implements Serializable
 
   /**
    * 3-argument constructor to create municipalities without regionAladmin
-   * @param name
-   * @param region
-   * @param id
+   * @param name of the municipality
+   * @param region String for municipality's region
+   * @param id String identifying the municipality
    */
   public Municipality(String name, String region, String id)
   {
@@ -33,10 +33,10 @@ public class Municipality implements Serializable
 
   /**
    * 4-argument constructor creating municipality object with a Regional Admin assigned
-   * @param name
-   * @param region
-   * @param municipality_id
-   * @param regional_admin_cpr
+   * @param name string name for the regional administrator
+   * @param region string region
+   * @param municipality_id string municipality id
+   * @param regional_admin_cpr string cpr for regional administrator
    */
   public Municipality(String name, String region, String municipality_id, String regional_admin_cpr) {
     this.name = name;

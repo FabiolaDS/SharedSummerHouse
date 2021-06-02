@@ -44,7 +44,7 @@ public class ClientFactory
 
   /**
    * get a unique instance of the RMIClient class
-   * @return
+   * @return RMIClient instance
    */
   public RMIClient getClient() {
     if (rmiClient == null)
