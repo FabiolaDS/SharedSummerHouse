@@ -12,6 +12,11 @@ import shared.domain.Tenant;
 
 import java.io.IOException;
 
+/**
+ * controls th view for SeeAllTheTenantsView
+ * @author alina
+ */
+
 public class TenantDetailsViewController
 {
   @FXML private TableColumn<Tenant, String> cprColumn;
@@ -31,7 +36,10 @@ public class TenantDetailsViewController
     this.tenantDetailsViewModel = tenantDetailsViewModel;
   }
 
-   public void  initialize()
+  /**
+   * the initialize method that is the default constructor created by JavaFx framework.
+   */
+  public void  initialize()
   {
 
 

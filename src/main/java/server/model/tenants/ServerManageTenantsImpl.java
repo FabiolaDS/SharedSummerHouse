@@ -10,11 +10,20 @@ import java.beans.PropertyChangeSupport;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * class managing the events related to Tenants
+ * @author alina
+ */
+
 public class ServerManageTenantsImpl implements ServerManageTenants
 {
   private TenantDAO tenantDAO;
   PropertyChangeSupport support;
 
+  /**
+   * constructor to acces the Data Access Object classes
+   * @param tenantDAO DataAccessObject for Municipalities
+   */
   public ServerManageTenantsImpl(TenantDAO tenantDAO){
     this.tenantDAO = tenantDAO;
     support = new PropertyChangeSupport(this);
